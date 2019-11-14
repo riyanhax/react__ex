@@ -1,7 +1,7 @@
 //import './assets/css/global.scss';
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Ex from 'pg/Ex/index';
+import Ex from 'pg/Trading/index';
 import LoginPage from 'pg/auth/loginPage';
 import RegistrationPage from 'pg/auth/registrationPage';
 import RecoveryPasswordPage from 'pg/auth/recoveryPasswordPage';
@@ -10,7 +10,6 @@ import { history } from './history';
 import PrivateRoute from 'cmp/PrivateRoute';
 import { connect } from 'react-redux';
 import actions from "act/"
-import Widget from "./ConversationList"
 import { ActionCableProvider } from "react-actioncable-provider";
 
 class App extends React.Component {
@@ -75,7 +74,6 @@ class App extends React.Component {
               <RecoveryPasswordPage />
             </Route>
             {pairsRoutes}
-            {/* <PrivateRoute path="/trading/" component={Ex} isAuthenticated={isAuthenticated} isLoading={isLoading} /> */}
             <Route path="**" exact>
               <LoginPage/>
             </Route>

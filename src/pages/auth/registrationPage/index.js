@@ -1,9 +1,9 @@
 import React from 'react';
-import AuthForm from '../../../components/authForm/index';
+import AuthForm from 'cmp/auth/authForm/';
 import { connect } from 'react-redux';
-import LoginHeader from '../../../components/loginHeader/index';
+import LoginHeader from 'cmp/auth/loginHeader/';
 import "../index.css";
-import actions from "../../../actions/"
+import actions from "act/"
 class RegistrationPage extends React.Component {
     state = {
         disabled: false
@@ -13,14 +13,14 @@ class RegistrationPage extends React.Component {
         event.target.checked ? this.setState((state) => ({ disabled: true }))
             : this.setState((state) => ({ disabled: false }));
     }
-   
+
     componentDidMount() {
-     // this.props.login("2nicinelir@imaild.com","0lDHd9ufs9t")
+        // this.props.login("2nicinelir@imaild.com","0lDHd9ufs9t")
     }
     render() {
 
         // console.log(this.state.disabled)
-      
+
         return (
             <>
                 <section id="authForm">
@@ -50,7 +50,7 @@ class RegistrationPage extends React.Component {
                                 </div>
                             }
                             data={this.props.formData}
-                           
+
                         />
                     </div>
                 </section>
@@ -67,7 +67,7 @@ function mapStateToProps(state) {
 let mapDispatchToProps = (dispatch) => {
 
     return {
-        login: (email,password) => dispatch(actions.auth.login(email, password))
+        login: (email, password) => dispatch(actions.auth.login(email, password))
     }
-  };
+};
 export default connect(mapStateToProps, mapDispatchToProps)(RegistrationPage);

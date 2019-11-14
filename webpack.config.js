@@ -1,7 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractLoader = require('mini-css-extract-plugin');
-const proxy = require('http-proxy-middleware');
+
 module.exports = {
 
   entry: path.resolve(__dirname, 'src', 'index.js'),
@@ -10,7 +10,7 @@ module.exports = {
     filename: 'bundle.[chunkhash].js',
   },
   resolve: {
-    extensions: ['.js', '.jsx'],
+    extensions: ['.js', '.jsx', '.css'],
     alias: {
       'pg': path.resolve(__dirname, 'src/pages'),
       'cmp': path.resolve(__dirname, 'src/components'),
@@ -18,6 +18,8 @@ module.exports = {
       'rd': path.resolve(__dirname, 'src/reducers'),
       'api': path.resolve(__dirname, 'src/api'),
       'sg': path.resolve(__dirname, 'src/sagas'),
+      'serv': path.resolve(__dirname, 'src/services'),
+      'libs': path.resolve(__dirname, 'src/libs'),
     }
   },
   module: {
@@ -49,7 +51,6 @@ module.exports = {
       '/api/**': {
         target: 'http://localhost:8099',
         secure: false,
-        // ws:true,
         changeOrigin: true
       }
     }

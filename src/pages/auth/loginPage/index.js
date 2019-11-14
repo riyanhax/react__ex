@@ -1,7 +1,7 @@
 import React from 'react';
-import LoginHeader from '../../../components/loginHeader';
+import LoginHeader from 'cmp/auth/loginHeader';
 import "../index.css";
-import AuthForm from '../../../components/authForm/index';
+import AuthForm from 'cmp/auth/authForm/';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import actions from "act/"
