@@ -68,7 +68,6 @@ function* createEventOrderBook(cable, pair) {
     }, {
 
       received: (data) => {
-        console.log(data)
         return emit({ type: setOrderBook, data });
       },
 
@@ -78,7 +77,6 @@ function* createEventOrderBook(cable, pair) {
     };
   });
 }
-
 
 
 function* OrderBookWatcher({ payload: { pair, cable } }) {
@@ -104,7 +102,7 @@ function* createEventDeals(cable, pair) {
     }, {
 
       received: (data) => {
-        console.log(data)
+        
         return emit({ type: setDeals, data });
       },
 

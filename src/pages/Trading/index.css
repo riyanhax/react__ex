@@ -124,6 +124,7 @@ img {
 .ex__col__2__sub{
 flex-basis: 50%;
 flex-wrap: nowrap;
+overflow: hidden;
 }
 .ex__table{
   width: 100%;

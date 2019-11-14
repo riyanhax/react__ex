@@ -15,22 +15,22 @@ import { ActionCableProvider } from "react-actioncable-provider";
 class App extends React.Component {
 
   componentDidMount() {
-    // fetch(`api/v2/peatio/chat/messages/en`, {
-    //   credentials: 'include',
+    fetch(`api/v2/peatio/public/markets/ethusd/header_info`, {
+      credentials: 'include',
 
-    //   headers: {
-    //     'Content-type': 'application/json'
-    //   },
+      headers: {
+        'Content-type': 'application/json'
+      },
 
-    // })
-    //   .then(response => response.json())
-    //   .then((data) => {
+    })
+      .then(response => response.json())
+      .then((data) => {
 
-    //     console.log(data)
-    //   })
-    //   .catch((e) => {
-    //     console.log(e)
-    //   });
+        console.log(data)
+      })
+      .catch((e) => {
+        console.log(e)
+      });
     this.props.checkUser()
     this.props.loadPairs()
   }

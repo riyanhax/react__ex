@@ -25,12 +25,13 @@ export const tradingReducer = handleActions({
     setOrderBook: (state, action) => {
 
         if (action.data) {
+         
             let orderBook = { ...state.orderBook };
-            if (action.data.type == "OrderBid") {
-                orderBook.bids.unshift(action.data)
+            if (action.data.order_type == "OrderBid") {
+                orderBook.bids.unshift(action.data.order)
             }
-            if (action.data.type == "OrderAsk") {
-                orderBook.asks.unshift(action.data)
+            if (action.data.order_type == "OrderAsk") {
+                orderBook.asks.unshift(action.data.order)
             }
             return {
                 ...state,
@@ -49,10 +50,11 @@ export const tradingReducer = handleActions({
 
     },
     setDeals: (state, action) => {
+        
         if (action.data) {
             console.log(action.data)
             let deals = [...state.deals];
-            deals.unshift(action.data)
+            deals.unshift(action.data.trade)
             return {
                 ...state,
                 deals

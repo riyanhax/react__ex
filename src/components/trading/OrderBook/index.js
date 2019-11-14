@@ -2,25 +2,25 @@ import React from "react";
 
 
 export default (props) => {
-
+  const { text, table, data, loading, colorHover, sibling } = props;
   let toggleHover = (e) => {
-    e.currentTarget.style.background = this.props.colorHover;
-    let el = e.currentTarget[this.props.sibling];
+    e.currentTarget.style.background = colorHover;
+    let el = e.currentTarget[sibling];
     while (el) {
-      el.style.background = this.props.colorHover;
-      el = el[this.props.sibling];
+      el.style.background = colorHover;
+      el = el[sibling];
     }
   }
   let toggleLeave = (e) => {
     e.currentTarget.style.background = '';
-    let el = e.currentTarget[this.props.sibling];
+    let el = e.currentTarget[sibling];
     while (el) {
       el.style.background = '';
-      el = el[this.props.sibling];
+      el = el[sibling];
     }
   }
 
-  const { text, table, data, loading } = props;
+
 
   let orderBook = ""
   if (loading) {
@@ -36,7 +36,7 @@ export default (props) => {
         >
           <td className={text}> {item.price} </td>
           <td className="m__gray">{item.origin_volume} </td>
-          <td className="m__gray">{item.total}</td>
+          <td className="m__gray">{item.locked}</td>
         </tr>
       )
     })
