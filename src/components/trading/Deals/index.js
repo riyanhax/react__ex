@@ -4,7 +4,7 @@ import React from "react";
 export default (props) => {
 
   const { data, loading } = props;
-  console.log(data)
+
   let deals
   if (loading) {
     deals = <tr></tr>
@@ -21,7 +21,6 @@ export default (props) => {
     })
   }
   return (
-
     <div className="table__grid">
       <table className="ex__table gray__table">
         <tbody>

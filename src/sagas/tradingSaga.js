@@ -68,7 +68,7 @@ function* createEventOrderBook(cable, pair) {
     }, {
 
       received: (data) => {
-        
+        console.log(data)
         return emit({ type: setOrderBook, data });
       },
 

@@ -33,9 +33,7 @@ export default (props) => {
                 <div className="chat__title">
                     CHAT
                     </div>
-               
                     {messagesList}
-              
             </div>
             </SimpleBarReact>
             <form className="chat__form">
