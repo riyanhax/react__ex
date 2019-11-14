@@ -1,0 +1,227 @@
+
+#authForm{
+    background: url(/assets/img/bg.png) 50% 50%/cover no-repeat;
+    height: 100vh;
+    font-family: Roboto,"Helvetica Neue",Arial,sans-serif;
+}
+
+
+
+
+.flexjcac{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+.column{
+    flex-direction: column;
+}
+.auth__form_inpContainer{
+    display: block;
+    position: relative;
+    font-family: Roboto,"Helvetica Neue",Arial,sans-serif;
+    margin-bottom: 24px;
+}
+.authForm__Header a{
+    margin-left: 8px;
+}
+.auth_form__input{
+    color: #fff;
+    position: relative;
+    z-index: 1;
+    width: 360px;
+    padding-top: 30px;
+    padding-bottom: 12px;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: normal;
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid #8c8999;
+    outline: none;
+}
+
+.auth_form__input::-webkit-input-placeholder{
+    transition: color .1s;
+}
+
+.auth_form__input:focus::-webkit-input-placeholder{
+    color: transparent;
+ 
+}
+
+.auth_form__input:valid+label{
+    opacity: 1;
+    bottom: 70%;
+    
+}
+.auth_form__input:focus+label{
+    opacity: 1;
+    bottom: 70%;
+}
+
+.auth__form_inpContainer label{
+    bottom: 20px;
+    position: absolute;
+    opacity: 0;
+    transition: bottom .3s;
+    left: 0;
+    width: 100%;
+    margin-bottom: 0;
+    font-size: 18px;
+    line-height: normal;
+    color: #8c8999;
+}
+
+.auth__form_recoveryLink{
+    text-decoration: none;
+    background-color: transparent;
+    transition: color .1s;
+    text-align: right;
+    width: 100%;
+    display: block;
+    color: #6094ea;
+
+}
+
+.auth__form_recoveryLink:hover{
+    text-decoration: none;
+    color: #6094ea;
+}
+
+.auth__form__smb{
+    margin-top: 60px;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 0 20px;
+    line-height: 52px;
+    color: #fff;
+    background-image: linear-gradient(-135deg,#9633bf 0,#dc123f 100%);
+    border: none;
+    border-radius: 100px;
+    text-transform: uppercase;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: inherit;
+}
+
+.auth__form__smb:hover{
+    background-image: none;
+    background-color: #ff4a68;
+}
+
+.auth__form_checkBoxContainer{
+    max-width: 450px;
+    margin-left: auto;
+    margin-right: auto;
+    color: #fff;
+    font-size: 15px;
+    text-align: center;
+}
+
+.auth__form_checkBoxContainer label span{
+    color: #fff;
+    font-size: 15px;
+    text-align: center;
+}
+
+.auth__form_checkBoxContainer label span a{
+    text-decoration: none;
+    background-color: transparent;
+    color: #6094ea;
+    transition: color .1s;
+}
+
+
+.auth_form_checkBox:checked{
+    position: absolute;
+    left: -9999px;
+    box-sizing: border-box;
+}
+.auth__form_checkBoxContainer label{
+    position: relative;
+    padding-left: 46px;
+    cursor: pointer;
+    display: inline-block;
+    margin-bottom: .5rem;
+}
+
+.auth_form_checkBox:checked,.auth_form_checkBox:not(:checked){
+    position: absolute;
+    left: -9999px;
+}
+
+.auth_form_checkBox:checked+label,.auth_form_checkBox:not(:checked)+label {
+    position: relative;
+    padding-left: 46px;
+    cursor: pointer;
+}
+
+
+
+.auth_form_checkBox::after, ::before {
+    box-sizing: border-box;
+}
+
+
+.auth_form__popup_btn .auth__form__smb:disabled{
+        border: 2px solid #bec5cf;
+        background: inherit;
+}
+
+
+.auth_form_checkBox:checked+label:after {
+    opacity: 1;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+}
+.auth_form_checkBox:not(:checked)+label:after {
+    opacity: 0;
+    -webkit-transform: scale(0);
+    transform: scale(0);
+}
+
+.auth_form_checkBox:checked+label:after,.auth_form_checkBox:not(:checked)+label:after {
+    content: '\2713';
+    position: absolute;
+    top: 2px;
+    left: 4px;
+    font-size: 20px;
+    line-height: .8;
+    color: #ea2234;
+    transition: all .2s;
+}
+
+.auth_form_checkBox:checked+label:before,.auth_form_checkBox:not(:checked)+label:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: -3px;
+    width: 24px;
+    height: 24px;
+    border: 2px solid;
+    -o-border-image: linear-gradient(to right,#e32c3b,#805ba3);
+    border-image: linear-gradient(to right,#e32c3b,#805ba3);
+    border-image-slice: 1;
+}
+
+.auth__form_buttonlink{
+    width: 100%;
+    display: inline-block;
+    text-decoration: none;
+    text-align: center;
+    background: 0 0;
+    border: 2px solid #fff;
+    margin-top: 30px;
+    transition: all .15s;
+}
+ 
+.auth__form_buttonlink:hover {
+    text-decoration: none;
+    color: #fff;
+    border-color: #ea2933;
+    background: 0 0;
+}
