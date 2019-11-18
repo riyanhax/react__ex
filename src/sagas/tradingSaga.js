@@ -102,7 +102,6 @@ function* createEventDeals(cable, pair) {
     }, {
 
       received: (data) => {
-        
         return emit({ type: setDeals, data });
       },
 

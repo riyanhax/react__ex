@@ -1,13 +1,15 @@
 
 import { handleActions } from 'redux-actions';
 import { setPairs, setOrderBook, loadPairs, loadOrderBook, setOrderBookSocket, setDeals } from 'act/trading';
+import { setInfo } from 'act/info';
 const InitailState = {
     loadingPairs: true,
     loadingOrderBook: true,
     loadingDeals: true,
     pairs: [],
-    orderBook: [],
-    deals: []
+    orderBook: {},
+    deals: [],
+    info: {},
 }
 
 
@@ -25,7 +27,7 @@ export const tradingReducer = handleActions({
     setOrderBook: (state, action) => {
 
         if (action.data) {
-         
+
             let orderBook = { ...state.orderBook };
             if (action.data.order_type == "OrderBid") {
                 orderBook.bids.unshift(action.data.order)
@@ -50,14 +52,30 @@ export const tradingReducer = handleActions({
 
     },
     setDeals: (state, action) => {
-        
+
         if (action.data) {
-            console.log(action.data)
+
             let deals = [...state.deals];
             deals.unshift(action.data.trade)
+            let info = action.data.header;
+            let orderBook = { ...state.orderBook };
+            let { order_ask, order_bid } = action.data.trade_orders;
+            let askIndex = orderBook.asks.findIndex(x => x.id === order_ask.id);
+            let bidIndex = orderBook.bids.findIndex(x => x.id === order_bid.id);
+            orderBook.asks[askIndex] = order_ask;
+            orderBook.bids[bidIndex] = order_bid;
+            if (order_ask.volume == "0.0") {
+                orderBook.asks.splice(askIndex, 1);
+            }
+            if (order_bid.volume == "0.0") {
+                orderBook.bids.splice(bidIndex, 1);
+            }
+
             return {
                 ...state,
-                deals
+                deals,
+                info,
+                orderBook
             }
         }
         if (action.payload.deals) {
@@ -68,7 +86,12 @@ export const tradingReducer = handleActions({
                 loadingDeals: false
             }
         }
-
     },
-
+    setInfo: (state, action) => {
+        let info = action.payload.info
+        return {
+            ...state,
+            info
+        }
+    }
 }, InitailState);

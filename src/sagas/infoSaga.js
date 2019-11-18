@@ -44,11 +44,11 @@ import { fetchInfo } from "api/info"
 
 
 
-function* getInfo() {
-
+function* getInfo({ payload: { pair } }) {
+ 
   try {
-    const data = yield call(fetchInfo)
-    yield put(actions.info.setInfo(data))
+    const info = yield call(fetchInfo, pair)
+    yield put(actions.info.setInfo(info))
   } catch (e) {
     //yield put(actions.failOrder('Oups! Error occurs, please try again later.'));
   }

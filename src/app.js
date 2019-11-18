@@ -1,7 +1,8 @@
 //import './assets/css/global.scss';
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Ex from 'pg/Trading/index';
+import Homepage from 'pg/Homepage/';
+import Trading from 'pg/Trading/';
 import LoginPage from 'pg/auth/loginPage';
 import RegistrationPage from 'pg/auth/registrationPage';
 import RecoveryPasswordPage from 'pg/auth/recoveryPasswordPage';
@@ -10,29 +11,29 @@ import { history } from './history';
 import PrivateRoute from 'cmp/PrivateRoute';
 import { connect } from 'react-redux';
 import actions from "act/"
-import { ActionCableProvider } from "react-actioncable-provider";
+
 
 class App extends React.Component {
 
   componentDidMount() {
-    fetch(`api/v2/peatio/public/markets/ethusd/header_info`, {
-      credentials: 'include',
+    // fetch(`api/v2/peatio/public/markets/ethusd/header_info`, {
+    //   credentials: 'include',
 
-      headers: {
-        'Content-type': 'application/json'
-      },
+    //   headers: {
+    //     'Content-type': 'application/json'
+    //   },
 
-    })
-      .then(response => response.json())
-      .then((data) => {
+    // })
+    //   .then(response => response.json())
+    //   .then((data) => {
 
-        console.log(data)
-      })
-      .catch((e) => {
-        console.log(e)
-      });
-    this.props.checkUser()
-    this.props.loadPairs()
+    //     console.log(data)
+    //   })
+    //   .catch((e) => {
+    //     console.log(e)
+    //   });
+   // this.props.checkUser()
+   // this.props.loadPairs()
   }
 
   render() {
@@ -49,7 +50,7 @@ class App extends React.Component {
         return (
           <PrivateRoute path={`/trading/${pair.id}`}
             key={pair.id}
-            component={Ex} isAuthenticated={isAuthenticated}
+            component={Trading} isAuthenticated={isAuthenticated}
             exact
             isLoading={isLoading} />
         )
@@ -60,11 +61,12 @@ class App extends React.Component {
 
     return (
 
-
-      // <ActionCableProvider url="ws://localhost:8099/websocket">
         <ConnectedRouter history={history}>
           <Switch>
             <Route path="/" exact>
+              <Homepage />
+            </Route>
+            <Route path="/login" exact>
               <LoginPage />
             </Route>
             <Route path="/register" exact>
@@ -77,11 +79,9 @@ class App extends React.Component {
             <Route path="**" exact>
               <LoginPage/>
             </Route>
-            <RecoveryPasswordPage />
-
           </Switch>
         </ConnectedRouter >
-      // </ActionCableProvider>
+
     );
 
   }

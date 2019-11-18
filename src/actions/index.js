@@ -5,6 +5,7 @@ import * as history from './history';
 import * as order from './order';
 import * as wallet from './wallet';
 import * as chat from './chat';
+import * as info from './info';
 export default {
     trading,
     auth,
@@ -13,5 +14,6 @@ export default {
     order,
     wallet, 
     chat,
+    info,
 }
 

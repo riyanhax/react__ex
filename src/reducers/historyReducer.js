@@ -1,29 +1,30 @@
 
 import { handleActions } from 'redux-actions';
-import {setOpenOrders, loadOpenOrders } from '../actions/history';
+import { setOpenOrders, loadOpenOrders, setOrderHistory } from '../actions/history';
 const InitailState = {
     loading: true
 }
 
-function onLoad(state,payload){
+function onLoad(state, payload) {
 
     return {
         ...state,
-        loading:false,
+        loading: false,
         payload,
-        
+
     };
 }
 
-export  const historyReducer = handleActions({
-    setOpenOrders: (state,action) => {
-        
+export const historyReducer = handleActions({
+    setOpenOrders: (state, action) => {
+
         return onLoad(state, action.payload.items);
     },
-    loadOpenOrders: (state)=>{
-       
+    setOrderHistory: (state, action) => {
+        let orderHistoryItems = action.payload.items;
         return {
             ...state,
-        };
+            orderHistoryItems
+        }
     }
   }, InitailState);

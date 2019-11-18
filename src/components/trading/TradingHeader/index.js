@@ -4,7 +4,8 @@ import Select from 'react-select'
 
 export default (props) => {
 
-    let { pairs, pair, loading, handleChangePairs, wallet } = props
+    let { pairs, pair, handleChangePairs, wallet, info } = props
+ 
     const colourStyles = {
         control: (styles) => {
             return {
@@ -43,7 +44,7 @@ export default (props) => {
 
     }
     let select = ""
-    if (!loading) {
+    if (pairs) {
         let options = pairs.map((pair) => {
             return (
                 {
@@ -62,17 +63,29 @@ export default (props) => {
             onChange={handleChangePairs}
         />
     }
-    let walletBase = "",
-        walletQote = "",
-        walletBaseLabel = "",
-        walletQoteLabel = ""
+    let walletBaseLabel,
+        walletQote,
+        walletBase,
+        walletQoteLabel;
 
+    let min_price,
+        max_price,
+        volume,
+        diff;
 
     if (wallet) {
         walletBase = wallet[0].balance
         walletQote = wallet[1].balance
         walletBaseLabel = wallet[0].currency
         walletQoteLabel = wallet[1].currency
+    }
+
+    if (info) {
+        min_price = info.min_price
+        max_price = info.max_price
+        volume = info.volume
+        diff = info.diff
+        //diff = parseFloat(info.diff).toFixed(2);
     }
 
     return (
@@ -95,35 +108,41 @@ export default (props) => {
                         </div>
                         <div className="header__col__inner">
                             <div className="header__col__text gray__text">
-                                (14.81)
+                                Change
                                 </div>
-                            <div className="header__col__text mint__text">
-                                +14.81%
+                            {diff > 0 ?
+                                <div className="header__col__text mint__text">
+                                    {diff} %
                                 </div>
+                                : <div className="header__col__text red__text">
+                                    {diff} %
+                                </div>
+                            }
+
                         </div>
                         <div className="header__col__inner ">
                             <div className="header__col__text gray__text">
                                 Low
                                 </div>
                             <div className="header__col__text">
-                                0.0000000026
-                                 </div>
+                                {min_price}
+                            </div>
                         </div>
                         <div className="header__col__inner ">
                             <div className="header__col__text gray__text">
                                 High
                                 </div>
                             <div className="header__col__text">
-                                0.0000000026
-                                </div>
+                                {max_price}
+                            </div>
                         </div>
                         <div className="header__col__inner">
                             <div className="header__col__text gray__text">
                                 Volume
                                 </div>
                             <div className="header__col__text">
-                                9.76
-                                </div>
+                                {volume}
+                            </div>
                         </div>
                     </div>
 
@@ -138,7 +157,7 @@ export default (props) => {
                     </div>
                     <div className="header__col">
                         <div className="fac">
-                        <i className="fa fa-wallet header__col__img"></i>
+                            <i className="fa fa-wallet header__col__img"></i>
                             <div>
                                 <div className="header__col__text">
                                     {walletQote} <span>{walletQoteLabel}</span>
@@ -152,7 +171,7 @@ export default (props) => {
                     </div>
                     <div className="header__col">
                         <div className="fac">
-                        <i className="fas fa-user-circle header__col__login__img mint__text"></i>
+                            <i className="fas fa-user-circle header__col__login__img mint__text"></i>
                             <NavLink className="header__col__logout gray__text" to="/" exact >
                                 My Account&nbsp;
                                 </NavLink>
@@ -164,7 +183,7 @@ export default (props) => {
 
                     <div className="header__col">
                         <div className="fac">
-                        <i className="fa fa-globe-americas header__col__img"></i>
+                            <i className="fa fa-globe-americas header__col__img"></i>
                             <a href="" className="header__col__lang">ENGLISH</a>
                         </div>
                     </div>

@@ -3,6 +3,7 @@ import React from "react";
 
 export default (props) => {
   const { text, table, data, loading, colorHover, sibling } = props;
+
   let toggleHover = (e) => {
     e.currentTarget.style.background = colorHover;
     let el = e.currentTarget[sibling];
@@ -20,8 +21,6 @@ export default (props) => {
     }
   }
 
-
-
   let orderBook = ""
   if (loading) {
     orderBook = <tr></tr>
@@ -35,7 +34,7 @@ export default (props) => {
           key={index}
         >
           <td className={text}> {item.price} </td>
-          <td className="m__gray">{item.origin_volume} </td>
+          <td className="m__gray">{item.volume} </td>
           <td className="m__gray">{item.locked}</td>
         </tr>
       )

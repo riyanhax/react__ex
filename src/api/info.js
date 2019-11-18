@@ -1,6 +1,6 @@
 import {makeRequest} from "./makeRequest"
 
-   const fetchInfo = (pair) => {
+   export const fetchInfo = (pair) => {
       
     const init = {
      method: 'GET',

@@ -39,7 +39,7 @@ export default function (props) {
 
   return (
     <div className="ex___tabs__col">
-      <div className="fbw">
+      <div className="flex__bw">
         <div className="ex__tabs__text">
           {action} {basePair}
         </div>
@@ -52,7 +52,6 @@ export default function (props) {
         {formFields}
         <button type="submit" className={"ex__form__submit " + action}>{action} <span>{basePair}</span> </button>
       </form>
-
     </div>
   )
 }

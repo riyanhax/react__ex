@@ -37,7 +37,7 @@ export default (props) => {
             </div>
             </SimpleBarReact>
             <form className="chat__form">
-                <div className="facjc">
+                <div className="flex__jc__ac">
                     <input type="text" name="mes"
                         value={value}
                         className="chat__form__input"

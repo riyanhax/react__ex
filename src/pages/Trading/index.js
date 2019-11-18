@@ -30,7 +30,8 @@ class Ex extends React.Component {
     this.props.handleSocketOrderBook(pair, this.state.cable);
     this.props.loadWallet(base_unit, quote_unit);
     this.props.loadMessages();
-
+    this.props.loadInfo(pair);
+ 
       // fetch(`api/v2/peatio/chat/send`, {
       //   method: 'POST',
       //   credentials: 'include',
@@ -111,20 +112,19 @@ class Ex extends React.Component {
 
     const { pairs, loadingPairs, loadingDeals, loadingOrderBook, limitFormDataBuy,
        limitFormDataSell, onChangeSell, onChangeBuy, handleSocketOrderBook,
-        orderBook, deals, wallet, messages, makeMessage } = this.props;
+        orderBook, deals, wallet, messages, makeMessage, info } = this.props;
     const { base_unit, quote_unit, pair } = history.location.state
-
+    
     return (
 
       <section id="ex__page">
 
         <ExHeader
-          loading={loadingPairs}
           pairs={pairs}
           pair={pair}
           handleChangePairs={this.handleChangePairs}
           wallet ={wallet}
-          
+          info={info}
         />
         <div className="ex__page__inner">
           <a href="" className="side__hide__link" onClick={(e) => this.toggleChat(e)}>
@@ -138,7 +138,7 @@ class Ex extends React.Component {
             <div className="flex">
               <Transition in={this.state.chatShow} timeout={300}>
                 {(status) => (
-                  <div className={`col__md ex__col__1 fcolw ${status}`}>
+                  <div className={`col__md ex__col__1 flex__col ${status}`}>
                     <div className="trading__block gray">
                       <TVChartContainer
                         pair={pair}
@@ -152,13 +152,13 @@ class Ex extends React.Component {
                 )}
               </Transition>
 
-              <div className="col__md ex__col__2 fcolw">
+              <div className="col__md ex__col__2 flex__col">
                 <div className="flex h__100">
 
                   <div className="ex__col__2__sub gray">
                     <div className={`grid__table red__table__cont ${this.state.gridTable}`}>
                       <div className="grid__table__header">
-                        <div className="faec">
+                        <div className="flex__je__ac">
                           <div className="grid__tbale__header__links flex">
                             <a className="grid__table__header__link" href="" data="rgtable" onClick={(e) => this.toggleGridTable(e)}>
                               <div className="red"></div>
@@ -189,7 +189,7 @@ class Ex extends React.Component {
                       </div>
                       {this.state.gridTable == "rgtable" || this.state.gridTable == "rtable" ? (
                         <OrderBook
-                          text="red__text"
+                          text="d__red__text"
                           table="red__table"
                           sibling="nextElementSibling"
                           colorHover="rgba(234, 0, 56, 0.15)"
@@ -205,7 +205,7 @@ class Ex extends React.Component {
 
                     </div>
                     <div className="green__table__header">
-                      <div className="faec">
+                      <div className="flex__je__ac">
                         <div className="green__table__header__item mint__text">
                           0.0000000030
                             </div>
@@ -255,7 +255,7 @@ class Ex extends React.Component {
                         <input type="checkbox" />
                         <div className="checkbox__text">Pay Az Tоkens</div>
                       </label>
-                      <div className="fb">
+                      <div className="flex__jb">
 
                         <ExForm
                           limitFormData={limitFormDataBuy}
@@ -287,7 +287,7 @@ class Ex extends React.Component {
 
               <Transition in={this.state.chatShow} timeout={300}>
                 {(status) => (
-                  <div className={`col__md ex__col__3 gray fcoljb ${status}`}>
+                  <div className={`col__md ex__col__3 gray flex__jb__col ${status}`}>
                     <Switch>
 
                       <Route path={`/trading/${pair}`} exact>
@@ -328,7 +328,8 @@ let mapStateToProps = (state) => {
     orderBook: state.tradingReducer.orderBook,
     deals: state.tradingReducer.deals,
     wallet: state.walletReducer.wallet,
-    messages:state.chatReducer.messages
+    messages:state.chatReducer.messages,
+    info:state.tradingReducer.info,
   }
 };
 
@@ -345,7 +346,8 @@ let mapDispatchToProps = (dispatch) => {
     loadWallet: (base_unit, quote_unit) => dispatch(actions.wallet.loadWallet(base_unit, quote_unit)),
     makeMessage: (text, lang) => dispatch(actions.chat.makeMessage(text, lang)),
     loadMessages: () => dispatch(actions.chat.loadMessages()),
-    
+    loadInfo: (pair) => dispatch(actions.info.loadInfo(pair)),
+  
   }
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Ex);

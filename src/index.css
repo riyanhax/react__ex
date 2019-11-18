@@ -1,0 +1,98 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+img {
+    display: block;
+}
+
+button {
+    border: none;
+    cursor: pointer;
+    font-family: 'DIN Pro Bold';
+}
+
+.flex {
+    display: flex;
+}
+
+.flex__jb {
+    display: flex;
+    justify-content: space-between;
+}
+
+.flex__ja {
+    display: flex;
+    justify-content: space-around;
+}
+
+.flex__jc {
+    display: flex;
+    justify-content: center;
+}
+
+.flex__bw {
+    display: flex;
+    justify-content: space-between;
+}
+
+.flex__jc__ac {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.flex__jb__ac {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.col {
+    flex-direction: column;
+}
+
+.flex__je__ac {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    height: 100%;
+}
+
+.flex__col {
+    display: flex;
+    flex-direction: column;
+}
+
+.flex__jb__col {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.red {
+    background: #EA0038;
+}
+
+.d__red__text {
+    color: #8e0a2f;
+}
+
+.red__text {
+    color: #EA0038;
+}
+
+.mint__text {
+    color: #17AC75;
+}
+
+.white__text {
+    color: #fff;
+}
