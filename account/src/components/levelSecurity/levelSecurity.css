@@ -1,0 +1,19 @@
+.level_security__container{
+    height: 75px;
+    background: #111622;
+    border-top: 4px solid black;
+    width: 100%;
+}
+
+.notification_container{
+    width: 646px;
+    height: 38px;
+    background: #161B29;
+    border: 1px solid #1F2535;
+    margin-top: 20px;
+    margin-left: 16px;
+    font-size: 16px;
+    font-family: 'DIN Pro Bold';
+    display: flex;
+    align-items: center;
+  }

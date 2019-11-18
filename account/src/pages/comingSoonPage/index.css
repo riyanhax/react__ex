@@ -1,0 +1,39 @@
+.coming_soon_page__container{
+    background: #111622;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+}
+
+.coming_soon_page__headline_logo{
+    color: white;
+    font-size: 24px;
+}
+
+.coming_soon_page__logo_container{
+    margin-bottom: 100px;
+    margin-top: 35px;
+}
+
+.coming_soon_page__main_text_container{
+    font-size: 90px;
+    color: white;
+    
+}
+
+.coming_soon_page__text_container{
+    font-size: 18px;
+    line-height: 24px;
+    margin-bottom: 85px;
+}
+
+.coming_soon_page__button_container .button_green{
+    width: 150px;
+    height: 40px;
+    margin-bottom: 100%;
+    font-family: 'DIN Pro Bold';
+}

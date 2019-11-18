@@ -1,0 +1,119 @@
+.google_authenticator_tab__container{
+    padding-left: 15px;
+    padding-right: 40px;
+    padding-top: 30px;
+}
+
+.google_authenticator_tab__text_container{
+    color: white;
+    font-size: 14px;
+    line-height: 24px;
+    letter-spacing: 1px;
+    font-family: 'DIN Pro Bold';
+    margin-bottom: 30px;
+}
+
+.numeration{
+    font-family: 'DINPRO-Black';
+    font-size: 14px;
+    line-height: 24px;
+    color: white;
+}
+
+.google_authenticator_tab_text{
+    font-family: 'DIN Pro Bold';
+    letter-spacing: 1px;
+}
+
+.google_authenticator_link_donwload_container{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+    width: 420px;
+    margin-bottom: 10px;
+}
+
+.google_authenticator_link_donwload{
+    width: 123px;
+    height: 35px;
+    background: #0B0F18;
+    border-radius: 2px;
+}
+
+.google_authenticator__qr_container{
+    display: flex;
+    margin-top: 15px;
+    width: 465px;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.google_authenticator__qr{
+    width: 103px;
+    height: 103px;
+    background: white;
+}
+
+.google_authenticator__key_input{
+    width: 300px;
+    height: 20px;
+    font-size: 14px;
+    line-height: 24px;
+    border: 1px solid #1F2535;
+    box-sizing: border-box;
+    border-radius: 1px;
+    background: #161B29;
+    color: white;
+    font-family: 'DINPro-CondensedBold';
+    padding-left: 5px;
+    border-right: none;
+}
+
+.google_authenticator__key_input_container{
+    display: flex;
+}
+
+.google_authenticator__key_input_container .fa{
+    border: 1px solid #1F2535;
+    box-sizing: border-box;
+    width: 30px;
+    height: 20px;
+    text-align: center;
+    padding-top: 2px;
+}
+
+.google_authenticator__two_fa_input_conatiner{
+    margin-top: 10px;
+    display: flex;
+}
+
+.google_authenticator__two_fa_input{
+    background: #161B29;
+    border: 1px solid #1F2535;
+    box-sizing: border-box;
+    border-radius: 1px;
+    width: 227px;
+    height: 20px;
+    color: white;
+    font-family: 'DINPro-CondensedBold';
+    padding-left: 5px;
+    font-size: 14px;
+    padding-right: 25px;
+    margin-left: 5px;
+}
+
+.google_authenticator__two_fa_input_icon_container{
+    position: relative;
+}
+
+.google_authenticator__two_fa_input_icon_container .fa{
+    position: absolute;
+    top: 3px;
+    right: 8px;
+}
+
+
+.google_authenticator__active_button .button__green{
+    width: 113px;
+    margin-top: 30px;
+}

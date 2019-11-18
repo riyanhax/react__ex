@@ -1,0 +1,25 @@
+.transaction_history_table{
+    width: 100%;
+    text-align: center;
+
+    line-height: 24px;
+}
+
+.transaction_history_table__container{
+    background: #0B0F18;
+    padding-bottom: 20px;
+}
+
+.transaction_history_table__item{
+    width: 126px;
+}
+
+.transaction_history_table__line:nth-child(n+2):hover{
+    background: #1F2535;
+}
+
+.transaction_history_table__line:nth-child(n+2){
+    color: white;
+    font-size: 14px;
+    letter-spacing: 1px;
+}
