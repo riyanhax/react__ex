@@ -1,6 +1,9 @@
 .history_table__container{
+    padding-top: 5px;
     padding-bottom: 30px;
     background: #0B0F18;
+    font-family: 'DIN Pro Condensed Bold';
+    letter-spacing: 1px;
 }
 
 .history_table{

@@ -29,6 +29,10 @@
 }
 
 .change_password__button_container .button_gray{
-    width: 115px;
+    width: 130px;
     margin-left: 20px;
+}
+
+.change_password__button_container .button_green{
+    width: 130px;
 }

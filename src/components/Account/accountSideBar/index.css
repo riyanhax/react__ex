@@ -7,7 +7,6 @@
   }
   
   .account_sidebar__wallets__container{
-    height: 774px;
     border-bottom: 4px solid black;
   }
   
@@ -28,18 +27,21 @@
   .wallet__data_container{
     margin-left: 72px;
     font-family: 'DIN Pro Bold';
+    font-size: 14px;
     margin-top: 30px;
     line-height: 24px;
   }
   
   .wallet__values_container{
-    font-family: 'DIN Pro Condensed Black';
+    font-family: 'DIN Pro Bold';
     padding-right: 58px;
-      text-align: right;
+    text-align: right;
+    font-size: 14px;
   }
   
   .account_sidebar__wallets__container .container__logo{
     font-size: 14px;
+    font-family: 'DIN Pro Black';
     padding-left: 22px;
     padding-top: 22px;
   }
@@ -50,6 +52,7 @@
     margin-top: 30px;
     margin-left: 65px;
     margin-right: 65px;
+    margin-bottom: 30px;
   }
   
   .button__green{
@@ -69,17 +72,4 @@
     margin-right: 10px;
   }
   
-  .account_sidebar__banner_container div:first-child{
-    height: 255px;
-    background: #1B253D;
-    border-bottom: 4px solid black;
-  }
   
-  .account_sidebar__banner_container{
-    box-sizing: border-box;
-    background: #1B253D;
-  }
-  
-  .account_sidebar__banner_container div:last-child{
-    height: 299px;
-  }

@@ -54,10 +54,7 @@ export default (props) => {
                         </div>
                     </div>
                 </div>
-                <div className="account_sidebar__banner_container">
-                    <div></div>
-                    <div></div>
-                </div>
+                
             </div>
         </>
     );

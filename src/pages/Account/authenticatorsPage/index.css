@@ -9,13 +9,13 @@
     font-size: 14px;
     line-height: 24px;
     color: white;
-    font-family: 'DINPRO-Black';
+    font-family: 'DIN PRO Black';
 }
 
 .authenticators_page__container .container__logo{
     font-size: 14px;
     line-height: 24px;
-    font-family: 'DINPRO-Black';
+    font-family: 'DIN PRO Black';
     color: white;
 }
 
@@ -25,12 +25,16 @@
     font-size: 14px;
     line-height: 24px;
     letter-spacing: 1px;
-    font-family: 'DINPRO-Black';
+    font-family: 'DIN Pro Bold';
 }
 
 .authenticators_page__headline_container{
     padding-bottom: 30px;
     border-bottom: 4px solid black;
+}
+
+.authenticators__tab_container{
+    font-family: 'DIN Pro Black';
 }
 
 .authenticators__tab_list{
@@ -57,7 +61,7 @@
 
 .authenticators__tab{
     background: #0B0F18;
-    padding-right: 33px;
+    padding-right: 20px;
     font-size: 14px;
     line-height: 30px;
     padding-left: 15px;

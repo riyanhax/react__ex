@@ -1,6 +1,6 @@
 import React from 'react';
 import './index.css';
-import DisableTwoFaForm from '../../components/disableTwoFaForm/index';
+import DisableTwoFaForm from 'cmp/Account/disableTwofaPage/disableTwoFaForm';
 
 export default function DisableTwofaPage() {
     return (
@@ -14,7 +14,7 @@ export default function DisableTwofaPage() {
                         Industry-leading security. Fastest growing Bitcoin trading platform.
                     </div>
                     <div>
-                        <i className="fa fa-exclamation-circle red__text"></i>
+                        <i className="fas fa-exclamation-circle red__text"></i>
                     </div>
                 </div>
                 <div className="disable_2fa_page">

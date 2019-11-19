@@ -11,12 +11,12 @@ export default (props) => {
                     <CustomSelect />
                     <div className="withdrawl_tab__withdraw_form">
                         <div className="withdraw_form__top_container white__text">
-                            <i className="fa fa-bitcoin"></i>AZ - Azbit Tokens
+                            <i className="fab fa-bitcoin"></i>AZ - Azbit Tokens
                             </div>
                         <div className="withdraw_address__container">
                             <div>Withdrawal address:</div>
                             <div>
-                                <input placeholder="Enter withdraw address..." className="withdrawal_form__input_field"></input>
+                                <input className="withdrawal_form__input_field"></input>
                             </div>
                         </div>
                         <div className="amount_withdraw__container">

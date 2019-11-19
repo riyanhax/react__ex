@@ -1,7 +1,7 @@
 import React from 'react';
-import './logHistoryTable.css';
+import './index.css';
 
-export default function LogHistoryTable() {
+export default (props) => {
     return (
         <>
             <div className="container__logo">LAST LOGIN HISTORY </div>

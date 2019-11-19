@@ -6,6 +6,7 @@
 .change_password_page__container .container__logo{
     font-size: 14px;
     color: white;
+    font-family: 'DIN Pro Black';
 }
 
 .change_password__text_container{
@@ -35,4 +36,6 @@
     font-size: 16px;
     padding-left: 0px;
     margin-bottom: 20px;
+    font-family: 'DIN Pro Bold';
+
 }

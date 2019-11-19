@@ -4,22 +4,30 @@
     background: #0B0F18;
     border-top: 4px solid black;
   }
+.footer .container__logo{
+  font-family: 'DIN Pro Bold';
+}
   
   .footer_col_container{
     display: flex;
     padding-left: 16px;
     padding-right: 76px;
     justify-content: space-between;
+    color: #788096;
+    font-family: 'DIN Pro Condensed Bold';
+    
   }
   
   .footer_column:first-child{
     width: 266px;
     margin-right: 172px;
+    letter-spacing: 1px;
   }
   
   .footer_column:nth-child(2){
     width: 298px;
     margin-right: 81px;
+    line-height: 24px;
   }
   
   .footer__social_icons{
@@ -36,7 +44,8 @@
   
   .footer_column:last-child{
     width: 440px;
-    line-height: 24px;
+    line-height: 28px;
+    letter-spacing: 1px;
   }
   
   .footer_left_column_text_container .footer_text:first-child{

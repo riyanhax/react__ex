@@ -1,7 +1,7 @@
 import React from 'react';
 import './index.css';
 
-export default function DisableTwoFaForm(){
+export default (props) => {
     return(
         <>
             <div className="disable_two_fa_form__container">
@@ -10,7 +10,7 @@ export default function DisableTwoFaForm(){
                     <label>2FA Code from application:</label>
                     <div className="disable_two_fa_form__input_container">
                         <input type="password"></input>
-                        <i className="fa fa-google"></i>
+                        <i className="fab fa-google"></i>
                     </div>
                     <button className="button_green">continue</button>
                     <button className="button_gray">cancel</button>

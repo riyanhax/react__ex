@@ -3,6 +3,10 @@
     padding-bottom: 80px;
 }
 
+.wallet_withdraw_tab__container .container__logo{
+    font-family: 'DIN Pro Black';
+}
+
 .wallet_withdraw__tab_list{
     display: flex;
     justify-content: flex-start;
@@ -41,4 +45,6 @@
 
 .wallet_withdraw__history_table_container .container__logo{
     padding-bottom: 20px;
+    font-family: 'DIN Pro Black';
+    font-size: 14px;
 }

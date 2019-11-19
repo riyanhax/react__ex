@@ -3,6 +3,7 @@
     background: #0B0F18;
     padding-top: 10px;
     padding-bottom: 30px;
+    font-family: 'DIN Pro Condensed Bold';
 }
 
 .log_history_table{
@@ -19,8 +20,9 @@
 .log_history_table__td{
     padding-left: 40px;
     color: white;
-    line-height: 24px;
+    line-height: 30px;
 }
+
 
 .log_history_table__tr:nth-child(n+2):hover{
     background: #1F2535;

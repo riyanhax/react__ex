@@ -29,7 +29,7 @@ export default (props) => {
                 <div className="container__logo">
                     <span className="white__text">Withdrawal history:</span>
                 </div>
-                {/* <WithdrawalHistoryTable/> */}
+                <WithdrawalHistoryTable/>
             </div>
             
         </>

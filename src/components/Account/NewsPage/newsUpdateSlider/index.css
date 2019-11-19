@@ -1,5 +1,5 @@
 .news_slider_update__card{
-    width: 500px;
+    width: 95%;
     height: 245px;
     background: #0B0F18;
 }
@@ -15,24 +15,26 @@
 
 .news_slider_card__container_headline{
   padding-left: 12px;
-  font-family: 'DINPro-Black';
-  font-size: 14px;
   line-height: 24px;
   padding-bottom: 10px;
+  font-family: 'DIN Pro Black';
+   font-size: 14px;
 }
 
 .news_slider_card__container_appeal{
   padding-left: 10px;
+  margin-bottom: 10px;
   color: #CCD0DB;
+  font-family: 'DIN Pro Condensed Medium';
 }
 
 .news_slider_card__container_message{
-  width: 480px;
+  width: 95%;
   height: 120px;
   font-size: 13px;
   line-height: 16px;
   letter-spacing: 1px;
-  font-family: 'DINPro-CondensedMedium';
+  font-family: 'DIN Pro Condensed Medium';
   padding-left: 10px;
   padding-right: 10px;
   color: #CCD0DB;
@@ -42,7 +44,7 @@
   font-size: 13px;
   line-height: 16px;
   letter-spacing: 1px;
-  font-family: 'DINPro-CondensedMedium';
+  font-family: 'DIN Pro Condensed Medium';
   padding-left: 10px;
   color: #CCD0DB;
 }

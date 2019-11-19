@@ -24,11 +24,17 @@
     padding-top: 5px;
     margin-bottom: 20px;
     line-height: 24px;
+    font-family: 'DIN Pro Condensed Bold';
+    margin-top: 10px;
+    letter-spacing: 1px;
+    font-size: 14px;
 }
 
-.deposit_form__top_container .fa{
+.deposit_form__top_container .fab{
     margin-right: 1px;
+    color: rgb(230, 147, 14);
 }
+
 
 .deposit_form__output_field{
     background: #0B0F18;
@@ -52,6 +58,10 @@
     margin-top: 30px;
     width: 250px;
     margin-left: 60px;
+}
+
+.deposit_form__buttons_container .button_green{
+    width: 100px;
 }
 
 .deposit_form__total_container{

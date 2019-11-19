@@ -14,7 +14,7 @@
 .transaction_history__head_container{
     padding-left: 15px;
     padding-right: 40px;
-    padding-bottom: 30px;
+    padding-bottom: 10px;
     border-bottom: 4px solid black;
 }
 
@@ -31,7 +31,6 @@
     color: white;
     line-height: 24px;
     padding-top: 10px;
-    margin-bottom: 20px;
     font-family: 'DIN Pro Bold';
 
 }

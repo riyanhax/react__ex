@@ -27,6 +27,18 @@
   font-style: normal;
 }
 
+
+
+@font-face{
+  font-family: 'DIN Pro Condensed Medium';
+  src: url('/assets/fonts/DINPro-CondensedMedium.woff');
+}
+
+@font-face{
+  font-family: 'DIN Pro Condensed Black';
+  src: url('/assets/fonts/DINPro-CondensedBlack.woff');
+}
+
 .grid__table {
   height: 50%;
 }

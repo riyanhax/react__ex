@@ -1,7 +1,7 @@
 import React from 'react';
 import './index.css';
 
-export default function SmsAuthenticatorTab(){
+export default (props) => {
     return(
         <>
             <div className="sms_authenticator_tab__container">

@@ -1,7 +1,7 @@
 import React from 'react';
-import './changePasswordForm.css';
+import './index.css';
 
-export default function ChangePasswordForm() {
+export default (props) => {
     return (
         <>
             <div className="change_password__form">

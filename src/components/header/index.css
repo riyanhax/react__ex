@@ -23,6 +23,8 @@
     padding-left: 16px;
     padding-right: 16px;
     margin: 0px;
+    font-family: 'DIN Pro Bold';
+    font-size: 14px;
   }
   
   .header__account > div:first-child{
@@ -34,7 +36,7 @@
   }
   
   .header__account > div:last-child{
-    width: 100px;
+    width: 150px;
   }
   
   .header__logo{
@@ -68,12 +70,16 @@
     height: 100%;
     align-items: center;
     padding-left: 12px;
+    font-family: 'DIN Pro Bold';
+    font-size: 14px;
   }
   
   .header__pages_container{
     display: flex;
     justify-content: space-around;
     width: 100%;
+    font-family: 'DIN Pro Bold';
+    font-size: 14px;
   }
   
   .header_lang{

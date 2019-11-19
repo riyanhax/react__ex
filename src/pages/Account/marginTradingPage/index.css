@@ -5,6 +5,8 @@
 
 .margin_page__container .container__logo{
     padding-bottom: 15px;
+    font-family: 'DIN Pro Black';
+    color: white;
 }
 .margin_page__tab_list{
     display: flex;

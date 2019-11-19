@@ -2,9 +2,11 @@
     border-top: 4px solid black;
     color: white;
     font-size: 14px;
+    font-family: 'DIN Pro Black';
 }
 
 .disable_2fa_page .container__logo{
     border-top: none;
+    font-family: 'DIN Pro Black';
 }
 

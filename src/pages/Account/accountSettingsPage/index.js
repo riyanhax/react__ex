@@ -1,9 +1,9 @@
 import React from "react";
-import "./accountSettingsPage.css";
-import AccountInfo from '../../components/accountInfo/accountInfo';
-import LogHistoryTable from '../../components/lastLoginHistoryTable/logHistoryTable';
+import "./index.css";
+import AccountInfo from 'cmp/Account/accountSettingsPage/accountInfo/';
+import LogHistoryTable from 'cmp/Account/accountSettingsPage/lastLoginHistoryTable/';
 
-export default function AccountSettingsPage(){
+export default (props)=>{
     return(
         <>
             <div className="account_settings__page_container">

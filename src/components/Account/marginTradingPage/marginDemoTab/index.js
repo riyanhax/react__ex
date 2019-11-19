@@ -1,7 +1,7 @@
 import React from 'react';
-import '../marginTradingTab/marginTradingTab.css';
+import '../marginTradingTab/index.css';
 
-export default function MarginDemoTab() {
+export default (props) => {
     return (
         <>
             <div className="margin_trading__top_text_container">

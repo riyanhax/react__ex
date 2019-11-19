@@ -1,10 +1,10 @@
 import React from 'react';
 import './index.css';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import GoogleAuthenticatorsTab from '../../components/googleAuthenticatorTab/index';
-import SmsAuthenticatorTab from '../../components/smsAuthenticatorTab/index';
+import GoogleAuthenticatorsTab from 'cmp/Account/authenticatorsPage/googleAuthenticatorTab/';
+import SmsAuthenticatorTab from 'cmp/Account/authenticatorsPage/smsAuthenticatorTab/';
 
-export default function AuthenticatorsPage() {
+export default (props) => {
     return (
         <>
             <div className="authenticators_page__container">

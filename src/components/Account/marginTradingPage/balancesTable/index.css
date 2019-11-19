@@ -1,6 +1,14 @@
 .balances_table{
     background: #0B0F18;
     width: 100%;
+    font-family: 'DIN Pro Condensed Bold';
+}
+
+.balances_table__container{
+    background: #0B0F18;
+    padding-top: 5px;
+    padding-bottom: 20px;
+    padding-right: 10px;
 }
 
 table{
@@ -14,7 +22,16 @@ table{
 
 .balances_table__td_container{
     letter-spacing: 1px;
-    line-height: 24px;
+    line-height: 28px;
+}
+
+.balances_table__td .fab{
+    color: #ffa102;
+    padding-right:5px;
+}
+
+.balances_table__td{
+    color: white;
 }
 
 .balances_table__th_container th:first-child{
@@ -32,6 +49,7 @@ table{
 .balances_table__td_container td:first-child{
     padding-left: 15px;
     text-align: left;
+    color: white;
 }
 
 .balances_table__td_container:hover{

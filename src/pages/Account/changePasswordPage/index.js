@@ -1,8 +1,8 @@
 import React from 'react';
-import './changePassword.css';
-import ChangePasswordForm from '../../components/changePasswordForm/changePasswordForm';
+import './index.css';
+import ChangePasswordForm from 'cmp/Account/changePasswordPage/changePasswordForm';
 
-export default function ChangePasswordPage() {
+export default (props) => {
     return (
         <>
             <div className="change_password_page__container">

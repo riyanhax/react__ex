@@ -15,7 +15,8 @@
     font-size: 14px;
     line-height: 24px;
     color: #788096;
-    font-family: 'DIN Pro Bold';
+    font-family: 'DIN Pro Condensed Bold';
+    letter-spacing: 1px;
 }
 
 .main_wallet__search_coin_input[type=text]{
@@ -26,6 +27,8 @@
 .main_wallet__search_coin_input::placeholder{
     letter-spacing: 1px;
     color: #788096;
+    font-family: 'DIN Pro Condensed Bold';
+    letter-spacing: 1px;
 }
 
 
@@ -33,6 +36,11 @@
     margin-right: 15px;
     display: flex;
     align-items: center;
+    font-family: 'DIN Pro Condensed Bold';
+}
+
+.main_wallet__right_col .button_green{
+  width: 100px;
 }
 
 .main_wallet__right_col div:last-child{
@@ -102,7 +110,8 @@
   
   /* Style the checkmark/indicator */
   .check_box__container .checkmark:after {
-    left: 4px;
+    left: 3px;
+    top: -2px;
     width: 5px;
     height: 10px;
     border: solid #788096;

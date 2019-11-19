@@ -41,6 +41,10 @@
     padding-right: 20px;
 }
 
+.disable_two_fa_form__main_container label{
+    font-family: 'DIN Pro Condensed Bold';
+}
+
 .disable_two_fa_form__input_container{
     position: relative;
 }
@@ -50,8 +54,8 @@
     letter-spacing: 1px;
 }
 
-.disable_two_fa_form__input_container .fa{
+.disable_two_fa_form__input_container .fab{
     position: absolute;
-    top: 5px;
+    top: 4px;
     right: 5px;;
 }

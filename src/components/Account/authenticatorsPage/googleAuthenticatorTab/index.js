@@ -1,7 +1,7 @@
 import React from 'react';
 import './index.css';
 
-export default function GoogleAuthenticatorsTab() {
+export default (props) => {
     return (
         <>
             <div className="google_authenticator_tab__container">
@@ -45,7 +45,7 @@ export default function GoogleAuthenticatorsTab() {
                         <div className="google_authenticator__two_fa_input_conatiner">
                             <label className="google_authenticator_tab_text">2FA Code from application: </label>
                             <div className="google_authenticator__two_fa_input_icon_container">
-                                <input className="google_authenticator__two_fa_input"></input><i className="fa fa-google"></i>
+                                <input type="password" className="google_authenticator__two_fa_input"></input><i className="fab fa-google"></i>
                             </div>
                         </div>
                         <div className="google_authenticator__active_button">

@@ -3,7 +3,7 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import './index.css';
 import WalletTab from 'cmp/Account/marginTradingPage/mainWalletTab/';
 import TradingTab from 'cmp/Account/marginTradingPage/marginTradingTab/';
-// import MarginDemoTab from 'cmp/Account/marginTradingPage/marginDemoTab/';
+import MarginDemoTab from 'cmp/Account/marginTradingPage/marginDemoTab/';
 
 export default (props) => {
     return (
@@ -25,7 +25,7 @@ export default (props) => {
                         <TradingTab />
                     </TabPanel>
                     <TabPanel>
-                        {/* <MarginDemoTab/> */}
+                        <MarginDemoTab/>
                     </TabPanel>
 
                 </Tabs>

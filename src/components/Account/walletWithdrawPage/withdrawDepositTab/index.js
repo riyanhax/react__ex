@@ -10,7 +10,7 @@ export default  (props)=>{
                     <CustomSelect/>
                     <div className="withdraw_deposit_tab__deposit_form">
                         <div className="deposit_form__top_container">
-                            <div className="white__text"><i className="fa fa-bitcoin"></i>AZ - Azbit Tokens</div>
+                            <div className="white__text"><i className="fab fa-bitcoin"></i>AZ - Azbit Tokens</div>
                             <div className="white__text">Wallet address:</div>
                         </div>
                         <div className="deposit_form__output_field">

@@ -1,11 +1,11 @@
 import React from 'react';
-import './accountInfo.css';
+import './index.css';
 
-export default function AccountInfo() {
+export default (props) => {
     return (
         <>
             <div className="account_info__container">
-                <div className="container__logo">Name: <span className="white">Jeffrey D. Smith</span></div>
+                <div className="container__logo">Name: <span className="white__text">Jeffrey D. Smith</span></div>
                 <div className="account_info__item_container">
                     <div className="account_info__item">
                         <div className="account_info__item_avatar">
