@@ -1,0 +1,44 @@
+.wallet_withdraw_tab__container{
+    border-top: 4px solid black;
+    padding-bottom: 80px;
+}
+
+.wallet_withdraw__tab_list{
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row;
+    margin: 0;
+    padding: 0;
+    height: 30px;
+    list-style: none;
+    background: #0B0F18;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.wallet_withdraw__tab_list :first-child{
+    padding-left: 15px;
+}
+
+
+
+.wallet_withdraw__tab{
+    background: #0B0F18;
+    padding-right: 33px;
+    font-size: 14px;
+    line-height: 30px;
+    padding-left: 15px;
+    font-family: 'DIN Pro Bold';
+}
+.wallet_withdraw__tab.react-tabs__tab--selected{
+    color: white;
+    background: #111622;
+}
+
+.wallet_withdraw__history_table_container{
+    border-top: 4px solid black;
+}
+
+.wallet_withdraw__history_table_container .container__logo{
+    padding-bottom: 20px;
+}

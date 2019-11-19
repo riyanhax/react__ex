@@ -1,0 +1,58 @@
+button {
+    border: none;
+    cursor: pointer;
+  }
+  
+  .white__text{
+    color: white;
+  }
+  .red__text{
+    color: #EA0038;
+  }
+  
+  .dark_grey__text{
+    color: #1F2535;
+  }
+  
+  .green__text{
+    color: #17AC75;
+  }
+  
+  .account__main_container{
+    display: flex;
+    width: 100%;
+  }
+  
+  .flex{
+    display: flex;
+  }
+  
+  input{
+    outline: none;
+  }
+  .account_mid__container{
+    width: 100%;
+  }
+  
+  .page__container{
+    background: #111622;
+    height: 1262px;
+  }
+  
+  .button_green{
+    background-color: #17AC75;
+    border: 0;
+    color: white;
+    font-size: 12px;
+    height: 24px;
+    border-radius: 1px;
+  }
+  
+  .button_gray{
+    background: #788096;
+    border: 0;
+    color: white;
+    font-size: 12px;
+    height: 24px;
+    border-radius: 1px;
+  }

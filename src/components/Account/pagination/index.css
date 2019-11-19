@@ -1,0 +1,34 @@
+.pagination__container{
+    display: flex;
+    letter-spacing: 1px;
+    justify-content: flex-end;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+
+
+.pagination__page{
+    background: #161B29;
+    border: 1px solid #404A62;
+    box-sizing: border-box;
+    border-radius: 1px;
+    text-align: center;
+    width: 20px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.pagination__arrow_container{
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.fa.fa-arrow-left{
+    padding-right: 5px;
+}
+
+.pagination__bottom_link{
+    border-bottom: 2px solid #0B0F18;
+    margin-right: 15px;
+}

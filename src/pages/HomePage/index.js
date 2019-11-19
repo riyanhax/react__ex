@@ -71,7 +71,7 @@ export default () => {
   ]
   return (
     <div className="App"  id="home">
-      <header>
+      <header className="header__homePage">
         <div className="logo">
 
         </div>
