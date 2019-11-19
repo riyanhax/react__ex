@@ -1,0 +1,79 @@
+.account_info__container{
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-right: 20px;
+    margin-left: 20px;
+    height: 243px;
+    background: #161B29;
+    border: 1px solid #1F2535;
+    box-sizing: border-box;
+    border-radius: 1px; 
+    margin-bottom: 30px;
+}
+
+.account_info__container .container__logo{
+    color: #788096;
+    padding-left: 0px;
+    font-family: 'DIN Pro Black';
+}
+
+.account_info__item_container{
+    display: flex;
+    justify-content: space-between;
+}
+
+.account_info__item{
+    display: flex;
+    line-height: 24px;
+    font-size: 14px;
+    letter-spacing: 1px;
+    font-family: 'DIN Pro Bold';
+}
+
+.account_info__item_avatar{
+    width: 140px;
+    height: 160px;
+    background: #C4C4C4;
+    border-radius: 1px;
+    margin-right: 20px;
+}
+
+.account_info__item_VERIFIED{
+    margin-left: 100px;
+    text-align: center;
+    letter-spacing: 1px;
+    font-size: 20px;
+    font-family: 'DIN Pro Bold';
+}
+
+.account_info__item_VERIFIED_link{
+    font-size: 14px;
+}
+
+.tooltip{
+    position: relative;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    background: #111622;
+    width: 120px;
+    color:#788096;
+    border: 1px solid #1F2535;
+    font-size: 14px;
+    line-height: 24px;
+    text-align: center;
+    font-family: 'DIN Pro Condensed Bold';
+    letter-spacing: 0px;
+    border-radius: 4px;
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+    top: -50px;
+    left: 105%;
+    padding: 10px;
+  }
+  
+  .tooltip:hover .tooltiptext {
+    visibility: visible;
+  }

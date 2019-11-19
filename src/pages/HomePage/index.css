@@ -5,7 +5,7 @@ table {
 
 
 
-header {
+.header__homePage {
   display: flex;
   background-color: #111622;
   font-size: 16px;
@@ -16,12 +16,12 @@ header {
   margin-bottom: 4px;
 }
 
-header .logo {
+.header__homePage .logo {
   margin-right: auto;
   padding: .5em .4em .5em .4em;
 }
 
-header .list {
+.header__homePage .list {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -30,11 +30,11 @@ header .list {
   border-left: solid 2px black;
 }
 
-header .list>* {
+.header__homePage .list>* {
   padding: 0 1.2em 0 1.2em;
 }
 
-header .list>a {
+.header__homePage .list>a {
   display: block;
   color: #788096;
   text-decoration: none;

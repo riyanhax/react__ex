@@ -27,6 +27,18 @@
   font-style: normal;
 }
 
+
+
+@font-face{
+  font-family: 'DIN Pro Condensed Medium';
+  src: url('/assets/fonts/DINPro-CondensedMedium.woff');
+}
+
+@font-face{
+  font-family: 'DIN Pro Condensed Black';
+  src: url('/assets/fonts/DINPro-CondensedBlack.woff');
+}
+
 .grid__table {
   height: 50%;
 }
@@ -50,7 +62,7 @@
   text-decoration: none;
 }
 
-.header {
+.header__trading {
   height: 64px;
   margin-bottom: 4px;
   padding: 0 7px;

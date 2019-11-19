@@ -1,0 +1,41 @@
+.change_password_page__container{
+    width:100%;
+    border-top: 4px solid black;
+}
+
+.change_password_page__container .container__logo{
+    font-size: 14px;
+    color: white;
+    font-family: 'DIN Pro Black';
+}
+
+.change_password__text_container{
+    padding-right: 15px;
+    padding-left: 15px;
+    align-items: center;
+    padding-bottom: 20px;
+    border-bottom: 4px solid black;
+}
+
+.change_password__text_container div:last-child{
+    height: 100%;
+}
+
+.change_password__text{
+    font-family: 'DIN Pro Bold';
+    font-size: 14px;
+    line-height: 24px;
+    letter-spacing: 1px;
+}
+
+.change_password__container{
+    padding-left: 15px;
+}
+
+.change_password__container .container__logo{
+    font-size: 16px;
+    padding-left: 0px;
+    margin-bottom: 20px;
+    font-family: 'DIN Pro Bold';
+
+}

@@ -1,0 +1,61 @@
+.disable_two_fa_form__container{
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.disable_two_fa_form__label{
+    color: white;
+    letter-spacing: 1px;
+    line-height: 24px;
+    font-family: 'DIN Pro Bold';
+}
+
+.disable_two_fa_form__main_container{
+    margin-top: 20px;
+    align-items: center;
+    display: flex;
+    width: 679px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.disable_two_fa_form__main_container button{
+    width: 110px;
+    height: 24px;
+}
+
+.disable_two_fa_form__main_container .disable_two_fa_form__input_container input{
+    background: #161B29;
+    border: 1px solid #1F2535;
+    box-sizing: border-box;
+    border-radius: 1px;
+    width: 227px;
+    height: 24px;
+    color: white;
+    font-size: 12px;
+    font-family: 'DIN Pro Bold';
+    padding-left: 5px;
+    padding-right: 20px;
+}
+
+.disable_two_fa_form__main_container label{
+    font-family: 'DIN Pro Condensed Bold';
+}
+
+.disable_two_fa_form__input_container{
+    position: relative;
+}
+
+.disable_two_fa_form__main_container label{
+    font-size: 16px;
+    letter-spacing: 1px;
+}
+
+.disable_two_fa_form__input_container .fab{
+    position: absolute;
+    top: 4px;
+    right: 5px;;
+}

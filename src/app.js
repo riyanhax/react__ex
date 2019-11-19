@@ -6,6 +6,7 @@ import Trading from 'pg/Trading/';
 import LoginPage from 'pg/auth/loginPage';
 import RegistrationPage from 'pg/auth/registrationPage';
 import RecoveryPasswordPage from 'pg/auth/recoveryPasswordPage';
+import AccountPage from './pages/Account/index';
 import { ConnectedRouter } from 'connected-react-router';
 import { history } from './history';
 import PrivateRoute from 'cmp/PrivateRoute';
@@ -66,6 +67,9 @@ class App extends React.Component {
             <Route path="/" exact>
               <Homepage />
             </Route>
+            <Route path="/account" exact>
+              <AccountPage/>
+            </Route>
             <Route path="/login" exact>
               <LoginPage />
             </Route>
@@ -79,6 +83,7 @@ class App extends React.Component {
             <Route path="**" exact>
               <LoginPage/>
             </Route>
+          
           </Switch>
         </ConnectedRouter >
 

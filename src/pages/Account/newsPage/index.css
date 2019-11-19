@@ -1,0 +1,95 @@
+.news_updates__container{
+    width: 100%;
+    height: 344px;
+    background: #111622;
+    border-top: 4px solid black;
+  }
+  
+  .news__container{
+    width: 100%;
+    height: 910px;
+    background: #111622;
+    border-top: 4px solid black;
+  }
+  
+  
+  
+  .fa.fa-unlock{
+    padding-left: 9px;
+    padding-top:5px;
+    padding-right: 14px;
+  }
+  
+  .fa.fa-times{
+    margin-left: 120px;
+  }
+  
+  
+  .news_updates__container .container__logo{
+    padding-top:20px;
+    padding-left: 20px;
+    line-height: 24px;
+    font-size: 14px;
+    font-family: 'DIN Pro Black';
+  }
+  
+  .news_updates__card_container{
+    width: 100%;
+  }
+  
+  .news_card__container{
+    height: 216px;
+    background: #0B0F18;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 5px;
+  }
+  
+  .news_card__container:first-child{
+    margin-top: 20px;
+  }
+  
+  .news_card__container_date{
+    width: 274px;
+    font-family: 'DIN Pro Condensed Black';
+    font-size: 14px;
+    line-height: 24px;
+    padding-left: 12px;
+    padding-top: 2px;
+  }
+  .news_card__container_headline{
+    padding-left: 12px;
+    font-family: 'DIN Pro Black';
+    font-size: 14px;
+    line-height: 24px;
+    padding-bottom: 10px;
+  }
+  
+  .news_card__container_appeal{
+    padding-top: 11px;
+    margin-bottom: 20px;
+    padding-left: 12px;
+    color: #CCD0DB;
+    font-family: 'DIN Pro Condensed Medium';
+  }
+  
+  .news_card__container_message{
+    width: 100%;
+    padding-right: 30px;
+    font-size: 13px;
+    line-height: 16px;
+    letter-spacing: 1px;
+    font-family: 'DIN Pro Condensed Medium';
+    padding-left: 12px;
+    color: #CCD0DB;
+  }
+  
+  .news_card__container_bot_line{
+    margin-top: 20px;
+    font-size: 13px;
+    line-height: 16px;
+    letter-spacing: 1px;
+    font-family: 'DIN Pro Condensed Medium';
+    padding-left: 12px;
+    color: #CCD0DB;
+  }
