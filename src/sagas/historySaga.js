@@ -1,41 +1,85 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
-import {fetchOpenOrders, fetchOrderHistory} from "api/history" 
+import { fetchOpenOrders, fetchOrderHistory, fetchTradeHistory, fetchRemoveOrder } from "api/history"
 import actions from 'act/';
 
 
 function* openOrders() {
 
-    try {
-        const items = yield call(fetchOpenOrders)
-        yield put(actions.history.setOpenOrders(items))
-       
-    }
-    catch (error) {
+  try {
+    const items = yield call(fetchOpenOrders)
+    yield put(actions.history.setOpenOrders(items))
 
-    }
+  }
+  catch (error) {
+
+  }
 
 };
 
 export function* openOrdersSaga() {
-    yield takeEvery(actions.history.loadOpenOrders, openOrders);
+  yield takeEvery(actions.history.loadOpenOrders, openOrders);
+}
+
+
+function* orderHistory() {
+
+  try {
+    const items = yield call(fetchOrderHistory)
+    yield put(actions.history.setOrderHistory(items))
+
   }
+  catch (error) {
 
-
-  function* orderHistory() {
-  
-    try {
-        const items = yield call(fetchOrderHistory)
-        yield put(actions.history.setOrderHistory(items))
-       
-    }
-    catch (error) {
-
-    }
+  }
 
 };
 
 
-  export function* orderHistorySaga() {
+export function* orderHistorySaga() {
 
-    yield takeEvery(actions.history.loadOrders, orderHistory);
+  yield takeEvery(actions.history.loadOrders, orderHistory);
+}
+
+
+
+
+function* tradeHistory() {
+
+  try {
+    const items = yield call(fetchTradeHistory)
+    yield put(actions.history.setTradeHistory(items))
+
   }
+  catch (error) {
+
+  }
+
+};
+
+
+export function* tradeHistorySaga() {
+
+  yield takeEvery(actions.history.loadTradeHistory, tradeHistory);
+}
+
+
+function* removeOrder({ payload: { id } }) {
+
+  try {
+    yield call(fetchRemoveOrder,id)
+
+  }
+  catch (error) {
+
+  }
+
+};
+
+
+export function* removeOrderSaga() {
+
+  yield takeEvery(actions.history.removeOrder, removeOrder);
+}
+
+
+

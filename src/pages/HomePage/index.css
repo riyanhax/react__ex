@@ -551,17 +551,12 @@ th.dem_trad_con_tab_item:last-child {
   align-items: center;
 }
 
-.flex {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+
 
 .az_dice_table {
   padding: 0px;
   margin: 20px 0px 0px 0px;
   background: #0B0F18;
-  ;
 }
 
 .az_dice_table_item {

@@ -1,6 +1,6 @@
 import "regenerator-runtime/runtime";
 import { all } from 'redux-saga/effects';
-import { openOrdersSaga, orderHistorySaga } from './historySaga';
+import { openOrdersSaga, orderHistorySaga, tradeHistorySaga, removeOrderSaga } from './historySaga';
 import {fetchLoginSaga} from './authSaga';
 import {userSaga} from './userSaga';
 import {orderSaga} from './orderSaga'
@@ -26,7 +26,8 @@ export default function* rootSaga() {
         chatSaga(),
         chatMssagesSaga(),
         tradingInfoSaga(),
-        
+        tradeHistorySaga(),
+        removeOrderSaga()
     ]);
   }
 

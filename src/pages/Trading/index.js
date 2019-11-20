@@ -24,22 +24,22 @@ class Ex extends React.Component {
 
   
  
-    this.props.loadOrderBook(pair);
+    this.props.loadOrderBook(pair, base_unit, quote_unit);
     this.props.loadDeals(pair);
     this.props.setLabel(base_unit, quote_unit);
-    this.props.handleSocketOrderBook(pair, this.state.cable);
+    this.props.handleSocketOrderBook(pair, base_unit, quote_unit, this.state.cable);
     this.props.loadWallet(base_unit, quote_unit);
     this.props.loadMessages();
     this.props.loadInfo(pair);
- 
-      // fetch(`api/v2/peatio/chat/send`, {
+    
+      // fetch(`api/v2/peatio/market/orders/27/cancel`, {
       //   method: 'POST',
       //   credentials: 'include',
       //   body: JSON.stringify(
-      //     {
-      //       text: 'lol',
-      //       lang: "en",
-      //     }
+      //     // {
+      //     //   text: 'lol',
+      //     //   lang: "en",
+      //     // }
       //   ),
       //   headers: {
       //     'Content-type': 'application/json'
@@ -49,11 +49,12 @@ class Ex extends React.Component {
       //   .then(response => response.json())
       //   .then((data) => {
   
-      //   //  console.log(data)
+      //    console.log(data)
       //   })
       //   .catch((e) => {
       //     console.log(e)
       //   });
+  
 
   
   }
@@ -112,9 +113,10 @@ class Ex extends React.Component {
 
     const { pairs, loadingPairs, loadingDeals, loadingOrderBook, limitFormDataBuy,
        limitFormDataSell, onChangeSell, onChangeBuy, handleSocketOrderBook,
-        orderBook, deals, wallet, messages, makeMessage, info } = this.props;
+        orderBook, deals, wallet, messages, makeMessage, info, lastPrice } = this.props;
     const { base_unit, quote_unit, pair } = history.location.state
-    
+  
+  
     return (
 
       <section id="ex__page">
@@ -125,6 +127,7 @@ class Ex extends React.Component {
           handleChangePairs={this.handleChangePairs}
           wallet ={wallet}
           info={info}
+          lastPrice ={lastPrice}
         />
         <div className="ex__page__inner">
           <a href="" className="side__hide__link" onClick={(e) => this.toggleChat(e)}>
@@ -133,7 +136,9 @@ class Ex extends React.Component {
               : <i className="fa fa-angle-double-right"></i>
             }
           </a>
-          <SideMenu />
+          <SideMenu
+          pair ={pair}
+           />
           <div className="container">
             <div className="flex">
               <Transition in={this.state.chatShow} timeout={300}>
@@ -316,7 +321,7 @@ class Ex extends React.Component {
 
 }
 let mapStateToProps = (state) => {
-
+console.log(state.tradingReducer)
   return {
     pairs: state.tradingReducer.pairs,
     loadingOrderBook: state.tradingReducer.loadingOrderBook,
@@ -330,6 +335,7 @@ let mapStateToProps = (state) => {
     wallet: state.walletReducer.wallet,
     messages:state.chatReducer.messages,
     info:state.tradingReducer.info,
+    lastPrice:state.tradingReducer.lastPrice,
   }
 };
 
@@ -341,7 +347,7 @@ let mapDispatchToProps = (dispatch) => {
     makeOrder: (price, amount, type, pair) => dispatch(actions.order.makeOrder(price, amount, type, pair)),
     loadOrderBook: (pair) => dispatch(actions.trading.loadOrderBook(pair)),
     loadDeals: (pair) => dispatch(actions.trading.loadDeals(pair)),
-    handleSocketOrderBook: (pair, cable) => dispatch(actions.trading.handleSocketOrderBook(pair, cable)),
+    handleSocketOrderBook: (pair, base_unit, quote_unit, cable) => dispatch(actions.trading.handleSocketOrderBook(pair, base_unit, quote_unit, cable)),
     setLabel: (base_unit, quote_unit) => dispatch(actions.order.setLabel(base_unit, quote_unit)),
     loadWallet: (base_unit, quote_unit) => dispatch(actions.wallet.loadWallet(base_unit, quote_unit)),
     makeMessage: (text, lang) => dispatch(actions.chat.makeMessage(text, lang)),

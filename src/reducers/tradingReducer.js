@@ -1,7 +1,6 @@
 
 import { handleActions } from 'redux-actions';
-import { setPairs, setOrderBook, loadPairs, loadOrderBook, setOrderBookSocket, setDeals } from 'act/trading';
-import { setInfo } from 'act/info';
+
 const InitailState = {
     loadingPairs: true,
     loadingOrderBook: true,
@@ -10,6 +9,7 @@ const InitailState = {
     orderBook: {},
     deals: [],
     info: {},
+    lstPrice: ""
 }
 
 
@@ -29,11 +29,25 @@ export const tradingReducer = handleActions({
         if (action.data) {
 
             let orderBook = { ...state.orderBook };
+
+            console.log(action.data)
             if (action.data.order_type == "OrderBid") {
-                orderBook.bids.unshift(action.data.order)
+                if (action.data.is_cancel) {
+                    let index = orderBook.bids.findIndex(x => x.id === action.data.order.id);
+                    orderBook.bids.splice(index, 1);
+                }
+                else {
+                    orderBook.bids.unshift(action.data.order);
+                }
             }
             if (action.data.order_type == "OrderAsk") {
-                orderBook.asks.unshift(action.data.order)
+                if (action.data.is_cancel) {
+                    let index = orderBook.asks.findIndex(x => x.id === action.data.order.id);
+                    orderBook.asks.splice(index, 1);
+                }
+                else {
+                    orderBook.asks.unshift(action.data.order);
+                }
             }
             return {
                 ...state,
@@ -54,10 +68,12 @@ export const tradingReducer = handleActions({
     setDeals: (state, action) => {
 
         if (action.data) {
-
+      
             let deals = [...state.deals];
-            deals.unshift(action.data.trade)
+            let lastPrice = action.data.trade.price
             let info = action.data.header;
+
+            deals.unshift(action.data.trade);
             let orderBook = { ...state.orderBook };
             let { order_ask, order_bid } = action.data.trade_orders;
             let askIndex = orderBook.asks.findIndex(x => x.id === order_ask.id);
@@ -75,14 +91,19 @@ export const tradingReducer = handleActions({
                 ...state,
                 deals,
                 info,
-                orderBook
+                orderBook,
+                lastPrice
             }
         }
-        if (action.payload.deals) {
-            let deals = action.payload.deals;
+        else if (action.payload.deals) {
+            let deals = [...state.deals];
+             deals = action.payload.deals;
+            //console.log(deals)
+            let lastPrice = action.payload.deals[0].price
             return {
                 ...state,
-                deals,
+                deals:deals,
+                lastPrice,
                 loadingDeals: false
             }
         }

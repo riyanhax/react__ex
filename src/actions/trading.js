@@ -6,7 +6,7 @@ export const {loadPairs, loadOrderBook, setPairs, setOrderBook, handleSocketOrde
   setPairs: (pairs) => ({ pairs }), 
   loadOrderBook: (pair) => ({ pair }),
   setOrderBook: (orderBook) => ({ orderBook }),
-  handleSocketOrderBook: (pair, cable) => ({ pair, cable }),
+  handleSocketOrderBook: (pair,base_unit, quote_unit, cable) => ({ pair,base_unit, quote_unit, cable }),
   setOrderBookSocket: (data) => ({ data }),
   loadDeals: (pair) => ({ pair }),
   setDeals: (deals) => ({ deals }),

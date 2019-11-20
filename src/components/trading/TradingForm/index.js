@@ -21,7 +21,7 @@ export default function (props) {
     }
     else {
       formFields.push(
-        <div key={name} className="ex__form__item fb gray__text">
+        <div key={name} className="ex__form__item flex__bw gray__text">
           <label htmlFor={`ex__form__${name}`} className="ex__form__label">{name}:</label>
           <input type="number"
             id={`ex__form__${name}`}

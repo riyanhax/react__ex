@@ -33,8 +33,8 @@ class App extends React.Component {
     //   .catch((e) => {
     //     console.log(e)
     //   });
-   // this.props.checkUser()
-   // this.props.loadPairs()
+   this.props.checkUser()
+   this.props.loadPairs()
   }
 
   render() {
