@@ -11,6 +11,7 @@ import {chatReducer} from "./chatReducer";
 import {infoReducer} from "./infoReducer";
 import { connectRouter } from 'connected-react-router';
 import { history } from '../history';
+import {TotalUsersReducer} from './homePage/totalUserReducer';
 const combineReducer = combineReducers({
     authReducer,
     signUpReducer,
@@ -21,6 +22,7 @@ const combineReducer = combineReducers({
     orderReducer,
     walletReducer,
     chatReducer,
+    TotalUsersReducer,
 
     router: connectRouter(history)
 })

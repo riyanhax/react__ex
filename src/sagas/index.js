@@ -8,6 +8,7 @@ import {tradingPairsSaga, orderBookSocketSaga, tradingOrderBookSaga, tradingDeal
 import {tradingWalletSaga} from './walletSaga'
 import {chatSaga, chatSocketSaga, chatMssagesSaga} from './chatSaga'
 import {tradingInfoSaga} from './infoSaga'
+import {totalUsersSaga} from './homePage/totalUsersSaga'
 
 export default function* rootSaga() {
     yield all([
@@ -26,7 +27,7 @@ export default function* rootSaga() {
         chatSaga(),
         chatMssagesSaga(),
         tradingInfoSaga(),
-        
+        totalUsersSaga(),
     ]);
   }
 

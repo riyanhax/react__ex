@@ -15,7 +15,9 @@ import { Transition } from 'react-transition-group'
 import { connect } from "react-redux"
 import actions from "act/"
 import { history } from '../../history';
-import Cable from "actioncable"
+import Cable from "actioncable";
+
+
 class Ex extends React.Component {
 
   componentDidMount() {

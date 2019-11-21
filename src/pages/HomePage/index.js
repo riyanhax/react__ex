@@ -1,4 +1,4 @@
-import React from 'react';
+import React ,{ useEffect } from 'react';
 import './index.css';
 import Slider from 'cmp/Homepage/slider/slider';
 import TradersAffilatesTab from 'cmp/Homepage/tradersAffilatesTab/tradersAffilatesTab';
@@ -7,11 +7,32 @@ import DemoTradConTable from 'cmp/Homepage/demoTradingContestsTable/demoTradingC
 import AzDiceTable from 'cmp/Homepage/azbitDiceTable/azbitDiceTable'
 import Select from 'react-select';
 import ValueSlider from 'cmp/Homepage/valueSlider/valueSlider';
-
+import TotalUser from 'cmp/Homepage/totalUsers/';
 import Header from 'cmp/header/';
 import Footer from 'cmp/footer/';
 
+
+import { useSelector, useDispatch } from "react-redux"
+import { connect } from "react-redux";
+import actions from "act/";
+
+
+
+
 export default () => {
+
+      const dispatch = useDispatch();
+
+      useEffect( () =>{
+        dispatch(actions.usersInfo.loadTotalUsers())
+      },[]);
+     
+      let totalUsers = useSelector(state => state.TotalUsersReducer.totalUserData);
+      let totalUsersList;
+      if(totalUsers){
+        totalUsersList = totalUsers;
+      }
+     
   const colourStyles = {
     control: (styles) => {
       return {
@@ -471,18 +492,8 @@ export default () => {
 
             </div>
             <div className="middleRightContainer gray">
-              <div className="TotalContainer">
-                <div className="outputFieldFlexCenter">
-                  <span className="spacing1px">Total users: <span className="white__text spacing1px"> 8 009</span></span>
-                </div>
-                <div className="outputFieldFlexCenter">
-                  <span >Asstes: <span className="white__text spacing1px"> 29</span></span>
-                </div>
-                <div className="outputFieldFlexCenter">
-                  <span >Total trades: <span className="white__text spacing1px"> 2309</span></span>
-                </div>
-
-              </div>
+              
+              <TotalUser members={totalUsersList.members}  assets={totalUsersList.assets}  active_members={totalUsersList.active_members} />
               <div className="r_t_Banner">
                 <img width="100%" height="100%" alt="Banner" src="https://instagram.fhel5-1.fna.fbcdn.net/vp/74754b9082044f99c7c576346f670e16/5E5C4E26/t51.2885-15/e35/72409874_407973773221092_1227918890496072636_n.jpg?_nc_ht=instagram.fhel5-1.fna.fbcdn.net&_nc_cat=100" />
               </div>
@@ -565,4 +576,3 @@ export default () => {
     </div>
   );
 }
-
