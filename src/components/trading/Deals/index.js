@@ -15,7 +15,7 @@ export default (props) => {
         <tr key={index}>
           <td className=" gray__text">{item.price} </td>
           <td className=" m__gray text__r">{item.amount}</td>
-          <td className=" d__gray text__r">{item.created_at}</td>
+          <td className=" d__gray text__r">{item.time_of_creation}</td>
         </tr>
       )
     })

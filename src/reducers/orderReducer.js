@@ -1,7 +1,5 @@
-
 import { handleActions } from 'redux-actions';
-import { history } from '../history';
-import { makeOrder, onChangeBuy, onChangeSell, setLabel } from 'act/order';
+
 
 const InitailState = {
   limitFormDataBuy: {
@@ -9,12 +7,14 @@ const InitailState = {
       vaild: false,
       value: "",
       name: "quote_unit",
+      type:"number",
       label: ""
     },
     amount: {
       vaild: false,
       value: "",
       name: "base_unit",
+      type:"number",
       label: ""
     },
     proc: ["25%", "50%", "75%", "100%"],
@@ -22,22 +22,24 @@ const InitailState = {
       vaild: false,
       value: "",
       name: "quote_unit",
+      type:"number",
       label: ""
     },
   },
-  // limitFormDataBuy: {...formsTemplate},
-  // limitFormDataSell:{...formsTemplate}
+
   limitFormDataSell: {
     price: {
       vaild: false,
       value: "",
       name: "quote_unit",
+      type:"number",
       label: ""
     },
     amount: {
       vaild: false,
       value: "",
       name: "base_unit",
+      type:"number",
       label: ""
     },
     proc: ["25%", "50%", "75%", "100%"],
@@ -45,9 +47,51 @@ const InitailState = {
       vaild: false,
       value: "",
       name: "quote_unit",
+      type:"number",
       label: ""
     },
+  },
+
+  marketFormDataBuy: {
+    price: {
+      vaild: false,
+      disabled:true,
+      value: "Market",
+      name: "quote_unit",
+      type:"text",
+      label: ""
+    },
+    amount: {
+      vaild: false,
+      value: "",
+      name: "base_unit",
+      type:"number",
+      label: ""
+    },
+    proc: ["25%", "50%", "75%", "100%"],
+
+  },
+
+  marketFormDataSell: {
+    price: {
+      vaild: false,
+      disabled:true,
+      value: "Market",
+      name: "quote_unit",
+      type:"text",
+      label: ""
+    },
+    amount: {
+      vaild: false,
+      value: "",
+      name: "base_unit",
+      type:"number",
+      label: ""
+    },
+    proc: ["25%", "50%", "75%", "100%"],
+
   }
+
 }
 
 
@@ -68,6 +112,7 @@ export const orderReducer = handleActions({
     let key = action.payload.e.target.name;
     let value = action.payload.e.target.value;
     let limitFormDataSell = { ...state.limitFormDataSell };
+
     limitFormDataSell[key].value = value
     limitFormDataSell["total"].value = limitFormDataSell["price"].value * limitFormDataSell["amount"].value
     return {
@@ -76,11 +121,35 @@ export const orderReducer = handleActions({
     }
   },
 
+  onChangeMarketSell: (state, action) => {
+    let key = action.payload.e.target.name;
+    let value = action.payload.e.target.value;
+    let marketFormDataSell = { ...state.marketFormDataSell };
+    marketFormDataSell[key].value = value
+    return {
+      ...state,
+      marketFormDataSell
+    }
+  },
+  onChangeMarketBuy: (state, action) => {
+    let key = action.payload.e.target.name;
+    let value = action.payload.e.target.value;
+    let marketFormDataBuy = { ...state.marketFormDataBuy };
+    marketFormDataBuy[key].value = value
+    return {
+      ...state,
+      marketFormDataBuy
+    }
+  },
+
+
   setLabel: (state, action) => {
     let quote_unit = action.payload.quote_unit
     let base_unit = action.payload.base_unit
     let limitFormDataSell = { ...state.limitFormDataSell };
     let limitFormDataBuy = { ...state.limitFormDataBuy };
+    let marketFormDataBuy = { ...state.marketFormDataBuy };
+    let marketFormDataSell = { ...state.marketFormDataSell };
     function updateLabels(obj) {
       for (const key in obj) {
         if (obj[key].name == "quote_unit") {
@@ -93,15 +162,21 @@ export const orderReducer = handleActions({
     }
     updateLabels(limitFormDataSell);
     updateLabels(limitFormDataBuy);
+    updateLabels(marketFormDataBuy);
+    updateLabels(marketFormDataSell);
     return {
       ...state,
       limitFormDataSell,
       limitFormDataBuy
     };
   },
-  makeOrder: (state) => {
+  changeFormPrice: (state, action) => {
+   console.log(action)
+    //let formData = {...state[action.payload.form]}
+    //formData["price"].value =1;
     return {
       ...state,
-    };
-  }
+     // [action.payload.form]:formData
+    }
+  },
 }, InitailState);

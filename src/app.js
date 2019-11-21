@@ -52,7 +52,7 @@ class App extends React.Component {
           <PrivateRoute path={`/trading/${pair.id}`}
             key={pair.id}
             component={Trading} isAuthenticated={isAuthenticated}
-            exact
+            
             isLoading={isLoading} />
         )
       })

@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import { connect } from "react-redux"
 import { loadOpenOrders, loadOrders, loadTradeHistory, removeOrder } from "act/history"
 import { useSelector, useDispatch } from "react-redux"
 import SimpleBarReact from "simplebar-react";
@@ -31,7 +30,7 @@ export default (props) => {
       let {id} = item;
   
       return (
-        <tr className="" key={item.id}>
+        <tr className="hovered" key={item.id}>
           <td className=""> {item.id}</td>
           <td className="">{item.created_at}</td>
           <td className=""> {item.market}</td>
@@ -55,7 +54,7 @@ export default (props) => {
   if (ordersHistory) {
     ordersHistoryList = ordersHistory.map((item) => {
       return (
-        <tr className="" key={item.id}>
+        <tr className="hovered" key={item.id}>
           <td className=""> {item.id}</td>
           <td className="">{item.created_at}</td>
           <td className=""> {item.market}</td>
@@ -63,13 +62,8 @@ export default (props) => {
           <td className=""> {item.origin_volume} </td>
           <td className=""> {item.price} </td>
           <td className=""> {item.trades_count}</td>
-          <td className=""> {item.remaining_volume} </td>
-          <td className="mint__text"> 50%</td>
-          <td className="">
-            <div className="ex__table__close">
-              <i className="fa fa-times-circle"></i>
-            </div>
-          </td>
+          <td className=""> {item.volume} </td>
+          <td className="mint__text">{item.percents_volume}%</td>
         </tr>
       )
     })
@@ -77,7 +71,7 @@ export default (props) => {
   if (tradeHistory) {
     tradeHistoryList = tradeHistory.map((item) => {
       return (
-        <tr className="" key={item.id}>
+        <tr className="hovered" key={item.id}>
           <td className=""> {item.id}</td>
           <td className="">{item.created_at}</td>
           <td className=""> {item.market}</td>
@@ -85,13 +79,8 @@ export default (props) => {
           <td className=""> {item.origin_volume} </td>
           <td className=""> {item.price} </td>
           <td className=""> {item.trades_count}</td>
-          <td className=""> {item.remaining_volume} </td>
-          <td className="mint__text"> 50%</td>
-          <td className="">
-            <div className="ex__table__close">
-              <i className="fa fa-times-circle"></i>
-            </div>
-          </td>
+          <td className=""> {item.volume} </td>
+         
         </tr>
       )
     })

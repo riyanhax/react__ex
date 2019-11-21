@@ -15,7 +15,7 @@ export default (props) => {
         <NavLink className="ex__side__link" to="/faq" exact activeClassName="ex__side__link__active">
           <i className="fa fa-question-circle"></i>
         </NavLink>
-        <NavLink className="ex__side__link" to="/options" exact activeClassName="ex__side__link__active">
+        <NavLink className="ex__side__link" to={`/trading/${pair}/options`} exact activeClassName="ex__side__link__active">
           <i className="fa fa-cog"></i>
         </NavLink>
       </div>

@@ -3,13 +3,13 @@ import { all } from 'redux-saga/effects';
 import { openOrdersSaga, orderHistorySaga, tradeHistorySaga, removeOrderSaga } from './historySaga';
 import {fetchLoginSaga} from './authSaga';
 import {userSaga} from './userSaga';
-import {orderSaga} from './orderSaga'
+import {orderSaga, orderMarketSaga} from './orderSaga'
 import {tradingPairsSaga, orderBookSocketSaga, tradingOrderBookSaga, tradingDealsSaga, dealsSocketSaga} from './tradingSaga'
 import {tradingWalletSaga} from './walletSaga'
 import {chatSaga, chatSocketSaga, chatMssagesSaga} from './chatSaga'
 import {tradingInfoSaga} from './infoSaga'
 
-export default function* rootSaga() {
+export default function* rootSasga() {
     yield all([
         tradingPairsSaga(),
         fetchLoginSaga(),
@@ -17,6 +17,7 @@ export default function* rootSaga() {
         openOrdersSaga(),
         orderHistorySaga(),
         orderSaga(),
+        orderMarketSaga(),
         tradingOrderBookSaga(),
         orderBookSocketSaga(),
         dealsSocketSaga(),

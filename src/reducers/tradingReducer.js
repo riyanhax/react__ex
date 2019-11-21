@@ -29,8 +29,6 @@ export const tradingReducer = handleActions({
         if (action.data) {
 
             let orderBook = { ...state.orderBook };
-
-            console.log(action.data)
             if (action.data.order_type == "OrderBid") {
                 if (action.data.is_cancel) {
                     let index = orderBook.bids.findIndex(x => x.id === action.data.order.id);
@@ -54,7 +52,7 @@ export const tradingReducer = handleActions({
                 orderBook
             }
         }
-        if (action.payload.orderBook) {
+        else if (action.payload.orderBook) {
             let orderBook = action.payload.orderBook;
             return {
                 ...state,
@@ -68,7 +66,7 @@ export const tradingReducer = handleActions({
     setDeals: (state, action) => {
 
         if (action.data) {
-      
+
             let deals = [...state.deals];
             let lastPrice = action.data.trade.price
             let info = action.data.header;
@@ -96,13 +94,11 @@ export const tradingReducer = handleActions({
             }
         }
         else if (action.payload.deals) {
-            let deals = [...state.deals];
-             deals = action.payload.deals;
-            //console.log(deals)
+            let deals = action.payload.deals;
             let lastPrice = action.payload.deals[0].price
             return {
                 ...state,
-                deals:deals,
+                deals,
                 lastPrice,
                 loadingDeals: false
             }
