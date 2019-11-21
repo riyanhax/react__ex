@@ -1,5 +1,6 @@
 import React from 'react';
 import './index.css';
+import Menu from 'cmp/accountMenu';
 
 export default (props) => {
     return (
@@ -22,8 +23,8 @@ export default (props) => {
                 <div className="header__account_contaier_pop_up">
                     <i className="fa fa-user-circle green__text"></i>
                     <div className="header__account_pop_up white__text">
-                        My Account
-                </div>
+                        <Menu/>
+                    </div>
                     <div>Logout</div>
                 </div>
                 <div className="header__lang_container">

@@ -12,7 +12,7 @@ import { history } from './history';
 import PrivateRoute from 'cmp/PrivateRoute';
 import { connect } from 'react-redux';
 import actions from "act/"
-
+import MarginTradingPage from 'pg/Account/marginTradingPage/';
 
 class App extends React.Component {
 
@@ -33,8 +33,8 @@ class App extends React.Component {
     //   .catch((e) => {
     //     console.log(e)
     //   });
-   // this.props.checkUser()
-   // this.props.loadPairs()
+    // this.props.checkUser()
+    // this.props.loadPairs()
   }
 
   render() {
@@ -45,7 +45,7 @@ class App extends React.Component {
       isAuthenticated = true;
     }
     let pairsRoutes = ""
-    
+
     if (!loadingPairs) {
       pairsRoutes = pairs.map((pair) => {
         return (
@@ -56,36 +56,37 @@ class App extends React.Component {
             isLoading={isLoading} />
         )
       })
-     
+
     }
 
 
     return (
 
-        <ConnectedRouter history={history}>
-          <Switch>
-            <Route path="/" exact>
-              <Homepage />
-            </Route>
-            <Route path="/account" exact>
-              <AccountPage/>
-            </Route>
-            <Route path="/login" exact>
-              <LoginPage />
-            </Route>
-            <Route path="/register" exact>
-              <RegistrationPage />
-            </Route>
-            <Route path="/recovery" exact>
-              <RecoveryPasswordPage />
-            </Route>
-            {pairsRoutes}
-            <Route path="**" exact>
+      <ConnectedRouter history={history}>
+        <Switch>
+          <Route path="/" exact>
+            <Homepage />
+          </Route>
+          <Route path="/account/">
+            <AccountPage />
+          </Route>
+          <Route path="/login" exact>
+            <LoginPage />
+          </Route>
+          <Route path="/register" exact>
+            <RegistrationPage />
+          </Route>
+          <Route path="/recovery" exact>
+            <RecoveryPasswordPage />
+          </Route>
+        
+          {pairsRoutes}
+          {/* <Route path="**" exact>
               <LoginPage/>
-            </Route>
-          
-          </Switch>
-        </ConnectedRouter >
+            </Route> */}
+
+        </Switch>
+      </ConnectedRouter >
 
     );
 

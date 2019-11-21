@@ -13,21 +13,38 @@ import DisableTwofaPage from 'pg/Account/disableTwofaPage/';
 import ChangePasswordPage from 'pg/Account/changePasswordPage/';
 import AuthenticatorsPage from 'pg/Account/authenticatorsPage/';
 import AccountSettingsPage from 'pg/Account/accountSettingsPage/';
+import { Router, Route, Switch } from "react-router";
 
 export default (props) => {
     return (
         <>
-            <Header/>
+            <Header />
             <div className="account__main_container">
                 <SideBar />
                 <div className="account_mid__container">
                     <LevelSecurity />
                     <div className="page__container">
-                    <AccountSettingsPage/>
+                  
+                        <Switch>
+                            <Route path="/account/" exact>
+                                <NewsPage />
+                            </Route>
+                            <Route path="/account/balance" exact>
+                                <MarginTradingPage />
+                            </Route>
+                            
+                            <Route path="/account/transactions/" exact>
+                                <TransationHistoryPage />
+                            </Route>
+                            <Route path="/account/settings/" exact>
+                                <AccountSettingsPage />
+                            </Route>
+                        </Switch>
+                   
                     </div>
                 </div>
             </div>
-            <Footer/>
+            <Footer />
         </>
     )
 }
