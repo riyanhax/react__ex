@@ -1,7 +1,7 @@
 
 import { createActions} from 'redux-actions';
 
-export const {loadOpenOrders, setOpenOrders, loadOrders, setOrderHistory, loadTradeHistory, setTradeHistory, removeOrder} = createActions({
+export const {loadOpenOrders, setOpenOrders, loadOrders, setOrderHistory, loadTradeHistory, setTradeHistory, removeOrder, filterHistory} = createActions({
     loadOpenOrders: () => ({  }),
     setOpenOrders: (items) => ({ items }), 
     loadOrders: () => ({ }), 
@@ -9,6 +9,7 @@ export const {loadOpenOrders, setOpenOrders, loadOrders, setOrderHistory, loadTr
     loadTradeHistory: () => ({ }), 
     setTradeHistory: (items) => ({ items }), 
     removeOrder: (id) => ({ id }), 
-       
+    filterHistory: (pair) => ({ pair }), 
   });
 
+  ``

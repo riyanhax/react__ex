@@ -36,5 +36,16 @@ export const historyReducer = handleActions({
             ...state,
             openOrdersItems
         }
+    },
+    filterHistory: (state, action) => {
+        let openOrdersItems = [...state.openOrdersItems];
+        let {pair} = action.payload;
+        openOrdersItems =openOrdersItems.filter(item => item.market == pair);
+        console.log(openOrdersItems)
+        return {
+            ...state,
+            openOrdersItems
+        }
     }
   }, InitailState);
+  

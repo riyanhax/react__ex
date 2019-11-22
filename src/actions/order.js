@@ -9,7 +9,7 @@ export const {makeOrder, makeOrderMarket, onChangeBuy, onChangeSell, onChangeMar
     makeOrder: (...args) => ({...args}),
     makeOrderMarket: (...args) => ({...args}),    
     setLabel: (base_unit,quote_unit) => ({base_unit,quote_unit}), 
-    changeFormPrice: (form, wallet) => ({form, wallet}),
+    changeFormPrice: (formName, wallet, e) => ({formName, wallet, e}),
     
   });
 

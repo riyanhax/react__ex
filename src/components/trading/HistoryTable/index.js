@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import { loadOpenOrders, loadOrders, loadTradeHistory, removeOrder } from "act/history"
+import { loadOpenOrders, loadOrders, loadTradeHistory, removeOrder, filterHistory  } from "act/history"
 import { useSelector, useDispatch } from "react-redux"
 import SimpleBarReact from "simplebar-react";
 import "simplebar/src/simplebar.css";
@@ -8,6 +8,7 @@ import "simplebar/src/simplebar.css";
 
 
 export default (props) => {
+const {pair} = props
 
   useEffect(() => {
     dispatch(loadOpenOrders());
@@ -27,8 +28,8 @@ export default (props) => {
   
   if (openOrders) {
     openOrdersList = openOrders.map((item) => {
-      let {id} = item;
-  
+      let { id } = item;
+
       return (
         <tr className="hovered" key={item.id}>
           <td className=""> {item.id}</td>
@@ -41,7 +42,7 @@ export default (props) => {
           <td className=""> {item.volume} </td>
           <td className="mint__text">{item.percents_volume}%</td>
           <td className="">
-            <div className="ex__table__close" onClick={()=>dispatch(removeOrder(id))}>
+            <div className="ex__table__close" onClick={() => dispatch(removeOrder(id))}>
               <i className="fa fa-times-circle"></i>
             </div>
           </td>
@@ -80,7 +81,7 @@ export default (props) => {
           <td className=""> {item.price} </td>
           <td className=""> {item.trades_count}</td>
           <td className=""> {item.volume} </td>
-         
+
         </tr>
       )
     })
@@ -88,11 +89,11 @@ export default (props) => {
 
   return (
     <div className="history__tabs gray">
-      <a className="history__tabs__hide flex__ac">
+      <a className="history__tabs__hide flex__ac" onClick={() => dispatch(filterHistory(pair))}>
         <i className="fa fa-eye-slash history__tabs__img"></i>
         <div className="history__tabs__hide__text">
           Hide Other Pairs
-               </div>
+        </div>
       </a>
       <Tabs>
         <TabList className="ex__tabs__links">

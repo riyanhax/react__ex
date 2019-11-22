@@ -3,7 +3,7 @@ import React from "react";
 
 export default (props) => {
   const { text, table, data, loading, colorHover, sibling } = props;
-
+ 
   let toggleHover = (e) => {
     e.currentTarget.style.background = colorHover;
     let el = e.currentTarget[sibling];

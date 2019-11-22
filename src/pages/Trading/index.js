@@ -15,7 +15,6 @@ import { Transition } from 'react-transition-group'
 import { connect } from "react-redux"
 import actions from "act/"
 import { history } from '../../history';
-import { ConnectedRouter } from 'connected-react-router';
 import Cable from "actioncable"
 
 
@@ -107,11 +106,13 @@ class Ex extends React.Component {
       limitFormDataSell, onChangeSell, onChangeBuy, handleSocketOrderBook,
       orderBook, deals, wallet, messages, makeMessage, info, lastPrice,
       marketFormDataBuy, marketFormDataSell, makeOrder, onChangeMarketBuy,
-      onChangeMarketSell, makeOrderMarket, changeFormPrice
+      onChangeMarketSell, makeOrderMarket, changeFormPrice, decimalSortValue,
+      handleChangeDecimal
     } = this.props;
+
+
     const { base_unit, quote_unit, pair } = history.location.state
 
-    console.log(limitFormDataSell)
     return (
 
       <section id="ex__page">
@@ -146,6 +147,7 @@ class Ex extends React.Component {
                     </div>
                     <HistoryTable
                       data={deals}
+                      pair={pair}
                     />
                   </div>
 
@@ -176,9 +178,10 @@ class Ex extends React.Component {
                           <div className="left__auto red__table__item3 gray__text">
                             grioups
                               </div>
-                          <select className="red__table__header__select">
-                            <option>8 decimals</option>
-                            <option>10 decimals</option>
+                          <select className="red__table__header__select" value={decimalSortValue} onChange={handleChangeDecimal}>
+                            <option value={0} >0 decimals</option>
+                            <option value={1} >1 decimals</option>
+                            <option value={2}>2 decimals</option>
                           </select>
                         </div>
                       </div>
@@ -205,15 +208,18 @@ class Ex extends React.Component {
 
                     </div>
                     <div className="green__table__header">
-                      <div className="flex__je__ac">
-                        <div className="green__table__header__item mint__text">
-                          0.0000000030
-                            </div>
-                        <img src="/assets/img/arr.png" />
-                        <div className="green__table__header__item2">
-                          $0.000029
+                      <div className="flex__jb__ac">
+                        {lastPrice ? (
+                          <div className={`green__table__header__item ${lastPrice.class}`}>
+                            {lastPrice.price}
+                            <i className={`fas ${lastPrice.arrow} ${lastPrice.class}`}></i>
                           </div>
-                        <img src="/assets/img/ind.png" className="green__table__header__ind" />
+                        ) : ("")}
+
+                        {/* <div className="green__table__header__item2">
+                          $0.000029
+                          </div> */}
+                          <i className="fas fa-signal"></i>
                       </div>
                     </div>
                     <div className={`grid__table green__table__cont ${this.state.gridTable}`}>
@@ -256,13 +262,14 @@ class Ex extends React.Component {
                         <div className="checkbox__text">Pay Az Tоkens</div>
                       </label>
                       <div className="flex__jb">
-
                         <OrderForm
                           limitFormData={limitFormDataBuy}
                           action="buy"
                           basePair={base_unit}
                           onChange={onChangeBuy}
                           makeOrder={makeOrder}
+                          formName={"limitFormDataBuy"}
+                          wallet={wallet}
                           changeFormPrice={changeFormPrice}
                           args={[limitFormDataBuy.price.value, limitFormDataBuy.amount.value, "buy", pair]}
                         />
@@ -273,8 +280,8 @@ class Ex extends React.Component {
                           basePair={base_unit}
                           onChange={onChangeSell}
                           makeOrder={makeOrder}
-                          form={"limitFormDataSell"}
-                          wallet = {wallet}
+                          formName={"limitFormDataSell"}
+                          wallet={wallet}
                           changeFormPrice={changeFormPrice}
                           args={[limitFormDataSell.price.value, limitFormDataSell.amount.value, "sell", pair]}
                         />
@@ -365,6 +372,7 @@ let mapStateToProps = (state) => {
     messages: state.chatReducer.messages,
     info: state.tradingReducer.info,
     lastPrice: state.tradingReducer.lastPrice,
+    decimalSortValue: state.tradingReducer.decimalSortValue,
   }
 };
 
@@ -385,7 +393,8 @@ let mapDispatchToProps = (dispatch) => {
     makeMessage: (text, lang) => dispatch(actions.chat.makeMessage(text, lang)),
     loadMessages: () => dispatch(actions.chat.loadMessages()),
     loadInfo: (pair) => dispatch(actions.info.loadInfo(pair)),
-    changeFormPrice: (form,wallet) => dispatch(actions.order.changeFormPrice(form,wallet))
+    changeFormPrice: (form, wallet, e) => dispatch(actions.order.changeFormPrice(form, wallet, e)),
+    handleChangeDecimal: (e) => dispatch(actions.trading.handleChangeDecimal(e))
   }
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Ex);

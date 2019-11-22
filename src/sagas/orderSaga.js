@@ -21,6 +21,7 @@ export function* orderSaga() {
   try {
     yield call(fetchOrderMarket, args);
   } catch (e) {
+  
     //yield put(actions.failOrder('Oups! Error occurs, please try again later.'));
   }
 }

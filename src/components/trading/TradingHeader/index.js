@@ -5,7 +5,7 @@ import Select from 'react-select'
 export default (props) => {
 
     let { pairs, pair, handleChangePairs, wallet, info, lastPrice } = props
- 
+
     const colourStyles = {
         control: (styles) => {
             return {
@@ -66,12 +66,13 @@ export default (props) => {
     let walletBaseLabel,
         walletQote,
         walletBase,
-        walletQoteLabel;
-
-    let min_price,
+        walletQoteLabel,
+        min_price,
         max_price,
         volume,
-        diff;
+        diff,
+        lastPriceValue,
+        lastPriceClass
 
     if (wallet) {
         walletBase = wallet[0].balance
@@ -85,9 +86,11 @@ export default (props) => {
         max_price = info.max_price
         volume = info.volume
         diff = info.diff
-        //diff = parseFloat(info.diff).toFixed(2);
     }
-
+    if(lastPrice){
+        lastPriceValue = lastPrice.price
+        lastPriceClass = lastPrice.class
+    }
     return (
         <div className="header__trading gray">
             <div className="container">
@@ -102,9 +105,9 @@ export default (props) => {
                             <div className="header__col__text gray__text">
                                 Last price
                                  </div>
-                            <div className="header__col__text">
-                                {lastPrice}
-                                 </div>
+                            <div className={`header__col__text ${lastPriceClass}`}>
+                                {lastPriceValue}
+                            </div>
                         </div>
                         <div className="header__col__inner">
                             <div className="header__col__text gray__text">

@@ -7,14 +7,14 @@ const InitailState = {
       vaild: false,
       value: "",
       name: "quote_unit",
-      type:"number",
+      type: "number",
       label: ""
     },
     amount: {
       vaild: false,
       value: "",
       name: "base_unit",
-      type:"number",
+      type: "number",
       label: ""
     },
     proc: ["25%", "50%", "75%", "100%"],
@@ -22,7 +22,7 @@ const InitailState = {
       vaild: false,
       value: "",
       name: "quote_unit",
-      type:"number",
+      type: "number",
       label: ""
     },
   },
@@ -32,14 +32,14 @@ const InitailState = {
       vaild: false,
       value: "",
       name: "quote_unit",
-      type:"number",
+      type: "number",
       label: ""
     },
     amount: {
       vaild: false,
       value: "",
       name: "base_unit",
-      type:"number",
+      type: "number",
       label: ""
     },
     proc: ["25%", "50%", "75%", "100%"],
@@ -47,7 +47,7 @@ const InitailState = {
       vaild: false,
       value: "",
       name: "quote_unit",
-      type:"number",
+      type: "number",
       label: ""
     },
   },
@@ -55,17 +55,17 @@ const InitailState = {
   marketFormDataBuy: {
     price: {
       vaild: false,
-      disabled:true,
+      disabled: true,
       value: "Market",
       name: "quote_unit",
-      type:"text",
+      type: "text",
       label: ""
     },
     amount: {
       vaild: false,
       value: "",
       name: "base_unit",
-      type:"number",
+      type: "number",
       label: ""
     },
     proc: ["25%", "50%", "75%", "100%"],
@@ -75,17 +75,17 @@ const InitailState = {
   marketFormDataSell: {
     price: {
       vaild: false,
-      disabled:true,
+      disabled: true,
       value: "Market",
       name: "quote_unit",
-      type:"text",
+      type: "text",
       label: ""
     },
     amount: {
       vaild: false,
       value: "",
       name: "base_unit",
-      type:"number",
+      type: "number",
       label: ""
     },
     proc: ["25%", "50%", "75%", "100%"],
@@ -171,12 +171,14 @@ export const orderReducer = handleActions({
     };
   },
   changeFormPrice: (state, action) => {
-   console.log(action)
-    //let formData = {...state[action.payload.form]}
-    //formData["price"].value =1;
+    let proc = parseInt(action.payload.e.target.value, 10);
+    let wallet = parseFloat(action.payload.wallet[0].balance);
+    let procValue = wallet / 100 * proc;
+    let formData = { ...state[action.payload.formName] }
+    formData["price"].value = procValue;
     return {
       ...state,
-     // [action.payload.form]:formData
+      [action.payload.formName]: formData
     }
   },
 }, InitailState);

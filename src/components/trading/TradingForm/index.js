@@ -2,17 +2,15 @@ import React from "react";
 
 export default function (props) {
 
-  const { action, limitFormData, onChange, basePair, makeOrder, args, changeFormPrice, form, wallet } = props;
+  const { action, limitFormData, onChange, basePair, makeOrder, args, changeFormPrice, formName, wallet } = props;
 
   let onSubmit = () => {
     event.preventDefault();
     makeOrder(...args);
     for (const key in limitFormData) {
-        limitFormData[key].value = ""; 
+      limitFormData[key].value = "";
     }
   }
-
-
 
   let formFields = [];
   for (let name in limitFormData) {
@@ -20,7 +18,7 @@ export default function (props) {
     if (name == "proc") {
       let buttons = limitFormData["proc"].map((el, i) => {
         return (
-          <input key={i} type="button" value={el} className="ex__form__btn l__gray" onClick = {(e) => changeFormPrice(form, wallet)} />
+          <input key={i} type="button" value={el} className="ex__form__btn l__gray" onClick={(e) => changeFormPrice(formName, wallet, e)} />
         )
       })
       formFields.push(

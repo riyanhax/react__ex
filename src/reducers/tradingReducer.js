@@ -1,4 +1,3 @@
-
 import { handleActions } from 'redux-actions';
 
 const InitailState = {
@@ -9,7 +8,12 @@ const InitailState = {
     orderBook: {},
     deals: [],
     info: {},
-    lstPrice: ""
+    lstPrice: {
+        price: "",
+        class: "",
+        arrow:""
+    },
+    decimalSortValue: 2
 }
 
 
@@ -27,7 +31,6 @@ export const tradingReducer = handleActions({
     setOrderBook: (state, action) => {
 
         if (action.data) {
-
             let orderBook = { ...state.orderBook };
             if (action.data.order_type == "OrderBid") {
                 if (action.data.is_cancel) {
@@ -35,7 +38,9 @@ export const tradingReducer = handleActions({
                     orderBook.bids.splice(index, 1);
                 }
                 else {
-                    orderBook.bids.unshift(action.data.order);
+                    orderBook.bids.unshift(action.data.order)
+                    orderBook.bids = orderBook.bids.slice(0, 20)
+
                 }
             }
             if (action.data.order_type == "OrderAsk") {
@@ -45,6 +50,7 @@ export const tradingReducer = handleActions({
                 }
                 else {
                     orderBook.asks.unshift(action.data.order);
+                    orderBook.asks = orderBook.asks.slice(0, 20)
                 }
             }
             return {
@@ -59,7 +65,6 @@ export const tradingReducer = handleActions({
                 orderBook,
                 loadingOrderBook: false,
             }
-
         }
 
     },
@@ -68,7 +73,18 @@ export const tradingReducer = handleActions({
         if (action.data) {
 
             let deals = [...state.deals];
-            let lastPrice = action.data.trade.price
+
+            let lastPrice = { ...state.lastPrice }
+            lastPrice.price = action.data.trade.price
+            if (action.data.trade.price > state.deals[0].price) {
+                lastPrice.class = "mint__text"
+                lastPrice.arrow = "fa-arrow-up"
+                
+            }
+            else {
+                lastPrice.class = "red__text"
+                lastPrice.arrow = "fa-arrow-down"
+            }
             let info = action.data.header;
 
             deals.unshift(action.data.trade);
@@ -95,7 +111,16 @@ export const tradingReducer = handleActions({
         }
         else if (action.payload.deals) {
             let deals = action.payload.deals;
-            let lastPrice = action.payload.deals[0].price
+            let lastPrice = { ...state.lastPrice }
+            lastPrice.price = action.payload.deals[0].price
+            if (action.payload.deals[0].price > action.payload.deals[1].price) {
+                lastPrice.class = "mint__text"
+                lastPrice.arrow = "fa-arrow-up"
+            }
+            else {
+                lastPrice.class = "red__text"
+                lastPrice.arrow = "fa-arrow-down"
+            }
             return {
                 ...state,
                 deals,
@@ -110,5 +135,38 @@ export const tradingReducer = handleActions({
             ...state,
             info
         }
-    }
+    },
+    handleChangeDecimal: (state, action) => {
+        let value = action.payload.e.target.value
+        let orderBook = { ...state.orderBook };
+
+        orderBook.bids = orderBook.bids.map((item) => {
+            return (
+                {
+                    id: item.id,
+                    price: parseFloat(item.price).toFixed(value),
+                    volume: item.volume,
+                    locked: item.locked
+                }
+            )
+        });
+        orderBook.asks = orderBook.asks.map((item) => {
+            return (
+                {
+                    id: item.id,
+                    price: parseFloat(item.price).toFixed(value),
+                    volume: item.volume,
+                    locked: item.locked
+                }
+            )
+        });
+        return {
+            ...state,
+            decimalSortValue: value,
+            orderBook
+        }
+    },
+
+
+
 }, InitailState);
