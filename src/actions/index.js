@@ -6,7 +6,9 @@ import * as order from './order';
 import * as wallet from './wallet';
 import * as chat from './chat';
 import * as info from './info';
-import * as usersInfo from './homePage/totalUsers';
+import * as home from './homePage/home';
+import * as account from './accountPage/account';
+
 export default {
     trading,
     auth,
@@ -16,6 +18,7 @@ export default {
     wallet, 
     chat,
     info,
-    usersInfo
+    home,
+    account,
 }
 

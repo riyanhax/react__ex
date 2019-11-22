@@ -11,6 +11,12 @@
     padding-right: 10px;
 }
 
+.balances_table__actions_container{
+    display: flex;
+    justify-content: space-between;
+    color: white ;
+}
+
 table{
     border-collapse: collapse;
 }

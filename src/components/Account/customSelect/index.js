@@ -1,14 +1,16 @@
-import React from 'react';
+import React,{useEffect} from 'react';
 import Select from 'react-select';
 import './index.css';
+import { useSelector, useDispatch } from "react-redux";
+import actions from "act/";
 
 const options = [
-    { value: '1', label: 'BTC' },
-    { value: '2', label: 'ETH' },
-    { value: '3', label: 'XRP' },
-    { value: '4', label: 'BCH' },
-    { value: '5', label: 'LTC' },
-    { value: '6', label: 'EOS' },
+    {  kopa: 'BTC' },
+    {  label: 'ETH' },
+    {  label: 'XRP' },
+    {  label: 'BCH' },
+    { label: 'LTC' },
+    { label: 'EOS' },
     { value: '7', label: 'XLM' },
     { value: '8', label: 'XMR' },
     { value: '9', label: 'BNB' },
@@ -67,6 +69,25 @@ const customStyles = {
 };
 
 export default(props) => {
+   const dispatch = useDispatch();
+   useEffect(()=>{
+    dispatch(actions.account.getPublicCurrencies());
+   },[])
+
+   let publicCurrencies = useSelector(state => state.publicCurrenciesReducer.pubCurrencies);
+   let options;
+   console.log(publicCurrencies)
+   if(publicCurrencies){
+     options = publicCurrencies.map( (item)=>{
+        return(
+            {
+                    id:item.id,
+                    label:item.id.toUpperCase(),
+            }
+        );
+    })
+   }
+
     return(
         <>
             <div className='custom_select__container'>

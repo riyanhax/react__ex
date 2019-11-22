@@ -5,7 +5,7 @@ import Select from 'react-select'
 export default (props) => {
 
     let { pairs, pair, handleChangePairs, wallet, info } = props
- 
+
     const colourStyles = {
         control: (styles) => {
             return {
@@ -101,15 +101,15 @@ export default (props) => {
                         <div className="header__col__inner">
                             <div className="header__col__text gray__text">
                                 Last price
-                                 </div>
+                            </div>
                             <div className="header__col__text">
                                 0.0000000031
-                                 </div>
+                            </div>
                         </div>
                         <div className="header__col__inner">
                             <div className="header__col__text gray__text">
                                 Change
-                                </div>
+                            </div>
                             {diff > 0 ?
                                 <div className="header__col__text mint__text">
                                     {diff} %

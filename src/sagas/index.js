@@ -9,6 +9,8 @@ import {tradingWalletSaga} from './walletSaga'
 import {chatSaga, chatSocketSaga, chatMssagesSaga} from './chatSaga'
 import {tradingInfoSaga} from './infoSaga'
 import {totalUsersSaga} from './homePage/totalUsersSaga'
+import {getAccountCurrencySaga} from './accountPage/accountSaga'
+import {getPublicCurrencies} from './accountPage/publicCurrenciesSaga'
 
 export default function* rootSaga() {
     yield all([
@@ -28,6 +30,8 @@ export default function* rootSaga() {
         chatMssagesSaga(),
         tradingInfoSaga(),
         totalUsersSaga(),
+        getAccountCurrencySaga(),
+        getPublicCurrencies(),
     ]);
   }
 

@@ -6,12 +6,12 @@ import { fetchGetTotalUsers } from 'api/homePage/totalUsers'
 function* totalUsers() {
     try {
         const items = yield call(fetchGetTotalUsers);
-        yield put(actions.usersInfo.setTotalUsers(items));
+        yield put(actions.home.setTotalUsers(items));
     } catch (e) {
 
     }
 }
 
 export function* totalUsersSaga() {
-    yield takeEvery(actions.usersInfo.loadTotalUsers, totalUsers);
+    yield takeEvery(actions.home.loadTotalUsers, totalUsers);
 }

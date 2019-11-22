@@ -12,8 +12,7 @@ import Header from 'cmp/header/';
 import Footer from 'cmp/footer/';
 
 
-import { useSelector, useDispatch } from "react-redux"
-import { connect } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import actions from "act/";
 
 
@@ -24,7 +23,7 @@ export default () => {
       const dispatch = useDispatch();
 
       useEffect( () =>{
-        dispatch(actions.usersInfo.loadTotalUsers())
+        dispatch(actions.home.loadTotalUsers())
       },[]);
      
       let totalUsers = useSelector(state => state.TotalUsersReducer.totalUserData);

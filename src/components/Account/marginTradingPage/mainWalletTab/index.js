@@ -3,6 +3,23 @@ import BalancesTable from 'cmp/Account/marginTradingPage/balancesTable/';
 import './index.css';
 
 export default (props) => {
+    let balances = [
+        {
+            assets:'Bitcoin',
+            tricker:'BTC',
+            balance:'9.670192',
+            locked:'0',
+            total:'20392,12',
+        },
+        {
+            assets:'Bitcoin',
+            tricker:'BTC',
+            balance:'9.670192',
+            locked:'0',
+            total:'20392,12',
+        }
+        
+    ]
     return (
         <>
             <div className="main_wallet__tab_panel_top_line">
@@ -22,7 +39,7 @@ export default (props) => {
                     </div>
                 </div>
             </div>
-            <BalancesTable />
+            <BalancesTable balances={balances}/>
         </>
     );
 }
