@@ -2,6 +2,28 @@ import { handleActions } from 'redux-actions';
 
 
 const InitailState = {
+  status: {
+    limitFormDataBuy: {
+      text: "",
+      class: "",
+      icon:""
+    },
+    limitFormDataSell: {
+      text: "",
+      class: "",
+      icon:""
+    },
+    marketFormDataBuy: {
+      text: "",
+      class: "",
+      icon:""
+    },
+    marketFormDataSell: {
+      text: "",
+      class: "",
+      icon:""
+    }
+  },
   limitFormDataBuy: {
     price: {
       vaild: false,
@@ -181,4 +203,41 @@ export const orderReducer = handleActions({
       [action.payload.formName]: formData
     }
   },
+  failOrder: (state, action) => {
+    let status = { ...state.status };
+    status[action.payload.formName].text = "Failure"
+    status[action.payload.formName].class = "red__text"
+    status[action.payload.formName].icon = "fas fa-times-circle"
+    return {
+      ...state,
+      status
+    }
+
+  },
+
+  successOrder: (state, action) => {
+
+    let status = { ...state.status };
+    status[action.payload.formName].text = "Succes"
+    status[action.payload.formName].class = "mint__text"
+    status[action.payload.formName].icon = "fas fa-check-square"
+
+    return {
+      ...state,
+      status
+    }
+  },
+  clearOrder: (state, action) => {
+    let status = { ...state.status };
+    status[action.payload.formName].text = ""
+    status[action.payload.formName].class = ""
+    status[action.payload.formName].icon = ""
+    return {
+      ...state,
+      status
+    }
+  },
+
+
+
 }, InitailState);

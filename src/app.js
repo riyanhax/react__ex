@@ -12,11 +12,12 @@ import { history } from './history';
 import PrivateRoute from 'cmp/PrivateRoute';
 import { connect } from 'react-redux';
 import actions from "act/"
-import MarginTradingPage from 'pg/Account/marginTradingPage/';
+
 
 class App extends React.Component {
 
   componentDidMount() {
+
     // fetch(`api/v2/peatio/public/markets/ethusd/header_info`, {
     //   credentials: 'include',
 
@@ -46,8 +47,10 @@ class App extends React.Component {
     }
     let pairsRoutes = ""
 
-    if (!loadingPairs) {
+    if (pairs) {
+    
       pairsRoutes = pairs.map((pair) => {
+      
         return (
           <PrivateRoute path={`/trading/${pair.id}`}
             key={pair.id}

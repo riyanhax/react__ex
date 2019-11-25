@@ -8,7 +8,7 @@ const PrivateRoute = ({isAuthenticated,isLoading, ...props }) => {
     return <div>is loading...</div>
   }
   if (!isLoading && !isAuthenticated) {
-    return <Redirect to="/" />
+    return <Redirect to="/login" />
   }
   return <Route {...props}/>;
 };

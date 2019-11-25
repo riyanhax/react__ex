@@ -23,11 +23,20 @@ import Cable from "actioncable"
 class Ex extends React.Component {
 
   componentDidMount() {
+    // history.push(
+    //   {
+    //     state: {
+    //       base_unit: "bth",
+    //       quote_unit:"usd",
+    //       pair: "bthusd"
+    //     }
 
+    //   }
+    // )
     let { base_unit, quote_unit, pair } = history.location.state
 
 
-
+ 
     this.props.loadOrderBook(pair, base_unit, quote_unit);
     this.props.loadDeals(pair);
     this.props.setLabel(base_unit, quote_unit);
@@ -108,12 +117,12 @@ class Ex extends React.Component {
       orderBook, deals, wallet, messages, makeMessage, info, lastPrice,
       marketFormDataBuy, marketFormDataSell, makeOrder, onChangeMarketBuy,
       onChangeMarketSell, makeOrderMarket, changeFormPrice, decimalSortValue,
-      handleChangeDecimal
+      handleChangeDecimal, status
     } = this.props;
 
-
-    const { base_unit, quote_unit, pair } = history.location.state
-
+    
+    let { base_unit, quote_unit, pair } = history.location.state
+ 
     return (
 
       <section id="ex__page">
@@ -258,10 +267,10 @@ class Ex extends React.Component {
                     </TabList>
 
                     <TabPanel>
-                      <label className="checkbox ex__form__check">
+                      {/* <label className="checkbox ex__form__check">
                         <input type="checkbox" />
                         <div className="checkbox__text">Pay Az Tоkens</div>
-                      </label>
+                      </label> */}
                       <div className="flex__jb">
                         <OrderForm
                           limitFormData={limitFormDataBuy}
@@ -270,6 +279,7 @@ class Ex extends React.Component {
                           onChange={onChangeBuy}
                           makeOrder={makeOrder}
                           formName={"limitFormDataBuy"}
+                          status ={status["limitFormDataBuy"]}
                           wallet={wallet}
                           changeFormPrice={changeFormPrice}
                           args={[limitFormDataBuy.price.value, limitFormDataBuy.amount.value, "buy", pair]}
@@ -282,6 +292,7 @@ class Ex extends React.Component {
                           onChange={onChangeSell}
                           makeOrder={makeOrder}
                           formName={"limitFormDataSell"}
+                          status ={status["limitFormDataSell"]}
                           wallet={wallet}
                           changeFormPrice={changeFormPrice}
                           args={[limitFormDataSell.price.value, limitFormDataSell.amount.value, "sell", pair]}
@@ -290,10 +301,6 @@ class Ex extends React.Component {
                       </div>
                     </TabPanel>
                     <TabPanel>
-                      <label className="checkbox ex__form__check">
-                        <input type="checkbox" />
-                        <div className="checkbox__text">Pay Az Tоkens</div>
-                      </label>
                       <div className="flex__jb">
 
                         <OrderForm
@@ -302,6 +309,7 @@ class Ex extends React.Component {
                           basePair={base_unit}
                           onChange={onChangeMarketBuy}
                           makeOrder={makeOrderMarket}
+                          status ={status["marketFormDataBuy"]}
                           changeFormPrice={changeFormPrice}
                           args={["market", marketFormDataBuy.amount.value, "buy", pair]}
                         />
@@ -312,6 +320,7 @@ class Ex extends React.Component {
                           basePair={base_unit}
                           onChange={onChangeMarketSell}
                           makeOrder={makeOrderMarket}
+                          status ={status["marketFormDataSell"]}
                           changeFormPrice={changeFormPrice}
                           args={["market", marketFormDataSell.amount.value, "sell", pair]}
                         />
@@ -374,6 +383,7 @@ let mapStateToProps = (state) => {
     info: state.tradingReducer.info,
     lastPrice: state.tradingReducer.lastPrice,
     decimalSortValue: state.tradingReducer.decimalSortValue,
+    status: state.orderReducer.status,
   }
 };
 
@@ -384,7 +394,7 @@ let mapDispatchToProps = (dispatch) => {
     onChangeBuy: (e) => dispatch(actions.order.onChangeBuy(e)),
     onChangeMarketBuy: (e) => dispatch(actions.order.onChangeMarketBuy(e)),
     onChangeMarketSell: (e) => dispatch(actions.order.onChangeMarketSell(e)),
-    makeOrder: (...args) => dispatch(actions.order.makeOrder(...args)),
+    makeOrder: (price, amount, type, pair,formName) => dispatch(actions.order.makeOrder(price, amount, type, pair, formName)),
     makeOrderMarket: (...args) => dispatch(actions.order.makeOrderMarket(...args)),
     loadOrderBook: (pair) => dispatch(actions.trading.loadOrderBook(pair)),
     loadDeals: (pair) => dispatch(actions.trading.loadDeals(pair)),

@@ -1,6 +1,6 @@
 import { makeRequest } from "./makeRequest"
 
-export const fetchOrder = (args) => {
+export const fetchOrder = (price, amount, type, pair ) => {
 
     const init = {
         method: 'POST',
@@ -10,10 +10,10 @@ export const fetchOrder = (args) => {
         },
         body: JSON.stringify(
             {
-                market: args[3],
-                side: args[2],
-                volume: args[1],
-                price: args[0]
+                market: pair,
+                side: type,
+                volume: amount,
+                price
             }
         ),
     };
