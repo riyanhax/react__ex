@@ -60,6 +60,7 @@ table {
 
 .mainContainer {
   display: flex;
+  border-top: 4px solid black;
 }
 
 .rightLine {
@@ -70,6 +71,10 @@ table {
 .home__side {
   width: 290px;
   margin-right: 4px;
+}
+
+.home__side .container__logo{
+  font-family: 'DIN Pro Black';
 }
 
 .home__side__banner {
@@ -162,35 +167,27 @@ table {
   width: 100%;
 }
 
+.middleLeftContainer .container__logo{
+  font-family: 'DIN Pro Bold';
+}
+
+.middleRightContainer .container__logo{
+  font-family: 'DIN Pro Black';
+}
+
 .middleRightContainer {
   width: 330px;
 margin-left: 4px;
 }
 
-.outputFieldFlexCenter {
-  background: #161B29;
-  border-radius: 1px;
-  border: 1px solid #1F2535;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 254px;
-  height: 24px;
-  margin-bottom: 10px;
-}
 
-.TotalContainer {
-  padding: 28px 37px 13px 37px;
-  border-bottom: 4px black solid;
-}
 
 .middleLeftContainer_header {
   border-bottom: 4px solid black;
-  padding: .5em 1em .5em 1em;
   font-family: "DINPro-Medium";
   font-size: 13px;
-  line-height: 2.4em;
-  height: 100px;
+  line-height: 24px;
+  padding: 10px 25px 5px 25px;
 }
 
 .tradersAffiliatesTabContainer {
@@ -331,7 +328,7 @@ margin-left: 4px;
 
 .cryp_curr_con_table_list__link {
   height: 30px;
-  width: 83px;
+  width: 100px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -406,14 +403,10 @@ margin-left: 4px;
   text-align: center;
 }
 
-#home table {
-  margin-top: 20px;
-  margin-left: 13px;
-}
-
 .green {
   color: #17AC75;
 }
+
 
 
 th.cryp_curr_con_table_item {
@@ -425,20 +418,10 @@ td.cryp_curr_con_table_item {
   padding-bottom: 6px;
 }
 
-.table_pagination {
-  display: flex;
-  padding-top: 21px;
-  margin-right: 27px;
-}
+
 
 .under_content_link {
   margin-left: 30px;
-}
-
-.flexEnd {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
 }
 
 .az_news_undere_container {
@@ -446,6 +429,47 @@ td.cryp_curr_con_table_item {
   justify-content: flex-end;
   margin-right: 17px;
   margin-top: 30px;
+}
+
+.home_page__table_pagination_container{
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 30px;
+  margin-bottom: 10px;
+  margin-right: 10px;
+}
+
+.home_page__pagination_arrow_container{
+  display: flex;
+  justify-content: space-between;
+  width: 35px;
+  margin-right: 30px;
+  margin-left: 5px;
+}
+
+.dem_tred__text_under_line{
+  display: flex;
+  justify-content: space-between;
+  padding-left: 25px;
+  margin-top: 30px;
+  margin-bottom: 10px;
+  align-items: baseline;
+}
+
+.dem_tred__text_under_line .button_green{
+  width: 100px;
+}
+
+.az_dice__menu_container{
+  display: flex;
+  justify-content: space-between;
+  padding-left: 15px;
+  padding-right: 30px;
+  line-height: 24px;
+}
+
+.az_dice__select_container{
+  width: 115px;
 }
 
 .read_more_link {
@@ -511,39 +535,27 @@ th.dem_trad_con_tab_item:last-child {
   height: 312px;
 }
 
-.az_dice_top_panel {
-  display: flex;
-  justify-content: space-between;
-}
 
 .az_dice_panel_item {
   padding-right: 29px;
   width: 140px;
 }
 
-.az_dice_top_container {
-  font-size: 16px;
-  display: flex;
-  justify-content: space-between;
-  padding-bottom: 5px;
-  margin-top: 3px;
-  margin-right: 15px;
-}
+
 
 .out_put_field {
   border: 1px solid #1F2535;
-  padding: 1px 0 1px 7px;
+  padding: 1px 20px 1px 7px; 
 }
 
-.item_button_container {
+.az_dice__menu_buttons_container{
   display: flex;
-  height: 24px;
-  width: 146px;
   justify-content: space-between;
+  width: 125px;
 }
 
-.item_button_container .button_green {
-  width: 67px;
+.az_dice__menu_buttons_container .button_green{
+ width: 60px;
 }
 
 .az_dice_panel_item:last-child {
@@ -551,12 +563,12 @@ th.dem_trad_con_tab_item:last-child {
   align-items: center;
 }
 
-
-
 .az_dice_table {
   padding: 0px;
   margin: 20px 0px 0px 0px;
   background: #0B0F18;
+  line-height: 28px;
+
 }
 
 .az_dice_table_item {
@@ -895,6 +907,3 @@ text-align: right;
   width: 101px;
 }
 
-.az_dice_choice__container {
-  padding-left: 15px;
-}

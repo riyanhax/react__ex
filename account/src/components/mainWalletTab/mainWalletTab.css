@@ -1,0 +1,113 @@
+.main_wallet__tab_panel_top_line{
+    display: flex;
+    padding-left: 15px;
+    padding-bottom: 20px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.main_wallet__search_coin_input{
+    width: 191px;
+    background: #161B29;
+    border: 1px solid #404A62;
+    box-sizing: border-box;
+    border-radius: 1px;
+    font-size: 14px;
+    line-height: 24px;
+    color: #788096;
+    font-family: 'DIN Pro Bold';
+}
+
+.main_wallet__search_coin_input[type=text]{
+    padding-left: 10px;
+    padding-right: 30px;
+}
+
+.main_wallet__search_coin_input::placeholder{
+    letter-spacing: 1px;
+    color: #788096;
+}
+
+
+.main_wallet__right_col{
+    margin-right: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.main_wallet__right_col div:last-child{
+    margin-left: 20px;
+}
+
+.fa-search {
+    border: none;
+    position:relative;
+    right: 25px;
+}
+
+.main_wallet__checkbox_container{
+    margin-right: 10px;
+}
+
+.check_box__container {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    font-size: 14px;
+  }
+  
+  /* Hide the browser's default checkbox */
+  .check_box__container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+  
+  /* Create a custom checkbox */
+  .checkmark {
+    position: absolute;
+    top: 0;    
+    left: 10px;
+    height: 15px;
+    width: 15px;
+    background: #161B29;
+    border: 1px solid #404A62;
+  }
+  
+  
+  /* When the checkbox is checked, add a blue background */
+  .check_box__container input:checked ~ .checkmark {
+    background: #161B29;
+  }
+  
+  /* Create the checkmark/indicator (hidden when not checked) */
+  .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+  
+  /* Show the checkmark when checked */
+  .check_box__container input:checked ~ .checkmark:after {
+    display: block;
+  }
+  
+  /* Style the checkmark/indicator */
+  .check_box__container .checkmark:after {
+    left: 4px;
+    width: 5px;
+    height: 10px;
+    border: solid #788096;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }

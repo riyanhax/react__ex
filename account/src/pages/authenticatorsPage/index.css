@@ -1,0 +1,68 @@
+.authenticators_page__container{
+    border-top: 4px solid black;
+}
+
+.authenticators_page__text_headline{
+    margin-left: 15px;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    line-height: 24px;
+    color: white;
+    font-family: 'DINPRO-Black';
+}
+
+.authenticators_page__container .container__logo{
+    font-size: 14px;
+    line-height: 24px;
+    font-family: 'DINPRO-Black';
+    color: white;
+}
+
+.authenticators__text{
+    margin-left: 15px;
+    margin-right: 15px;
+    font-size: 14px;
+    line-height: 24px;
+    letter-spacing: 1px;
+    font-family: 'DINPRO-Black';
+}
+
+.authenticators_page__headline_container{
+    padding-bottom: 30px;
+    border-bottom: 4px solid black;
+}
+
+.authenticators__tab_list{
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row;
+    margin: 0;
+    padding: 0;
+    height: 30px;
+    list-style: none;
+    background: #0B0F18;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.authenticators__tab_list :first-child{
+    padding-left: 15px;
+}
+
+.authenticators__tab.react-tabs__tab--selected{
+    color: white;
+    background: #111622;
+}
+
+.authenticators__tab{
+    background: #0B0F18;
+    padding-right: 33px;
+    font-size: 14px;
+    line-height: 30px;
+    padding-left: 15px;
+    font-family: 'DIN Pro Bold';
+    width: 172px;
+    text-align: center;
+}
+

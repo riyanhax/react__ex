@@ -15,14 +15,14 @@ export default function AzDiceTable(){
                         <th className="az_dice_table_item">Profit</th>
                     </tr>
                     <tr>
-                        <td className="az_dice_table_item white">3856635308</td>
-                        <td className="az_dice_table_item white">21:18:39</td>
-                        <td className="az_dice_table_item white">BTC</td>
-                        <td className="az_dice_table_item white">Debble</td>
-                        <td className="az_dice_table_item white">0.00000328</td>
-                        <td className="az_dice_table_item white">{"<"}48</td>
-                        <td className="az_dice_table_item white">49.172</td>
-                        <td className="az_dice_table_item red">-0.00000328</td>
+                        <td className="az_dice_table_item white__text">3856635308</td>
+                        <td className="az_dice_table_item white__text">21:18:39</td>
+                        <td className="az_dice_table_item white__text">BTC</td>
+                        <td className="az_dice_table_item white__text">Debble</td>
+                        <td className="az_dice_table_item white__text">0.00000328</td>
+                        <td className="az_dice_table_item white__text">{"<"}48</td>
+                        <td className="az_dice_table_item white__text">49.172</td>
+                        <td className="az_dice_table_item red__text">-0.00000328</td>
                     </tr>
                 </tbody>
             </table>

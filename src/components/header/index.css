@@ -16,7 +16,7 @@
   .header__account_contaier_pop_up{
     display: flex;
     align-items: center;
-    width: 200px;
+    width: 210px;
     border-left: 1px solid black;
     border-right: 1px solid black;
     height: 100%;
@@ -51,7 +51,9 @@
   .header__account_pop_up{
     margin-left: 4px;
     margin-right: 5px;
-    width: 85px;
+    width: 90px;
+    box-sizing: border-box;
+
   }
   
   .header__account_contaier_pop_up div:last-child{

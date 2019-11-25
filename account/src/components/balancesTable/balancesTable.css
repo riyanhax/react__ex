@@ -1,0 +1,60 @@
+.balances_table{
+    background: #0B0F18;
+    width: 100%;
+}
+
+table{
+    border-collapse: collapse;
+}
+
+.balances_table__th_container{
+    letter-spacing: 1px;
+    line-height: 24px;
+}
+
+.balances_table__td_container{
+    letter-spacing: 1px;
+    line-height: 24px;
+}
+
+.balances_table__th_container th:first-child{
+    padding-left: 15px;
+    width: 165px;
+    text-align: left;
+}
+
+.balances_table__th_container th:last-child{
+    width: 200px;
+    padding-right: 0px;
+    text-align: center;
+}
+
+.balances_table__td_container td:first-child{
+    padding-left: 15px;
+    text-align: left;
+}
+
+.balances_table__td_container:hover{
+    background: #1F2535;
+}
+.balances_table__th{
+    margin-right: 30px;
+}
+
+.fa.fa-bitcoin{
+    padding-right: 5px;
+    color: #F7941D;
+}
+
+.balances_table__actions_table{
+    width: 200px;
+}
+
+.balances_table__td_container:nth-child(n+2):nth-child(-n+30){
+    text-align: center;
+}
+
+
+
+
+

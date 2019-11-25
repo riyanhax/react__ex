@@ -48,6 +48,12 @@ button {
     height: 24px;
     border-radius: 1px;
   }
+
+.button__green a{
+    font-family: 'DIN Pro Bold';
+    color: white;
+  }
+
   
   .button_gray{
     background: #788096;

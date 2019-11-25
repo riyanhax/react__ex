@@ -4,7 +4,9 @@ import Select from 'react-select'
 
 export default (props) => {
 
+
     let { pairs, pair, handleChangePairs, wallet, info, lastPrice } = props
+
 
     const colourStyles = {
         control: (styles) => {
@@ -107,12 +109,13 @@ export default (props) => {
                                  </div>
                             <div className={`header__col__text ${lastPriceClass}`}>
                                 {lastPriceValue}
+
                             </div>
                         </div>
                         <div className="header__col__inner">
                             <div className="header__col__text gray__text">
                                 Change
-                                </div>
+                            </div>
                             {diff > 0 ?
                                 <div className="header__col__text mint__text">
                                     {diff} %

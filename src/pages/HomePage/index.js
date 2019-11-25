@@ -1,4 +1,4 @@
-import React from 'react';
+import React ,{ useEffect } from 'react';
 import './index.css';
 import Slider from 'cmp/Homepage/slider/slider';
 import TradersAffilatesTab from 'cmp/Homepage/tradersAffilatesTab/tradersAffilatesTab';
@@ -7,10 +7,31 @@ import DemoTradConTable from 'cmp/Homepage/demoTradingContestsTable/demoTradingC
 import AzDiceTable from 'cmp/Homepage/azbitDiceTable/azbitDiceTable'
 import Select from 'react-select';
 import ValueSlider from 'cmp/Homepage/valueSlider/valueSlider';
+import TotalUser from 'cmp/Homepage/totalUsers/';
+import Header from 'cmp/header/';
+import Footer from 'cmp/footer/';
+
+
+import { useSelector, useDispatch } from "react-redux";
+import actions from "act/";
+
 
 
 
 export default () => {
+
+      const dispatch = useDispatch();
+
+      useEffect( () =>{
+        dispatch(actions.home.loadTotalUsers())
+      },[]);
+     
+      let totalUsers = useSelector(state => state.TotalUsersReducer.totalUserData);
+      let totalUsersList;
+      if(totalUsers){
+        totalUsersList = totalUsers;
+      }
+     
   const colourStyles = {
     control: (styles) => {
       return {
@@ -70,41 +91,16 @@ export default () => {
     'BTC', 'ETH', 'USDT'
   ]
   return (
-    <div className="App"  id="home">
-      <header className="header__homePage">
-        <div className="logo">
 
-        </div>
-
-        <div className="list">
-          <a href="#About">About</a>
-          <a href="#Wallet">Wallet</a>
-          <a href="#Exchange">Exchange</a>
-          <a href="#IEO">IEO</a>
-          <a href="#Loans">Loans</a>
-          <a href="#Games">Games</a>
-          <a href="#Tools">Tools</a>
-          <a href="#Affiliates">Affiliates</a>
-          <a href="#Contacts">Contacts</a>
-          <div className="globalLang">
-            <div>
-
-            </div>
-            <div>
-              En
-            </div>
-          </div>
-          <a href="#LogIn">Log in</a>
-          <a href="#SignIn">Sign in</a>
-        </div>
-      </header>
+    <div className="App" id="home">
+      <Header />
       <div className="mainContainer">
         <div className="home__side gray">
           <div className="home__side__assets">
             <div>
               <div className="container__logo">
                 <span className="white__text">TOP&nbsp;</span>
-                <span className="red__text">Assets</span>
+                <span className="red__text">ASSETS</span>
               </div>
               <div className="outputFieldFlex">
                 <div className="outputFieldFlex_space spacing1px">Bitcoin</div>
@@ -268,15 +264,14 @@ export default () => {
                 </div>
                 <div>
                   <CrypCurrConTable />
-                  <div className="flexEnd">
-                    <div className="table_pagination">
-                      <span className="white__text">Showing 1 to 5 of 2,482 entries&nbsp;</span>
+                  <div className="home_page__table_pagination_container">
+                    <div className="white__text">Showing 1 to 5 of 2,482 entries&nbsp;</div>
+                    <div className="home_page__pagination_arrow_container">
                       <i className="fa fa-arrow-left"></i>
-                      &nbsp;
-                              <i className="fa fa-arrow-right"></i>
-                      <div className="under_content_link">
-                        <a href="#allmarkets" className="page__link">All markets</a>
-                      </div>
+                      <i className="fa fa-arrow-right"></i>
+                    </div>
+                    <div>
+                      <a href="#allmarkets" className="page__link">All markets</a>
                     </div>
                   </div>
                 </div>
@@ -295,18 +290,19 @@ export default () => {
                   <DemoTradConTable />
                 </div>
                 <div className="dem_tred__text_under_line">
-                  <div className="d_t_c_but_container">
+                  <div>
                     <button className="button_green">TAKE PART!</button>
                   </div>
-                  <div className="table_pagination">
-                    <span className="white__text">Showing 1 to 5 of 2,482 entries&nbsp;</span>
-                    <i className="fa fa-arrow-left"></i>
-                    &nbsp;
-                              <i className="fa fa-arrow-right"></i>
-                    <div className="under_content_link">
-                      <a href="#moreContests" className="page__link">
-                        More contests
-                      </a>
+                  <div>
+                    <div className="home_page__table_pagination_container">
+                      <div className="white__text">Showing 1 to 5 of 2,482 entries&nbsp;</div>
+                      <div className="home_page__pagination_arrow_container">
+                        <i className="fa fa-arrow-left"></i>
+                        <i className="fa fa-arrow-right"></i>
+                      </div>
+                      <div>
+                        <a href="#allmarkets" className="page__link">More contests</a>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -316,37 +312,29 @@ export default () => {
                   <span className="white__text">AZBIT&nbsp;</span>
                   <span className="red__text">DICE</span>
                 </div>
-                <div className="flex">
-                  <div className="az_dice_choice__container">
-                    <div className="az_dice_top_container">
-                      <div className="az_dice_panel_item">Choose coin</div>
-                      <div className="az_dice_panel_item">Bet</div>
-                      <div className="az_dice_panel_item">Prize</div>
-                      <div className="az_dice_panel_item">Play now!</div>
-                    </div>
-                    <div className="az_dice_top_panel">
-                      <div className="az_dice_panel_item">
-                        <Select styles={colourStyles}></Select>
-                      </div>
-                      <div className="az_dice_panel_item">
-                        <div className="out_put_field white__text">
-                          0.01000000
-                                    </div>
-                      </div>
-                      <div className="az_dice_panel_item">
-                        <div className="out_put_field green">
-                          0.02000000
-                                    </div>
-                      </div>
-                      <div className="az_dice_panel_item">
-                        <div className="item_button_container">
-                          <button className="button_green">Roll >48</button>
-                          <button className="button_green">Roll {"<"}52</button>
-                        </div>
-                      </div>
+                <div className="az_dice__menu_container">
+                  <div className="az_dice__menu_item">
+                    <div>Choose coin</div>
+                    <div className="az_dice__select_container"> <Select styles={colourStyles}></Select></div>
+                  </div>
+                  <div className="az_dice__menu_item">
+                    <div>Bet</div>
+                    <div className="out_put_field white__text">0.01000000</div>
+                  </div>
+                  <div className="az_dice__menu_item">
+                    <div>Prize</div>
+                    <div className="out_put_field green__text">0.02000000</div>
+                  </div>
+                  <div className="az_dice__menu_item">
+                    <div>Play now!</div>
+                    <div className="az_dice__menu_buttons_container">
+                      <button className="button_green">Roll {'<'}48</button>
+                      <button className="button_green">Roll >52</button>
                     </div>
                   </div>
-                  <button className="button_green"> LOGIN TO PLAY</button>
+                  <div className="az_dice__menu_item">
+                    <button className="button_green">LOGIN TO PLAY</button>
+                  </div>
                 </div>
                 <AzDiceTable />
                 <div className="under_content_link">
@@ -504,18 +492,8 @@ export default () => {
 
             </div>
             <div className="middleRightContainer gray">
-              <div className="TotalContainer">
-                <div className="outputFieldFlexCenter">
-                  <span className="spacing1px">Total users: <span className="white__text spacing1px"> 8 009</span></span>
-                </div>
-                <div className="outputFieldFlexCenter">
-                  <span >Asstes: <span className="white__text spacing1px"> 29</span></span>
-                </div>
-                <div className="outputFieldFlexCenter">
-                  <span >Total trades: <span className="white__text spacing1px"> 2309</span></span>
-                </div>
-
-              </div>
+              
+              <TotalUser members={totalUsersList.members}  assets={totalUsersList.assets}  active_members={totalUsersList.active_members} />
               <div className="r_t_Banner">
                 <img width="100%" height="100%" alt="Banner" src="https://instagram.fhel5-1.fna.fbcdn.net/vp/74754b9082044f99c7c576346f670e16/5E5C4E26/t51.2885-15/e35/72409874_407973773221092_1227918890496072636_n.jpg?_nc_ht=instagram.fhel5-1.fna.fbcdn.net&_nc_cat=100" />
               </div>
@@ -594,63 +572,7 @@ export default () => {
           </div>
         </div>
       </div>
-      <footer className="home_page_footer">
-        <div className="container__logo white__text">
-          WE'RE SOCIAL
-        </div>
-        <div className="footer_col_container">
-          <div className="footer_column">
-            <div className="footer__social_icons">
-              <i className="fa fa-twitter"></i>
-              <i className="fa fa-facebook-f"></i>
-              <i className="fa fa-youtube"></i>
-              <i className="fa fa-instagram"></i>
-              <i className="fa fa-red__textdit-alien"></i>
-              <i className="fa fa-medium"></i>
-            </div>
-            <div className="footer_left_column_text_container">
-              <div className="footer_text">(c) 2018-2019 AZBIT GLOBAL LTD</div>
-              <div className="footer_text dark_grey">Disclaimer  -  AML Policy</div>
-              <div className="footer_text dark_grey">Privacy Policy - Terms of Use</div>
-            </div>
-            <div className="footer_img_container">
-              <div className="footer_img"></div>
-              <div className="footer_img"></div>
-            </div>
-          </div>
-          <div className="footer_column">
-            <div className="footer__mid_container">
-              <div className="footer__mid_container_item">
-                <div className="footer_text">List your IEO/Asset</div>
-                <div className="footer_text">Affiliates</div>
-                <div className="footer_text">Fees</div>
-                <div className="footer_text">Developer</div>
-                <div className="footer_text">OTS trades</div>
-              </div>
-              <div className="footer__mid_container_item">
-                <div className="footer_text">Contact Us</div>
-                <div className="footer_text">Azbit Ambassador</div>
-                <div className="footer_text">AZ contract</div>
-                <div className="footer_text">Sitemap</div>
-              </div>
-            </div>
-          </div>
-          <div className="footer_column">
-            <div className="footer_text">Azbit is a part of global financial ecosystem.
-                                          Aenean euismod bibendum laoreet.
-                                          Proin gravida dolor sit amet lacus accumsan et viverra justo commodo.
-                                          Proin sodales pulvinar sic tempor.
-            </div>
-            <div className="footer_text dark_grey">
-              Read more on Azbit ideology
-            </div>
-            <div className="footer_text">
-              Gaming services provided by AZ Play Ltd. Gambling license pending.
-            </div>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }
-

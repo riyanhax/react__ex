@@ -1,0 +1,39 @@
+.pop_up_menu__head{
+    position: relative;
+}
+
+.pop_up_menu__container{
+  visibility: hidden;
+  width: 180px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  top: 20px;
+  left: -40px;
+}
+
+.pop_up_menu__head:hover .pop_up_menu__container{
+    visibility: visible;
+    border: 1px solid #1F2535;
+    border-radius: 1px;
+    background: #111622;
+    padding: 10px 10px 15px 10px;
+    text-align: left;
+    font-size: 14px;
+    line-height: 24px;
+    
+}
+
+
+.pop_up_menu__link a{
+    font-family: 'DIN Pro Bold';
+    color: white;
+}
+
+
+.pop_up_menu__link a:hover{
+    color: #17AC75;
+}
