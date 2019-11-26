@@ -104,8 +104,6 @@ class Ex extends React.Component {
 
   render() {
 
-
- 
     const { pairs, loadingDeals, loadingOrderBook, limitFormDataBuy,
       limitFormDataSell, onChangeSell, onChangeBuy, handleSocketOrderBook,
       orderBook, deals, wallet, messages, makeMessage, info, lastPrice,
@@ -117,6 +115,7 @@ class Ex extends React.Component {
     
  
  
+
     return (
 
       <section id="ex__page">

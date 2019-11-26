@@ -13,5 +13,6 @@ export const {makeOrder, failOrder, clearOrder, successOrder, makeOrderMarket, o
     makeOrderMarket: (...args) => ({...args}),    
     setLabel: (base_unit,quote_unit) => ({base_unit,quote_unit}), 
     changeFormPrice: (formName, wallet, e) => ({formName, wallet, e}),
+
   });
 

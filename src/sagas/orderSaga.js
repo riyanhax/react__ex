@@ -5,39 +5,40 @@ import { store } from '../store';
 
 function* makeOrder({ payload: { price, amount, type, pair, formName } }) {
 
-  try {
-    const resp = yield call(fetchOrder, price, amount, type, pair);
+    try {
 
-    if (resp["errors"]) {
-      yield put(actions.order.failOrder(formName))
+      const resp = yield call(fetchOrder, price, amount, type, pair);
+
+      if (resp["errors"]) {
+        yield put(actions.order.failOrder(formName))
+      }
+      else {
+        yield put(actions.order.successOrder(formName))
+      }
+      setTimeout(() => {
+        store.dispatch(actions.order.clearOrder(formName))
+      }, 2200)
+
+
+    } catch (e) {
+
     }
-    else {
-      yield put(actions.order.successOrder(formName))
+  }
+
+  export function* orderSaga() {
+    yield takeEvery(actions.order.makeOrder, makeOrder);
+  }
+
+  function* makeOrdMarket({ payload: { ...args } }) {
+    try {
+      yield call(fetchOrderMarket, args);
+    } catch (e) {
+
+
     }
-    setTimeout(() => {
-      store.dispatch(actions.order.clearOrder(formName))
-    }, 2200)
-
-  } catch (e) {
-
   }
-}
 
-export function* orderSaga() {
-  yield takeEvery(actions.order.makeOrder, makeOrder);
-}
-
-
-
-function* makeOrdMarket({ payload: { ...args } }) {
-  try {
-    yield call(fetchOrderMarket, args);
-  } catch (e) {
-
+  export function* orderMarketSaga() {
+    yield takeEvery(actions.order.makeOrderMarket, makeOrdMarket);
   }
-}
-
-export function* orderMarketSaga() {
-  yield takeEvery(actions.order.makeOrderMarket, makeOrdMarket);
-}
 

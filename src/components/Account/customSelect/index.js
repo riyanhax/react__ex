@@ -5,19 +5,6 @@ import './index.css';
 import { useSelector, useDispatch } from "react-redux";
 import actions from "act/";
 
-const options = [
-    {  kopa: 'BTC' },
-    {  label: 'ETH' },
-    {  label: 'XRP' },
-    {  label: 'BCH' },
-    { label: 'LTC' },
-    { label: 'EOS' },
-    { value: '7', label: 'XLM' },
-    { value: '8', label: 'XMR' },
-    { value: '9', label: 'BNB' },
-    { value: '10', label: 'BSV' },
-  ];
-
 const customStyles = {
     option: (provided, state) => ({
       ...provided,
@@ -70,30 +57,13 @@ const customStyles = {
 };
 
 export default(props) => {
-   const dispatch = useDispatch();
-   useEffect(()=>{
-    dispatch(actions.account.getPublicCurrencies());
-   },[])
 
-   let publicCurrencies = useSelector(state => state.publicCurrenciesReducer.pubCurrencies);
-   let options;
-   console.log(publicCurrencies)
-   if(publicCurrencies){
-     options = publicCurrencies.map( (item)=>{
-        return(
-            {
-                    id:item.id,
-                    label:item.id.toUpperCase(),
-            }
-        );
-    })
-   }
-
+    let select =  <Select  styles ={customStyles} options={props.options}  defaultValue={props.defaultValue} onChange={props.handleChangeCurrency}/>;
 
     return(
         <>
             <div className='custom_select__container'>
-                <Select  styles ={customStyles} options={options}/>
+                {select}
             </div>
         </>
     );

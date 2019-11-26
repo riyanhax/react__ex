@@ -7,6 +7,7 @@ export default function (props) {
   let onSubmit = () => {
     event.preventDefault();
     makeOrder(...args, formName);
+
     for (const key in limitFormData) {
       limitFormData[key].value = "";
     }

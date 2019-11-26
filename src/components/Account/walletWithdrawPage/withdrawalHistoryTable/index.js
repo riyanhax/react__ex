@@ -1,8 +1,17 @@
-import React from 'react';
+import React,{ useEffect }  from 'react';
 import './index.css';
 import Pagination from 'cmp/Account/pagination/';
 
+import { useSelector, useDispatch } from "react-redux";
+import actions from "act/";
+
 export default (props) => {
+
+    const dispatch = useDispatch();
+    useEffect(()=>{
+        dispatch(actions.account.getWithdrawsHistory());
+    },[])
+    
     let dropHandleClick = event => {
         if(event.currentTarget.previousSibling.classList.contains('show')){
             event.currentTarget.previousSibling.classList.remove('show');

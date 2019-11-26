@@ -61,6 +61,7 @@ class App extends React.Component {
               pair={pair.id}
             />
           </PrivateRoute>
+
         )
       })
 
@@ -68,6 +69,7 @@ class App extends React.Component {
 
 
     return (
+
 
       <ConnectedRouter history={history}>
         <Switch>

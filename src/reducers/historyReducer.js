@@ -2,7 +2,6 @@
 import { handleActions } from 'redux-actions';
 
 const InitailState = {
-
 }
 
 export const historyReducer = handleActions({
@@ -21,7 +20,6 @@ export const historyReducer = handleActions({
         }
     },
     setTradeHistory: (state, action) => {
-
         let tradeHistoryItems = action.payload.items;
         return {
             ...state,
@@ -38,6 +36,7 @@ export const historyReducer = handleActions({
         }
     },
     filterHistory: (state, action) => {
+
         let { pair, items } = action.payload;
         let historyData = [...state[items]];
         historyData = historyData.filter(item => item.market == pair);
@@ -47,3 +46,4 @@ export const historyReducer = handleActions({
         }
     }
 }, InitailState);
+

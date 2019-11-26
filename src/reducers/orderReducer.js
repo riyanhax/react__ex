@@ -203,6 +203,7 @@ export const orderReducer = handleActions({
       [action.payload.formName]: formData
     }
   },
+
   failOrder: (state, action) => {
     let status = { ...state.status };
     status[action.payload.formName].text = "Failure"
@@ -237,7 +238,6 @@ export const orderReducer = handleActions({
       status
     }
   },
-
 
 
 }, InitailState);
