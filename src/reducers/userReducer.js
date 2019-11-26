@@ -24,7 +24,7 @@ export  const userReducer = handleActions({
     failUser: (state) => {
         return {
             ...state,
-            isLoading:false,
+            isLoading:true,
         };
     }
   }, InitailState);

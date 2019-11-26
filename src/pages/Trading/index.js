@@ -7,7 +7,7 @@ import Options from 'cmp/trading/Options'
 import SideMenu from 'cmp/trading/SideMenu'
 import OrderBook from 'cmp/trading/OrderBook/'
 import ExHeader from 'cmp/trading/TradingHeader'
-import HistoryTable from 'cmp/trading/HistoryTable'
+import History from 'cmp/trading/History'
 import Deals from 'cmp/trading/Deals'
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import { BrowserRouter as Router, Route, Switch, NavLink } from 'react-router-dom';
@@ -23,6 +23,7 @@ import Cable from "actioncable"
 class Ex extends React.Component {
 
   componentDidMount() {
+   
     // history.push(
     //   {
     //     state: {
@@ -33,11 +34,9 @@ class Ex extends React.Component {
 
     //   }
     // )
-    let { base_unit, quote_unit, pair } = history.location.state
+    let { base_unit, quote_unit, pair } = this.props
 
-
- 
-    this.props.loadOrderBook(pair, base_unit, quote_unit);
+    this.props.loadOrderBook(pair);
     this.props.loadDeals(pair);
     this.props.setLabel(base_unit, quote_unit);
     this.props.handleSocketOrderBook(pair, base_unit, quote_unit, this.state.cable);
@@ -95,13 +94,8 @@ class Ex extends React.Component {
   handleChangePairs = (e) => {
     this.state.cable.subscriptions.consumer.disconnect();
     let pair = e.value
-    let base_unit = e.base_unit
-    let quote_unit = e.quote_unit
     history.push(
-      { pathname: `/trading/${pair}` },
-      {
-        pair, base_unit, quote_unit
-      }
+      { pathname: `/trading/${pair}` }
     )
   }
 
@@ -111,17 +105,17 @@ class Ex extends React.Component {
   render() {
 
 
-
+ 
     const { pairs, loadingDeals, loadingOrderBook, limitFormDataBuy,
       limitFormDataSell, onChangeSell, onChangeBuy, handleSocketOrderBook,
       orderBook, deals, wallet, messages, makeMessage, info, lastPrice,
       marketFormDataBuy, marketFormDataSell, makeOrder, onChangeMarketBuy,
       onChangeMarketSell, makeOrderMarket, changeFormPrice, decimalSortValue,
-      handleChangeDecimal, status
+      handleChangeDecimal, status, base_unit, pair
     } = this.props;
 
     
-    let { base_unit, quote_unit, pair } = history.location.state
+ 
  
     return (
 
@@ -155,8 +149,7 @@ class Ex extends React.Component {
                         pair={pair}
                       />
                     </div>
-                    <HistoryTable
-                      data={deals}
+                    <History
                       pair={pair}
                     />
                   </div>

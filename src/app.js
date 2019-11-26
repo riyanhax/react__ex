@@ -40,7 +40,7 @@ class App extends React.Component {
 
   render() {
     let isAuthenticated = false;
-    let { isLoading, data, pairs, loadingPairs } = this.props;
+    let { isLoading, data, pairs } = this.props;
 
     if (data) {
       isAuthenticated = true;
@@ -48,15 +48,19 @@ class App extends React.Component {
     let pairsRoutes = ""
 
     if (pairs) {
-    
+
       pairsRoutes = pairs.map((pair) => {
-      
         return (
           <PrivateRoute path={`/trading/${pair.id}`}
             key={pair.id}
-            component={Trading} isAuthenticated={isAuthenticated}
-
-            isLoading={isLoading} />
+            isAuthenticated={isAuthenticated}
+            isLoading={isLoading}>
+            <Trading
+              base_unit={pair.base_unit}
+              quote_unit={pair.quote_unit}
+              pair={pair.id}
+            />
+          </PrivateRoute>
         )
       })
 
@@ -64,7 +68,6 @@ class App extends React.Component {
 
 
     return (
-
 
       <ConnectedRouter history={history}>
         <Switch>
@@ -83,7 +86,6 @@ class App extends React.Component {
           <Route path="/recovery" exact>
             <RecoveryPasswordPage />
           </Route>
-
           {pairsRoutes}
           <Route path="**" exact>
             <LoginPage />

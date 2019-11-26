@@ -9,7 +9,7 @@ class LoginPage extends React.Component {
     componentDidMount() {
     
         //  this.props.login("admin@barong.io", "0lDHd9ufs9t@")
-        this.props.loadPairs()
+     
     }
     onSUbmit = (event) => {
         event.preventDefault();
@@ -24,7 +24,7 @@ class LoginPage extends React.Component {
     }
     render() {
       
-        // console.log(this.props.formData.email.value)
+
         const { formData } = this.props;
         return (
             <section id="authForm">
@@ -69,7 +69,6 @@ let mapDispatchToProps = (dispatch) => {
 
     return {
         login: (email, password, initPair) => dispatch(actions.auth.login(email, password, initPair)),
-        loadPairs: () => dispatch(actions.trading.loadPairs()),
     }
 };
 export default connect(mapStateToProps, mapDispatchToProps)(LoginPage);

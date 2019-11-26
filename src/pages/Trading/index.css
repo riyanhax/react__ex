@@ -477,6 +477,7 @@
   position: absolute;
   right: 19px;
   top: 2px;
+  cursor: pointer;
 }
 
 .history__tabs__img {

@@ -8,10 +8,10 @@ export const makeRequest = async (url, init) => {
             url,
             init
         );
-        if (response.status === 422) {
-         
+        if (response.status === 401) {
+            store.dispatch(failUser()); //dispatch logout for each 401 Unauthorized
         }
-        const json = await response.json(); 
+        const json = await response.json();
         return json
 
     } catch (error) {

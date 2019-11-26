@@ -9,7 +9,7 @@ export const {loadOpenOrders, setOpenOrders, loadOrders, setOrderHistory, loadTr
     loadTradeHistory: () => ({ }), 
     setTradeHistory: (items) => ({ items }), 
     removeOrder: (id) => ({ id }), 
-    filterHistory: (pair) => ({ pair }), 
+    filterHistory: (pair, items) => ({ pair, items }), 
   });
 
-  ``
+  
