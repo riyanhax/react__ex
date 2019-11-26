@@ -41,8 +41,8 @@ class App extends React.Component {
   render() {
     let isAuthenticated = false;
     let { isLoading, data, pairs } = this.props;
-
-    if (data) {
+   
+    if (data.uid) {
       isAuthenticated = true;
     }
     let pairsRoutes = ""
