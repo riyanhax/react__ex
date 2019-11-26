@@ -25,6 +25,7 @@ function* tradingOrderBook({ payload: { pair } }) {
   try {
     const orderBook = yield call(fetchOrderBook, pair)
     yield put(actions.trading.setOrderBook(orderBook))
+    
   }
   catch (error) {
 
@@ -60,6 +61,7 @@ export function* tradingDealsSaga() {
 
 
 function* createEventOrderBook(cable, pair) {
+
   let { setOrderBook } = actions.trading;
   return eventChannel(emit => {
     cable.subscriptions.create({
@@ -68,6 +70,7 @@ function* createEventOrderBook(cable, pair) {
     }, {
 
       received: (data) => {
+    
         return emit({ type: setOrderBook, data });
       },
 
@@ -79,12 +82,15 @@ function* createEventOrderBook(cable, pair) {
 }
 
 
-function* OrderBookWatcher({ payload: { pair, cable } }) {
+function* OrderBookWatcher({ payload: { pair, base_unit, quote_unit, cable } }) {
 
   let orderBookChanel = yield call(createEventOrderBook, cable, pair);
   while (true) {
     const orderBookAction = yield take(orderBookChanel);
     yield put(orderBookAction);
+    yield put(actions.history.loadOpenOrders());
+    yield put(actions.wallet.loadWallet(base_unit, quote_unit));
+    yield put(actions.history.loadOrders());
   }
 }
 export function* orderBookSocketSaga() {
@@ -102,6 +108,7 @@ function* createEventDeals(cable, pair) {
     }, {
 
       received: (data) => {
+        console.log(data)
         return emit({ type: setDeals, data });
       },
 
@@ -120,6 +127,7 @@ function* dealsWatcher({ payload: { pair, cable } }) {
   while (true) {
     const dealsAction = yield take(dealsChanel);
     yield put(dealsAction);
+    yield put(actions.history.loadTradeHistory());
   }
 }
 export function* dealsSocketSaga() {

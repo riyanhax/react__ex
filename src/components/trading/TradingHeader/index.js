@@ -4,7 +4,9 @@ import Select from 'react-select'
 
 export default (props) => {
 
-    let { pairs, pair, handleChangePairs, wallet, info } = props
+
+    let { pairs, pair, handleChangePairs, wallet, info, lastPrice } = props
+
 
     const colourStyles = {
         control: (styles) => {
@@ -66,12 +68,13 @@ export default (props) => {
     let walletBaseLabel,
         walletQote,
         walletBase,
-        walletQoteLabel;
-
-    let min_price,
+        walletQoteLabel,
+        min_price,
         max_price,
         volume,
-        diff;
+        diff,
+        lastPriceValue,
+        lastPriceClass
 
     if (wallet) {
         walletBase = wallet[0].balance
@@ -85,11 +88,13 @@ export default (props) => {
         max_price = info.max_price
         volume = info.volume
         diff = info.diff
-        //diff = parseFloat(info.diff).toFixed(2);
     }
-
+    if(lastPrice){
+        lastPriceValue = lastPrice.price
+        lastPriceClass = lastPrice.class
+    }
     return (
-        <div className="header gray">
+        <div className="header__trading gray">
             <div className="container">
                 <div className="flex">
                     <div className="header__col__logo">
@@ -101,9 +106,10 @@ export default (props) => {
                         <div className="header__col__inner">
                             <div className="header__col__text gray__text">
                                 Last price
-                            </div>
-                            <div className="header__col__text">
-                                0.0000000031
+                                 </div>
+                            <div className={`header__col__text ${lastPriceClass}`}>
+                                {lastPriceValue}
+
                             </div>
                         </div>
                         <div className="header__col__inner">
@@ -147,7 +153,7 @@ export default (props) => {
                     </div>
 
                     <div className="header__col  cur__col" >
-                        <div className="fac">
+                        <div className="flex__ac__100">
                             <img src="/assets/img/car__img.png" className="header__col__cur__img" />
                             <div className="header__col_cur__text">
                                 {select}
@@ -156,7 +162,7 @@ export default (props) => {
 
                     </div>
                     <div className="header__col">
-                        <div className="fac">
+                        <div className="flex__ac__100">
                             <i className="fa fa-wallet header__col__img"></i>
                             <div>
                                 <div className="header__col__text">
@@ -170,7 +176,7 @@ export default (props) => {
                         </div>
                     </div>
                     <div className="header__col">
-                        <div className="fac">
+                        <div className="flex__ac__100">
                             <i className="fas fa-user-circle header__col__login__img mint__text"></i>
                             <NavLink className="header__col__logout gray__text" to="/" exact >
                                 My Account&nbsp;
@@ -182,7 +188,7 @@ export default (props) => {
                     </div>
 
                     <div className="header__col">
-                        <div className="fac">
+                        <div className="flex__ac__100">
                             <i className="fa fa-globe-americas header__col__img"></i>
                             <a href="" className="header__col__lang">ENGLISH</a>
                         </div>

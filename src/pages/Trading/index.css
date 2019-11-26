@@ -41,6 +41,7 @@
 
 .grid__table {
   height: 50%;
+  overflow: hidden;
 }
 
 .h__100 {
@@ -55,6 +56,7 @@
   font-size: 14px;
   line-height: 24px;
   font-weight: 700;
+  overflow: hidden;
 }
 
 #ex__page a {
@@ -181,7 +183,9 @@
   padding-left: 6px;
   margin-left: 16px;
 }
-
+.ex__form__input:disabled{
+  color: #788096;
+}
 .header__col:last-child {
   border-right: none
 }
@@ -218,6 +222,7 @@
   color: #fff;
   font-size: 16px;
   margin-top: 13px;
+  text-transform: capitalize;
 }
 
 .ex__form__submit span {
@@ -372,11 +377,11 @@
   border-radius: 1px;
 }
 
-.ex__form__submit.Sell {
+.ex__form__submit.sell {
   background: #EA0038;
 }
 
-.ex__form__submit.Buy {
+.ex__form__submit.buy {
   background: #17AC75;
 }
 
@@ -642,7 +647,7 @@
   border-bottom: 1px solid #111622;
 }
 
-.history__table tr:hover {
+.history__table .hovered:hover{
   background: #1F2535;
 }
 

@@ -1,24 +1,17 @@
 
 import { handleActions } from 'redux-actions';
-import { setOpenOrders, loadOpenOrders, setOrderHistory } from '../actions/history';
+
 const InitailState = {
-    loading: true
-}
-
-function onLoad(state, payload) {
-
-    return {
-        ...state,
-        loading: false,
-        payload,
-
-    };
+  
 }
 
 export const historyReducer = handleActions({
     setOpenOrders: (state, action) => {
-
-        return onLoad(state, action.payload.items);
+        let openOrdersItems = action.payload.items;
+        return {
+            ...state,
+            openOrdersItems
+        }
     },
     setOrderHistory: (state, action) => {
         let orderHistoryItems = action.payload.items;
@@ -26,5 +19,33 @@ export const historyReducer = handleActions({
             ...state,
             orderHistoryItems
         }
+    },
+    setTradeHistory: (state, action) => {
+      
+        let tradeHistoryItems = action.payload.items;
+        return {
+            ...state,
+            tradeHistoryItems
+        }
+    },
+    removeOrder: (state, action) => {
+        let openOrdersItems = [...state.openOrdersItems];
+        let index = openOrdersItems.findIndex(x => x.id === action.payload.id);
+        openOrdersItems.splice(index, 1);
+        return {
+            ...state,
+            openOrdersItems
+        }
+    },
+    filterHistory: (state, action) => {
+        let openOrdersItems = [...state.openOrdersItems];
+        let {pair} = action.payload;
+        openOrdersItems =openOrdersItems.filter(item => item.market == pair);
+        console.log(openOrdersItems)
+        return {
+            ...state,
+            openOrdersItems
+        }
     }
   }, InitailState);
+  

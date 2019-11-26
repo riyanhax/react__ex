@@ -1,20 +1,51 @@
-import React from 'react';
+import React,{useEffect} from 'react';
 import './index.css';
 import CustomSelect from 'cmp/Account/customSelect/';
+import { useSelector, useDispatch } from "react-redux";
+import actions from "act/";
 
 export default  (props)=>{
+    let dispatch = useDispatch();
+
+useEffect(()=>{
+    dispatch(actions.account.getPublicCurrencies());
+   },[])
+
+   let publicCurrencies = useSelector(state => state.publicCurrenciesReducer.pubCurrencies);
+   let options;
+   let customSelect;
+   let handleChangeCurrency = (e) =>{
+        dispatch(actions.account.getWalletAddress(e.id));
+    }
+
+   if(publicCurrencies){
+     options = publicCurrencies.map( (item)=>{
+        return(
+            {
+                    id:item.id,
+                    label:item.id.toUpperCase(),
+            }
+        );
+         })
+         customSelect=<CustomSelect  options={options} defaultValue={options[0]} handleChangeCurrency={handleChangeCurrency}/>
+    }
+
+   
+    let address = useSelector(state => state.depositWalletReducer.walletAddress);
+    
     return(
         <>
             <div className="withdraw_deposit_tab__container">
                 <div>
-                    <CustomSelect/>
+                    {customSelect}
                     <div className="withdraw_deposit_tab__deposit_form">
                         <div className="deposit_form__top_container">
                             <div className="white__text"><i className="fab fa-bitcoin"></i>AZ - Azbit Tokens</div>
                             <div className="white__text">Wallet address:</div>
                         </div>
                         <div className="deposit_form__output_field">
-                            35fK4bc7Nv7cjM6AfVNm21X1AyDpar1qDc
+                            {/*change currency on address*/}
+                            {address?address.currency:'wait'}
                         </div>
                         <div className="deposit_form__buttons_container">
                             <button className="button_green">COPY ADDRESS</button>

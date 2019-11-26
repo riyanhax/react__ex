@@ -91,6 +91,7 @@ export default () => {
     'BTC', 'ETH', 'USDT'
   ]
   return (
+
     <div className="App" id="home">
       <Header />
       <div className="mainContainer">

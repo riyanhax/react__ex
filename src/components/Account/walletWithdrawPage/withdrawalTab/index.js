@@ -1,14 +1,35 @@
-import React from 'react';
+import React,{useEffect} from 'react';
 import CustomSelect from 'cmp/Account/customSelect/';
 import './index.css';
-
+import { useSelector, useDispatch } from "react-redux";
+import actions from "act/";
 
 export default (props) => {
+    let dispatch = useDispatch();
+
+    useEffect(()=>{
+        dispatch(actions.account.getPublicCurrencies());
+    },[])
+    let publicCurrencies = useSelector(state => state.publicCurrenciesReducer.pubCurrencies);
+    let options;
+    let customSelect;
+    if(publicCurrencies){
+        options = publicCurrencies.map( (item)=>{
+           return(
+               {
+                       id:item.id,
+                       label:item.id.toUpperCase(),
+               }
+           );
+            })
+            customSelect=<CustomSelect  options={options} defaultValue={options[0]}/>
+       }
+
     return (
         <>
             <div className="withdraw_deposit_tab__container">
                 <div>
-                    <CustomSelect />
+                    {customSelect}
                     <div className="withdrawl_tab__withdraw_form">
                         <div className="withdraw_form__top_container white__text">
                             <i className="fab fa-bitcoin"></i>AZ - Azbit Tokens

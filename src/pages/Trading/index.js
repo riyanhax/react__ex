@@ -1,7 +1,7 @@
 import React from 'react'
 import './index.css'
 import { TVChartContainer } from "cmp/trading/TVChartContainer/"
-import ExForm from 'cmp/trading/TradingForm/'
+import OrderForm from 'cmp/trading/TradingForm/'
 import Chat from 'cmp/trading/Chat'
 import Options from 'cmp/trading/Options'
 import SideMenu from 'cmp/trading/SideMenu'
@@ -15,7 +15,9 @@ import { Transition } from 'react-transition-group'
 import { connect } from "react-redux"
 import actions from "act/"
 import { history } from '../../history';
-import Cable from "actioncable";
+import Cable from "actioncable"
+
+
 
 
 class Ex extends React.Component {
@@ -24,46 +26,45 @@ class Ex extends React.Component {
 
     let { base_unit, quote_unit, pair } = history.location.state
 
-  
- 
-    this.props.loadOrderBook(pair);
+
+
+    this.props.loadOrderBook(pair, base_unit, quote_unit);
     this.props.loadDeals(pair);
     this.props.setLabel(base_unit, quote_unit);
-    this.props.handleSocketOrderBook(pair, this.state.cable);
+    this.props.handleSocketOrderBook(pair, base_unit, quote_unit, this.state.cable);
     this.props.loadWallet(base_unit, quote_unit);
     this.props.loadMessages();
     this.props.loadInfo(pair);
- 
-      // fetch(`api/v2/peatio/chat/send`, {
-      //   method: 'POST',
-      //   credentials: 'include',
-      //   body: JSON.stringify(
-      //     {
-      //       text: 'lol',
-      //       lang: "en",
-      //     }
-      //   ),
-      //   headers: {
-      //     'Content-type': 'application/json'
-      //   },
-  
-      // })
-      //   .then(response => response.json())
-      //   .then((data) => {
-  
-      //   //  console.log(data)
-      //   })
-      //   .catch((e) => {
-      //     console.log(e)
-      //   });
 
-  
+    // fetch(`api/v2/peatio/market/orders/27/cancel`, {
+    //   method: 'POST',
+    //   credentials: 'include',
+    //   body: JSON.stringify(
+    //     // {
+    //     //   text: 'lol',
+    //     //   lang: "en",
+    //     // }
+    //   ),
+    //   headers: {
+    //     'Content-type': 'application/json'
+    //   },
+
+    // })
+    //   .then(response => response.json())
+    //   .then((data) => {
+
+    //    console.log(data)
+    //   })
+    //   .catch((e) => {
+    //     console.log(e)
+    //   });
+
+
+
   }
   state = {
     chatShow: false,
     gridTable: "rgtable",
-    renderKeySell: "",
-    renderKey: "",
     cable: Cable.createConsumer('ws://localhost:8099/websocket')
   }
   toggleChat = (e) => {
@@ -80,18 +81,8 @@ class Ex extends React.Component {
     })
 
   }
-  onSubmitSell = (action) => {
-    event.preventDefault();
-    //this.setState({ renderKey: Math.random() });
-    let limitFormDataSell = this.props.limitFormDataSell;
-    this.props.makeOrder(limitFormDataSell.price.value, limitFormDataSell.amount.value, "sell", history.location.state.pair)
-  }
-  onSubmitBuy = (action) => {
-    event.preventDefault();
-    //this.setState({ renderKey: Math.random() });
-    let limitFormDataBuy = this.props.limitFormDataBuy;
-    this.props.makeOrder(limitFormDataBuy.price.value, limitFormDataBuy.amount.value, "buy", history.location.state.pair)
-  }
+
+
   handleChangePairs = (e) => {
     this.state.cable.subscriptions.consumer.disconnect();
     let pair = e.value
@@ -110,13 +101,19 @@ class Ex extends React.Component {
 
   render() {
 
-    
 
-    const { pairs, loadingPairs, loadingDeals, loadingOrderBook, limitFormDataBuy,
-       limitFormDataSell, onChangeSell, onChangeBuy, handleSocketOrderBook,
-        orderBook, deals, wallet, messages, makeMessage, info } = this.props;
+
+    const { pairs, loadingDeals, loadingOrderBook, limitFormDataBuy,
+      limitFormDataSell, onChangeSell, onChangeBuy, handleSocketOrderBook,
+      orderBook, deals, wallet, messages, makeMessage, info, lastPrice,
+      marketFormDataBuy, marketFormDataSell, makeOrder, onChangeMarketBuy,
+      onChangeMarketSell, makeOrderMarket, changeFormPrice, decimalSortValue,
+      handleChangeDecimal
+    } = this.props;
+
+
     const { base_unit, quote_unit, pair } = history.location.state
-    
+
     return (
 
       <section id="ex__page">
@@ -125,8 +122,9 @@ class Ex extends React.Component {
           pairs={pairs}
           pair={pair}
           handleChangePairs={this.handleChangePairs}
-          wallet ={wallet}
+          wallet={wallet}
           info={info}
+          lastPrice={lastPrice}
         />
         <div className="ex__page__inner">
           <a href="" className="side__hide__link" onClick={(e) => this.toggleChat(e)}>
@@ -135,7 +133,9 @@ class Ex extends React.Component {
               : <i className="fa fa-angle-double-right"></i>
             }
           </a>
-          <SideMenu />
+          <SideMenu
+            pair={pair}
+          />
           <div className="container">
             <div className="flex">
               <Transition in={this.state.chatShow} timeout={300}>
@@ -148,6 +148,7 @@ class Ex extends React.Component {
                     </div>
                     <HistoryTable
                       data={deals}
+                      pair={pair}
                     />
                   </div>
 
@@ -178,9 +179,10 @@ class Ex extends React.Component {
                           <div className="left__auto red__table__item3 gray__text">
                             grioups
                               </div>
-                          <select className="red__table__header__select">
-                            <option>8 decimals</option>
-                            <option>10 decimals</option>
+                          <select className="red__table__header__select" value={decimalSortValue} onChange={handleChangeDecimal}>
+                            <option value={0} >0 decimals</option>
+                            <option value={1} >1 decimals</option>
+                            <option value={2}>2 decimals</option>
                           </select>
                         </div>
                       </div>
@@ -207,15 +209,18 @@ class Ex extends React.Component {
 
                     </div>
                     <div className="green__table__header">
-                      <div className="flex__je__ac">
-                        <div className="green__table__header__item mint__text">
-                          0.0000000030
-                            </div>
-                        <img src="/assets/img/arr.png" />
-                        <div className="green__table__header__item2">
-                          $0.000029
+                      <div className="flex__jb__ac">
+                        {lastPrice ? (
+                          <div className={`green__table__header__item ${lastPrice.class}`}>
+                            {lastPrice.price}
+                            <i className={`fas ${lastPrice.arrow} ${lastPrice.class}`}></i>
                           </div>
-                        <img src="/assets/img/ind.png" className="green__table__header__ind" />
+                        ) : ("")}
+
+                        {/* <div className="green__table__header__item2">
+                          $0.000029
+                          </div> */}
+                          <i className="fas fa-signal"></i>
                       </div>
                     </div>
                     <div className={`grid__table green__table__cont ${this.state.gridTable}`}>
@@ -258,29 +263,60 @@ class Ex extends React.Component {
                         <div className="checkbox__text">Pay Az Tоkens</div>
                       </label>
                       <div className="flex__jb">
-
-                        <ExForm
+                        <OrderForm
                           limitFormData={limitFormDataBuy}
-                          action="Buy"
+                          action="buy"
                           basePair={base_unit}
-                          quotePair={quote_unit}
                           onChange={onChangeBuy}
-                          onSubmit={this.onSubmitBuy}
+                          makeOrder={makeOrder}
+                          formName={"limitFormDataBuy"}
+                          wallet={wallet}
+                          changeFormPrice={changeFormPrice}
+                          args={[limitFormDataBuy.price.value, limitFormDataBuy.amount.value, "buy", pair]}
                         />
                         <div className="ex__tabs__line"></div>
-                        <ExForm
+                        <OrderForm
                           limitFormData={limitFormDataSell}
-                          action="Sell"
+                          action="sell"
                           basePair={base_unit}
-                          quotePair={quote_unit}
                           onChange={onChangeSell}
-                          onSubmit={this.onSubmitSell}
+                          makeOrder={makeOrder}
+                          formName={"limitFormDataSell"}
+                          wallet={wallet}
+                          changeFormPrice={changeFormPrice}
+                          args={[limitFormDataSell.price.value, limitFormDataSell.amount.value, "sell", pair]}
                         />
 
                       </div>
                     </TabPanel>
                     <TabPanel>
-                      <h2>Any content 2</h2>
+                      <label className="checkbox ex__form__check">
+                        <input type="checkbox" />
+                        <div className="checkbox__text">Pay Az Tоkens</div>
+                      </label>
+                      <div className="flex__jb">
+
+                        <OrderForm
+                          limitFormData={marketFormDataBuy}
+                          action="buy"
+                          basePair={base_unit}
+                          onChange={onChangeMarketBuy}
+                          makeOrder={makeOrderMarket}
+                          changeFormPrice={changeFormPrice}
+                          args={["market", marketFormDataBuy.amount.value, "buy", pair]}
+                        />
+                        <div className="ex__tabs__line"></div>
+                        <OrderForm
+                          limitFormData={marketFormDataSell}
+                          action="sell"
+                          basePair={base_unit}
+                          onChange={onChangeMarketSell}
+                          makeOrder={makeOrderMarket}
+                          changeFormPrice={changeFormPrice}
+                          args={["market", marketFormDataSell.amount.value, "sell", pair]}
+                        />
+
+                      </div>
                     </TabPanel>
                   </Tabs>
                 </div>
@@ -290,19 +326,21 @@ class Ex extends React.Component {
               <Transition in={this.state.chatShow} timeout={300}>
                 {(status) => (
                   <div className={`col__md ex__col__3 gray flex__jb__col ${status}`}>
+
                     <Switch>
 
-                      <Route path={`/trading/${pair}`} exact>
+                      <Route path={`/trading/${pair}`} >
                         <Chat
-                        messages ={messages}
-                        makeMessage ={makeMessage}
-                         />
+                          messages={messages}
+                          makeMessage={makeMessage}
+                        />
                       </Route>
-                      <Route path="/options" exact>
+                      <Route path={`/trading/${pair}/options`} >
                         <Options />
                       </Route>
 
                     </Switch>
+
                   </div>
                 )}
               </Transition>
@@ -325,13 +363,17 @@ let mapStateToProps = (state) => {
     loadingDeals: state.tradingReducer.loadingDeals,
     limitFormDataBuy: state.orderReducer.limitFormDataBuy,
     limitFormDataSell: state.orderReducer.limitFormDataSell,
+    marketFormDataBuy: state.orderReducer.marketFormDataBuy,
+    marketFormDataSell: state.orderReducer.marketFormDataSell,
     bids: state.tradingReducer.orderBook.bids,
     asks: state.tradingReducer.orderBook.asks,
     orderBook: state.tradingReducer.orderBook,
     deals: state.tradingReducer.deals,
     wallet: state.walletReducer.wallet,
-    messages:state.chatReducer.messages,
-    info:state.tradingReducer.info,
+    messages: state.chatReducer.messages,
+    info: state.tradingReducer.info,
+    lastPrice: state.tradingReducer.lastPrice,
+    decimalSortValue: state.tradingReducer.decimalSortValue,
   }
 };
 
@@ -340,16 +382,20 @@ let mapDispatchToProps = (dispatch) => {
   return {
     onChangeSell: (e) => dispatch(actions.order.onChangeSell(e)),
     onChangeBuy: (e) => dispatch(actions.order.onChangeBuy(e)),
-    makeOrder: (price, amount, type, pair) => dispatch(actions.order.makeOrder(price, amount, type, pair)),
+    onChangeMarketBuy: (e) => dispatch(actions.order.onChangeMarketBuy(e)),
+    onChangeMarketSell: (e) => dispatch(actions.order.onChangeMarketSell(e)),
+    makeOrder: (...args) => dispatch(actions.order.makeOrder(...args)),
+    makeOrderMarket: (...args) => dispatch(actions.order.makeOrderMarket(...args)),
     loadOrderBook: (pair) => dispatch(actions.trading.loadOrderBook(pair)),
     loadDeals: (pair) => dispatch(actions.trading.loadDeals(pair)),
-    handleSocketOrderBook: (pair, cable) => dispatch(actions.trading.handleSocketOrderBook(pair, cable)),
+    handleSocketOrderBook: (pair, base_unit, quote_unit, cable) => dispatch(actions.trading.handleSocketOrderBook(pair, base_unit, quote_unit, cable)),
     setLabel: (base_unit, quote_unit) => dispatch(actions.order.setLabel(base_unit, quote_unit)),
     loadWallet: (base_unit, quote_unit) => dispatch(actions.wallet.loadWallet(base_unit, quote_unit)),
     makeMessage: (text, lang) => dispatch(actions.chat.makeMessage(text, lang)),
     loadMessages: () => dispatch(actions.chat.loadMessages()),
     loadInfo: (pair) => dispatch(actions.info.loadInfo(pair)),
-  
+    changeFormPrice: (form, wallet, e) => dispatch(actions.order.changeFormPrice(form, wallet, e)),
+    handleChangeDecimal: (e) => dispatch(actions.trading.handleChangeDecimal(e))
   }
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Ex);

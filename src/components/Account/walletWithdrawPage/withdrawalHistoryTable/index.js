@@ -1,8 +1,17 @@
-import React from 'react';
+import React,{ useEffect }  from 'react';
 import './index.css';
 import Pagination from 'cmp/Account/pagination/';
 
+import { useSelector, useDispatch } from "react-redux";
+import actions from "act/";
+
 export default (props) => {
+
+    const dispatch = useDispatch();
+    useEffect(()=>{
+        dispatch(actions.account.getWithdrawsHistory());
+    },[])
+    
     let dropHandleClick = event => {
         if(event.currentTarget.previousSibling.classList.contains('show')){
             event.currentTarget.previousSibling.classList.remove('show');
@@ -51,7 +60,9 @@ export default (props) => {
                             <td className="history_table__item">BTC</td>
                             <td className="history_table__item">0.2216258</td>
                             <td className="history_table__item">2018-03-06 02:28:52</td>
+
                             <td className="history_table__item address">Address:146r3ziJJiA6JSrvMeseY473cY4DGoJkFD146r3ziJJiA6JSrvMeseY473cY4DGoJkFD146r3ziJJiA6JSr3ziJJiA6</td>
+
                             <td onClick={dropHandleClick} className="history_table__drop_item">
                                 <div className="fa fa-sort-down"></div>
                             </td>

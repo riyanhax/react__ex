@@ -1,14 +1,15 @@
 
 import { createActions} from 'redux-actions';
 
-export const {loadPairs, loadOrderBook, setPairs, setOrderBook, handleSocketOrderBook, setOrderBookSocket, loadDeals, setDeals} = createActions({
+export const {loadPairs, loadOrderBook, setPairs, setOrderBook, handleSocketOrderBook, setOrderBookSocket, loadDeals, setDeals, handleChangeDecimal} = createActions({
   loadPairs: () => ({  }),
   setPairs: (pairs) => ({ pairs }), 
   loadOrderBook: (pair) => ({ pair }),
   setOrderBook: (orderBook) => ({ orderBook }),
-  handleSocketOrderBook: (pair, cable) => ({ pair, cable }),
+  handleSocketOrderBook: (pair, base_unit, quote_unit, cable) => ({ pair,base_unit, quote_unit, cable }),
   setOrderBookSocket: (data) => ({ data }),
   loadDeals: (pair) => ({ pair }),
   setDeals: (deals) => ({ deals }),
+  handleChangeDecimal: (e) => ({e})
   });
 

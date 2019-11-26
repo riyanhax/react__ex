@@ -76,7 +76,15 @@ button {
     justify-content: space-between;
     flex-direction: column;
 }
-
+.flex__ac__100{
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+.flex__ac{
+    display: flex;
+    align-items: center;
+}
 .red {
     background: #EA0038;
 }
