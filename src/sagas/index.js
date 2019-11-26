@@ -11,6 +11,7 @@ import {tradingInfoSaga} from './infoSaga'
 import {totalUsersSaga} from './homePage/totalUsersSaga'
 import {getAccountCurrencySaga} from './accountPage/accountSaga'
 import {getPublicCurrencies} from './accountPage/publicCurrenciesSaga'
+import {getWalletAddressSaga,getWithdrawsHistorySaga} from './accountPage/accountSaga';
 
 export default function* rootSasga() {
     yield all([
@@ -35,6 +36,8 @@ export default function* rootSasga() {
         totalUsersSaga(),
         getAccountCurrencySaga(),
         getPublicCurrencies(),
+        getWalletAddressSaga(),
+        getWithdrawsHistorySaga(),
     ]);
   }
 

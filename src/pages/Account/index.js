@@ -44,7 +44,7 @@ export default (props) => {
                             <Route path="/account/settings/" exact>
                                 <AccountSettingsPage />
                             </Route>
-                            <Route path="/account/with/WalletWithdraw" exact>
+                            <Route path="/account/WalletWithdraw" exact>
                                 <WalletWithdrawPage />
                             </Route>
                         </Switch>

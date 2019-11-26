@@ -52,7 +52,10 @@ button {
 .button__green a{
     font-family: 'DIN Pro Bold';
     color: white;
+    display:block;
   }
+
+
 
   
   .button_gray{

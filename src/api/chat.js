@@ -16,7 +16,7 @@ export const fetchMessage = (text, lang) => {
         ),
     };
     return makeRequest(
-        'api/v2/peatio/chat/message/send',
+        '/api/v2/peatio/account/deposit_address/',
         init
     )
 

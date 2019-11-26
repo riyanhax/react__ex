@@ -71,7 +71,9 @@ export default (props) => {
                     </div>
                     <div className="account_sidebar__wallets__button_container">
                         <div>
-                            <button className="button__green"><Link to="/account/with/WalletWithdraw">deposit</Link></button>
+                            <button className="button__green" >
+                                <Link to="/account/WalletWithdraw">deposit</Link>
+                            </button>
                         </div>
                         <div>
                             <button className="button__green">transfer</button>

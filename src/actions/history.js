@@ -11,5 +11,3 @@ export const {loadOpenOrders, setOpenOrders, loadOrders, setOrderHistory, loadTr
     removeOrder: (id) => ({ id }), 
     filterHistory: (pair) => ({ pair }), 
   });
-
-  ``
