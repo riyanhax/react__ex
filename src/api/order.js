@@ -1,6 +1,7 @@
 import { makeRequest } from "./makeRequest"
 
-export const fetchOrder = (args) => {
+export const fetchOrder = (price, amount, type, pair ) => {
+
 
     const init = {
         method: 'POST',

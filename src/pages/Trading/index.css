@@ -48,6 +48,10 @@
   height: 100%;
 }
 
+.ex__tabs__status {
+  position: absolute;
+  right: 16px;
+}
 #ex__page {
   font-family: 'DIN Pro Condensed Bold';
   letter-spacing: 1px;
@@ -254,6 +258,7 @@
 }
 
 .ex___tabs__col {
+  position: relative;
   padding: 0 16px;
   margin-top: 9px;
 }
@@ -472,6 +477,7 @@
   position: absolute;
   right: 19px;
   top: 2px;
+  cursor: pointer;
 }
 
 .history__tabs__img {

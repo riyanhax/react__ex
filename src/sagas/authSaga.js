@@ -12,12 +12,7 @@ export function* fetchLogin({ payload: { email, password, initPair } }) {
     yield call(checkUser);
     yield put(
       push(
-        { pathname: `/trading/${initPair["id"]}` },
-        {
-          pair: initPair["id"],
-          base_unit: initPair["base_unit"],
-          quote_unit: initPair["quote_unit"]
-        }
+        { pathname: `/trading/${initPair["id"]}` }
       )
     )
 

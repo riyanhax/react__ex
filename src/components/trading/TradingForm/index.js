@@ -2,11 +2,12 @@ import React from "react";
 
 export default function (props) {
 
-  const { action, limitFormData, onChange, basePair, makeOrder, args, changeFormPrice, formName, wallet } = props;
+  const { action, limitFormData, onChange, basePair, makeOrder, args, changeFormPrice, formName, wallet, status } = props;
 
   let onSubmit = () => {
     event.preventDefault();
-    makeOrder(...args);
+    makeOrder(...args, formName);
+
     for (const key in limitFormData) {
       limitFormData[key].value = "";
     }
@@ -48,6 +49,9 @@ export default function (props) {
 
   return (
     <div className="ex___tabs__col">
+      <div className={`ex__tabs__status  ${status["class"]}`}>
+          {status["text"]} <i className={`${status["icon"]}`}></i>
+      </div>
       <div className="flex__bw">
         <div className="ex__tabs__text">
           {action} {basePair}
@@ -56,6 +60,7 @@ export default function (props) {
           0,00000000 BTC
          </div> */}
       </div>
+        
       <form className="ex__from"
         onSubmit={onSubmit}>
         {formFields}

@@ -1,32 +1,44 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
 import actions from 'act/';
-import { fetchOrder,fetchOrderMarket } from 'api/order';
+import { fetchOrder, fetchOrderMarket } from 'api/order';
+import { store } from '../store';
 
- function* makeOrder({ payload: { ...args } }) {
- 
-  try {
-    yield call(fetchOrder, args);
-  } catch (e) {
-    //yield put(actions.failOrder('Oups! Error occurs, please try again later.'));
+function* makeOrder({ payload: { price, amount, type, pair, formName } }) {
+
+    try {
+
+      const resp = yield call(fetchOrder, price, amount, type, pair);
+
+      if (resp["errors"]) {
+        yield put(actions.order.failOrder(formName))
+      }
+      else {
+        yield put(actions.order.successOrder(formName))
+      }
+      setTimeout(() => {
+        store.dispatch(actions.order.clearOrder(formName))
+      }, 2200)
+
+
+    } catch (e) {
+
+    }
   }
-}
 
-export function* orderSaga() {
-  yield takeEvery(actions.order.makeOrder, makeOrder);
-}
-
-
-
- function* makeOrdMarket({ payload: { ...args } }) {
-  try {
-    yield call(fetchOrderMarket, args);
-  } catch (e) {
-  
-    //yield put(actions.failOrder('Oups! Error occurs, please try again later.'));
+  export function* orderSaga() {
+    yield takeEvery(actions.order.makeOrder, makeOrder);
   }
-}
 
-export function* orderMarketSaga() {
-  yield takeEvery(actions.order.makeOrderMarket, makeOrdMarket);
-}
+  function* makeOrdMarket({ payload: { ...args } }) {
+    try {
+      yield call(fetchOrderMarket, args);
+    } catch (e) {
+
+
+    }
+  }
+
+  export function* orderMarketSaga() {
+    yield takeEvery(actions.order.makeOrderMarket, makeOrdMarket);
+  }
 

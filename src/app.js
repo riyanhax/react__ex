@@ -12,11 +12,12 @@ import { history } from './history';
 import PrivateRoute from 'cmp/PrivateRoute';
 import { connect } from 'react-redux';
 import actions from "act/"
-import MarginTradingPage from 'pg/Account/marginTradingPage/';
+
 
 class App extends React.Component {
 
   componentDidMount() {
+
     // fetch(`api/v2/peatio/public/markets/ethusd/header_info`, {
     //   credentials: 'include',
 
@@ -39,21 +40,28 @@ class App extends React.Component {
 
   render() {
     let isAuthenticated = false;
-    let { isLoading, data, pairs, loadingPairs } = this.props;
-
-    if (data) {
+    let { isLoading, data, pairs } = this.props;
+   
+    if (data.uid) {
       isAuthenticated = true;
     }
     let pairsRoutes = ""
 
-    if (!loadingPairs) {
+    if (pairs) {
+
       pairsRoutes = pairs.map((pair) => {
         return (
           <PrivateRoute path={`/trading/${pair.id}`}
             key={pair.id}
-            component={Trading} isAuthenticated={isAuthenticated}
+            isAuthenticated={isAuthenticated}
+            isLoading={isLoading}>
+            <Trading
+              base_unit={pair.base_unit}
+              quote_unit={pair.quote_unit}
+              pair={pair.id}
+            />
+          </PrivateRoute>
 
-            isLoading={isLoading} />
         )
       })
 
@@ -80,7 +88,6 @@ class App extends React.Component {
           <Route path="/recovery" exact>
             <RecoveryPasswordPage />
           </Route>
-
           {pairsRoutes}
           <Route path="**" exact>
             <LoginPage />
