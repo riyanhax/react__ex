@@ -1,8 +1,8 @@
 .footer{
-    height: 260px;
     width: 100%;
     background: #0B0F18;
     border-top: 4px solid black;
+    padding-bottom: 20px;
   }
 .footer .container__logo{
   font-family: 'DIN Pro Bold';

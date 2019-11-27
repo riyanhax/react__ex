@@ -1,6 +1,5 @@
 .account_sidebar__container{
     width: 341px;
-    height: 1337px;
     background: #111622;
     border-right: 4px solid black;
     border-top: 4px solid black;
@@ -11,13 +10,14 @@
   }
   
   .wallet__container{
-    width: 252px;
-    height: 149px;
     background: #0B0F18;
     border: 1px solid #1F2535;
     box-sizing: border-box;
-    margin-top: 8px;
-    margin-left: 44px;
+    padding-top: 15px;
+    padding-left: 20px;
+    padding-bottom: 15px;
+    width: 250px;
+    margin: 40px;
   }
   
   .wallet__container:first-child{
@@ -25,16 +25,14 @@
   }
   
   .wallet__data_container{
-    margin-left: 72px;
     font-family: 'DIN Pro Bold';
     font-size: 14px;
-    margin-top: 30px;
     line-height: 24px;
   }
   
   .wallet__values_container{
     font-family: 'DIN Pro Bold';
-    padding-right: 58px;
+    padding-right: 50px;
     text-align: right;
     font-size: 14px;
   }
@@ -44,6 +42,7 @@
     font-family: 'DIN Pro Black';
     padding-left: 22px;
     padding-top: 22px;
+    margin-bottom: 35px;
   }
   
   .account_sidebar__wallets__button_container{

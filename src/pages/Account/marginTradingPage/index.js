@@ -15,18 +15,18 @@ export default (props) => {
                 <Tabs>
                     <TabList className="margin_page__tab_list">
                         <Tab className="margin_page__tab">Main Wallet</Tab>
-                        <Tab className="margin_page__tab">Margin Trading</Tab>
-                        <Tab className="margin_page__tab">Margin Demo</Tab>
+                        {/* <Tab className="margin_page__tab">Margin Trading</Tab>
+                        <Tab className="margin_page__tab">Margin Demo</Tab> */}
                     </TabList>
                     <TabPanel>
                         <WalletTab />
                     </TabPanel>
-                    <TabPanel>
+                    {/* <TabPanel>
                         <TradingTab />
                     </TabPanel>
                     <TabPanel>
                         <MarginDemoTab/>
-                    </TabPanel>
+                    </TabPanel> */}
 
                 </Tabs>
             </div>

@@ -9,7 +9,7 @@ export default (props) => {
           <span >Total users: <span className="white__text"> {props.members}</span></span>
         </div>
         <div className="outputFieldFlexCenter">
-          <span >Asstes: <span className="white__text"> {props.assets}</span></span>
+          <span >Assets: <span className="white__text"> {props.assets}</span></span>
         </div>
         <div className="outputFieldFlexCenter">
           <span >Total traders: <span className="white__text"> {props.active_members}</span></span>

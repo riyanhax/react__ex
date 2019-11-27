@@ -39,7 +39,7 @@ export default (props) => {
                             </div>
                         </div>
                     </div>
-                    <div className="wallet__container">
+                    {/* <div className="wallet__container">
                         <div className="wallet__data_container">
                             <div>Margin trading:</div>
                             <div className="wallet__values_container">
@@ -56,7 +56,7 @@ export default (props) => {
                             <div className="wallet__values_container">
 
                                 <div className="white__text">0 BTC</div>
-                           
+                                <div className="white__text">0 USD</div>
                             </div>
                         </div>
                     </div>
@@ -68,19 +68,16 @@ export default (props) => {
                                 <div className="white__text">0 USD</div>
                             </div>
                         </div>
-                    </div>
+                    </div> */}
                     <div className="account_sidebar__wallets__button_container">
                         <div>
                             <button className="button__green" >
-                                <Link to="/account/WalletWithdraw">deposit</Link>
+                                <Link to="/account/wallet/withdraw">deposit</Link>
                             </button>
                         </div>
-                        <div>
-                            <button className="button__green">transfer</button>
-                        </div>
+                        
                     </div>
                 </div>
-                
             </div>
         </>
     );
