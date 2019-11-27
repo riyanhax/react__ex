@@ -7,7 +7,8 @@ import * as wallet from './wallet';
 import * as chat from './chat';
 import * as info from './info';
 import * as home from './homePage/home';
-import * as account from './accountPage/account';
+import * as accountWithdrawal from './accountPage/accountWithdrawal';
+import * as asccountSideBar from './accountPage/accountSideBar';
 
 export default {
     trading,
@@ -19,6 +20,7 @@ export default {
     chat,
     info,
     home,
-    account,
+    accountWithdrawal,
+    asccountSideBar,
 }
 

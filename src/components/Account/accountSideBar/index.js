@@ -10,7 +10,7 @@ export default (props) => {
 
     const dispatch = useDispatch();
     useEffect(()=>{
-        dispatch(actions.account.getAccountWalletCurrency())
+        dispatch(actions.asccountSideBar.getAccountWalletCurrency())
     },[])
 
     let mainWalletCurrency = useSelector(state => state.mainWalletCurrencyReducer.walletCurrency);

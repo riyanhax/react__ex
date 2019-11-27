@@ -8,14 +8,14 @@ export default  (props)=>{
     let dispatch = useDispatch();
 
 useEffect(()=>{
-    dispatch(actions.account.getPublicCurrencies());
+    dispatch(actions.accountWithdrawal.getPublicCurrencies());
    },[])
 
-   let publicCurrencies = useSelector(state => state.publicCurrenciesReducer.pubCurrencies);
+   let publicCurrencies = useSelector(state => state.accountWithdrawalReducer.pubCurrencies);
    let options;
    let customSelect;
    let handleChangeCurrency = (e) =>{
-        dispatch(actions.account.getWalletAddress(e.id));
+        dispatch(actions.accountWithdrawal.getWalletAddress(e.id));
     }
 
    if(publicCurrencies){
@@ -31,7 +31,7 @@ useEffect(()=>{
     }
 
    
-    let address = useSelector(state => state.depositWalletReducer.walletAddress);
+    let address = useSelector(state => state.accountWithdrawalReducer.walletAddress);
     
     return(
         <>

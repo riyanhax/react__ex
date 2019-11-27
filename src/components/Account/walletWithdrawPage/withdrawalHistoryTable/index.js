@@ -9,7 +9,7 @@ export default (props) => {
 
     const dispatch = useDispatch();
     useEffect(()=>{
-        dispatch(actions.account.getWithdrawsHistory());
+        dispatch(actions.accountWithdrawal.getWithdrawsHistory());
     },[])
     
 

@@ -9,9 +9,8 @@ import {tradingWalletSaga} from './walletSaga'
 import {chatSaga, chatSocketSaga, chatMssagesSaga} from './chatSaga'
 import {tradingInfoSaga} from './infoSaga'
 import {totalUsersSaga} from './homePage/totalUsersSaga'
-import {getAccountCurrencySaga} from './accountPage/accountSaga'
-import {getPublicCurrencies} from './accountPage/publicCurrenciesSaga'
-import {getWalletAddressSaga,getWithdrawsHistorySaga} from './accountPage/accountSaga';
+import {getAccountCurrencySaga} from './accountPage/accountSideBarSaga'
+import {getWalletAddressSaga,getWithdrawsHistorySaga,getPublicCurrencies} from './accountPage/accountWithdrawalSaga';
 
 export default function* rootSasga() {
     yield all([
