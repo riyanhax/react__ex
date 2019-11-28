@@ -34,7 +34,7 @@ export default (props) => {
                             <Route path="/account/" exact>
                                 <NewsPage />
                             </Route>
-                            <Route path="/account/balance" exact>
+                            <Route path="/account/margin/trading" exact>
                                 <MarginTradingPage />
                             </Route>
 

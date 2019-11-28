@@ -14,6 +14,8 @@ import { history } from '../history';
 import {TotalUsersReducer} from './homePage/totalUserReducer';
 import {mainWalletCurrencyReducer} from './accountPage/accountSideBarReducer';
 import {accountWithdrawalReducer} from './accountPage/accountWithdrawalReducer';
+import {marginTradingReducer} from './accountPage/accountMarginTradingReducer';
+import {accountSettingsReducer} from './accountPage/accountSettingReducer';
 const combineReducer = combineReducers({
     authReducer,
     signUpReducer,
@@ -27,6 +29,8 @@ const combineReducer = combineReducers({
     TotalUsersReducer,
     mainWalletCurrencyReducer,
     accountWithdrawalReducer,
+    marginTradingReducer,
+    accountSettingsReducer,
     
     router: connectRouter(history)
 })

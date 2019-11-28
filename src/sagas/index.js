@@ -11,6 +11,8 @@ import {tradingInfoSaga} from './infoSaga'
 import {totalUsersSaga} from './homePage/totalUsersSaga'
 import {getAccountCurrencySaga} from './accountPage/accountSideBarSaga'
 import {getWalletAddressSaga,getWithdrawsHistorySaga,getPublicCurrencies} from './accountPage/accountWithdrawalSaga';
+import {getBalanceTableSaga} from './accountPage/accountMarginTradingSaga';
+import {getLoginHistorySaga} from './accountPage/accountSettingsSaga';
 
 export default function* rootSasga() {
     yield all([
@@ -37,6 +39,8 @@ export default function* rootSasga() {
         getPublicCurrencies(),
         getWalletAddressSaga(),
         getWithdrawsHistorySaga(),
+        getBalanceTableSaga(),
+        getLoginHistorySaga()
     ]);
   }
 

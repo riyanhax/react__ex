@@ -23,7 +23,6 @@ export function* getWithdrawsHistorySaga(){
 function* setWithdrawsHistory(){
     try{
             const history = yield call(fetchWithdrawsHistory);
-            console.log(history)
             yield put(actions.accountWithdrawal.setWithdrawsHistory(history));
     }
     catch(e){

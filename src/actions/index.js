@@ -9,6 +9,8 @@ import * as info from './info';
 import * as home from './homePage/home';
 import * as accountWithdrawal from './accountPage/accountWithdrawal';
 import * as asccountSideBar from './accountPage/accountSideBar';
+import * as accountMarginTrading from './accountPage/accountMarginTrading';
+import * as accountSettings from './accountPage/accountSettings';
 
 export default {
     trading,
@@ -22,5 +24,7 @@ export default {
     home,
     accountWithdrawal,
     asccountSideBar,
+    accountMarginTrading,
+    accountSettings,
 }
 
