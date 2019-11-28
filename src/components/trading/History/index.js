@@ -5,6 +5,9 @@ import { useSelector, useDispatch } from "react-redux"
 import OpenOrders from "./OpenOrders"
 import OrderHistory from "./OrderHistory"
 import TradeHistory from "./TradeHistory"
+import { createSelector } from 'reselect'
+
+import { getVisibleHistory } from "rd/historySelector"
 export default (props) => {
 
 
@@ -15,9 +18,13 @@ export default (props) => {
   }, [])
 
   const dispatch = useDispatch()
-  let openOrders = useSelector(state => state.historyReducer.openOrdersItems)
-  let ordersHistory = useSelector(state => state.historyReducer.orderHistoryItems)
-  let tradeHistory = useSelector(state => state.historyReducer.tradeHistoryItems)
+
+  let openOrders = useSelector(state => getVisibleHistory(state.historyReducer.openOrdersItems, state.historyReducer.filters.openOrdersItems.showed, props.pair))
+  let ordersHistory = useSelector(state => getVisibleHistory(state.historyReducer.orderHistoryItems, state.historyReducer.filters.orderHistoryItems.showed, props.pair))
+  let tradeHistory = useSelector(state => getVisibleHistory(state.historyReducer.tradeHistoryItems, state.historyReducer.filters.tradeHistoryItems.showed, props.pair))
+  let openOrdersShowed = useSelector(state => (state.historyReducer.filters.openOrdersItems.showed))
+  let ordersHistoryShowed = useSelector(state => (state.historyReducer.filters.orderHistoryItems.showed))
+  let tradeHistoryyShowed = useSelector(state => (state.historyReducer.filters.tradeHistoryItems.showed))
 
   return (
     <div className="history__tabs gray">
@@ -35,6 +42,7 @@ export default (props) => {
             removeOrder={removeOrder}
             filterHistory={filterHistory}
             pair={props.pair}
+            showed={openOrdersShowed}
           />
         </TabPanel>
         <TabPanel>
@@ -43,6 +51,7 @@ export default (props) => {
             dispatch={dispatch}
             filterHistory={filterHistory}
             pair={props.pair}
+            showed={ordersHistoryShowed}
           />
         </TabPanel>
         <TabPanel>
@@ -51,6 +60,7 @@ export default (props) => {
             dispatch={dispatch}
             filterHistory={filterHistory}
             pair={props.pair}
+            showed={tradeHistoryyShowed}
           />
         </TabPanel>
 

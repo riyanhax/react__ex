@@ -28,8 +28,6 @@ export default (props) => {
                 <div className="account_mid__container">
                     <LevelSecurity />
                     <div className="page__container">
-
-
                         <Switch>
                             <Route path="/account/" exact>
                                 <NewsPage />

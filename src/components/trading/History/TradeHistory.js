@@ -4,12 +4,12 @@ import SimpleBarReact from "simplebar-react";
 import "simplebar/src/simplebar.css";
 
 export default (props) => {
-    const { tradeHistory, dispatch, filterHistory, pair } = props;
+    const { tradeHistory, dispatch, filterHistory, pair, showed } = props;
     let tradeHistoryList
 
     if (tradeHistory) {
         tradeHistoryList = tradeHistory.map((item) => {
-         
+
             return (
                 <tr className="hovered" key={item.id}>
                     <td className=""> {item.id}</td>
@@ -29,10 +29,21 @@ export default (props) => {
     return (
         <div className="history__tabs__inner">
             <a className="history__tabs__hide flex__ac" onClick={() => dispatch(filterHistory(pair, "tradeHistoryItems"))}>
-                <i className="fa fa-eye-slash history__tabs__img"></i>
-                <div className="history__tabs__hide__text">
-                    Hide Other Pairs
-          </div>
+                {showed ?
+                    <>
+                        <i className="fa fa-eye-slash history__tabs__img"></i>
+                        <div className="history__tabs__hide__text">
+                            Hide Other Pairs
+                         </div>
+                    </>
+                    :
+                    <>
+                        <i className="fas fa-eye history__tabs__img"></i>
+                        <div className="history__tabs__hide__text">
+                            Show Other Pairs
+                         </div>
+                    </>
+                }
             </a>
             <SimpleBarReact style={{ maxHeight: "20vh" }}>
                 <table className="ex__table history__table">

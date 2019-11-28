@@ -29,13 +29,30 @@ function* makeOrder({ payload: { price, amount, type, pair, formName } }) {
     yield takeEvery(actions.order.makeOrder, makeOrder);
   }
 
-  function* makeOrdMarket({ payload: { ...args } }) {
+  function* makeOrdMarket({ payload: {ord_type, amount, type, pair, formName } }) {
+
     try {
-      yield call(fetchOrderMarket, args);
+
+      const resp = yield call(fetchOrderMarket, ord_type, amount, type, pair);
+
+      if (resp["errors"]) {
+        yield put(actions.order.failOrder(formName))
+      }
+      else {
+        yield put(actions.order.successOrder(formName))
+      }
+      setTimeout(() => {
+        store.dispatch(actions.order.clearOrder(formName))
+      }, 2200)
+
+
     } catch (e) {
 
-
     }
+
+
+
+  
   }
 
   export function* orderMarketSaga() {

@@ -45,7 +45,7 @@ class App extends React.Component {
     if (data.uid) {
       isAuthenticated = true;
     }
-    let pairsRoutes = ""
+    let pairsRoutes
 
     if (pairs) {
 

@@ -24,16 +24,7 @@ class Ex extends React.Component {
 
   componentDidMount() {
    
-    // history.push(
-    //   {
-    //     state: {
-    //       base_unit: "bth",
-    //       quote_unit:"usd",
-    //       pair: "bthusd"
-    //     }
-
-    //   }
-    // )
+ 
     let { base_unit, quote_unit, pair } = this.props
 
     this.props.loadOrderBook(pair);
@@ -201,7 +192,6 @@ class Ex extends React.Component {
                           gridTable={this.state.gridTable}
                           data={orderBook.asks}
                           loading={loadingOrderBook}
-                          //key={this.state.renderKey}
                           handleSocketOrderBook={handleSocketOrderBook}
                         />
                       ) : (
@@ -235,7 +225,6 @@ class Ex extends React.Component {
                           gridTable={this.state.gridTable}
                           data={orderBook.bids}
                           loading={loadingOrderBook}
-                          //key={this.state.renderKey}
                           handleSocketOrderBook={handleSocketOrderBook}
                         />
                       ) : (
@@ -301,6 +290,7 @@ class Ex extends React.Component {
                           basePair={base_unit}
                           onChange={onChangeMarketBuy}
                           makeOrder={makeOrderMarket}
+                          formName={"marketFormDataBuy"}
                           status ={status["marketFormDataBuy"]}
                           changeFormPrice={changeFormPrice}
                           args={["market", marketFormDataBuy.amount.value, "buy", pair]}
@@ -312,6 +302,7 @@ class Ex extends React.Component {
                           basePair={base_unit}
                           onChange={onChangeMarketSell}
                           makeOrder={makeOrderMarket}
+                          formName={"marketFormDataSell"}
                           status ={status["marketFormDataSell"]}
                           changeFormPrice={changeFormPrice}
                           args={["market", marketFormDataSell.amount.value, "sell", pair]}
@@ -387,7 +378,7 @@ let mapDispatchToProps = (dispatch) => {
     onChangeMarketBuy: (e) => dispatch(actions.order.onChangeMarketBuy(e)),
     onChangeMarketSell: (e) => dispatch(actions.order.onChangeMarketSell(e)),
     makeOrder: (price, amount, type, pair,formName) => dispatch(actions.order.makeOrder(price, amount, type, pair, formName)),
-    makeOrderMarket: (...args) => dispatch(actions.order.makeOrderMarket(...args)),
+    makeOrderMarket: (ord_type, amount, type, pair, formName) => dispatch(actions.order.makeOrderMarket(ord_type, amount, type, pair, formName)),
     loadOrderBook: (pair) => dispatch(actions.trading.loadOrderBook(pair)),
     loadDeals: (pair) => dispatch(actions.trading.loadDeals(pair)),
     handleSocketOrderBook: (pair, base_unit, quote_unit, cable) => dispatch(actions.trading.handleSocketOrderBook(pair, base_unit, quote_unit, cable)),

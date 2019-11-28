@@ -11,10 +11,10 @@ export const fetchOrder = (price, amount, type, pair ) => {
         },
         body: JSON.stringify(
             {
-                market: args[3],
-                side: args[2],
-                volume: args[1],
-                price: args[0]
+                market: pair,
+                side: type,
+                volume: amount,
+                price
             }
         ),
     };
@@ -23,7 +23,7 @@ export const fetchOrder = (price, amount, type, pair ) => {
         init
     )
 };
-export const fetchOrderMarket = (args) => {
+export const fetchOrderMarket = (ord_type, amount, type, pair) => {
 
     const init = {
         method: 'POST',
@@ -33,10 +33,10 @@ export const fetchOrderMarket = (args) => {
         },
         body: JSON.stringify(
             {
-                market: args[3],
-                side: args[2],
-                volume: args[1],
-                ord_type: args[0]
+                market: pair,
+                side: type,
+                volume: amount,
+                ord_type
             }
         ),
     };

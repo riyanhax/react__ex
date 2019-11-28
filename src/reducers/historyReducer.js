@@ -2,6 +2,18 @@
 import { handleActions } from 'redux-actions';
 
 const InitailState = {
+    filters: {
+        openOrdersItems: {
+            showed: true
+        },
+        orderHistoryItems: {
+            showed: true
+        },
+        tradeHistoryItems: {
+            showed: true
+        }
+    },
+    
 }
 
 export const historyReducer = handleActions({
@@ -36,14 +48,14 @@ export const historyReducer = handleActions({
         }
     },
     filterHistory: (state, action) => {
-
-        let { pair, items } = action.payload;
-        let historyData = [...state[items]];
-        historyData = historyData.filter(item => item.market == pair);
+        let { items } = action.payload;
+        let filters = { ...state.filters };
+        filters[items].showed = !filters[items].showed
         return {
             ...state,
-            [items]: historyData
+            filters
         }
     }
+
 }, InitailState);
 

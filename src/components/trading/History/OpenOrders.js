@@ -1,13 +1,18 @@
 
-import React from "react";
+import React, { useMemo } from 'react'
+
 import SimpleBarReact from "simplebar-react";
 import "simplebar/src/simplebar.css";
 
+
 export default (props) => {
-  const { openOrders, dispatch, removeOrder, filterHistory, pair } = props;
+  const { openOrders, dispatch, removeOrder, filterHistory, pair, showed } = props;
+
+
   let openOrdersList
   if (openOrders) {
     openOrdersList = openOrders.map((item) => {
+
       let { id } = item;
 
       return (
@@ -33,11 +38,22 @@ export default (props) => {
 
   return (
     <div className="history__tabs__inner">
-      <a className="history__tabs__hide flex__ac" onClick={() => dispatch(filterHistory(pair, "openOrdersItems"))}>
-        <i className="fa fa-eye-slash history__tabs__img"></i>
-        <div className="history__tabs__hide__text">
-          Hide Other Pairs
-        </div>
+        <a className="history__tabs__hide flex__ac" onClick={() => dispatch(filterHistory(pair, "openOrdersItems"))}>
+        {showed ?
+          <>
+            <i className="fa fa-eye-slash history__tabs__img"></i>
+            <div className="history__tabs__hide__text">
+              Hide Other Pairs
+            </div>
+          </>
+          :
+          <>
+          <i className="fas fa-eye history__tabs__img"></i>
+            <div className="history__tabs__hide__text">
+              Show Other Pairs
+            </div>
+          </>
+        }
       </a>
       <SimpleBarReact style={{ maxHeight: "20vh" }}>
 

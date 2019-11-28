@@ -1,12 +1,12 @@
 
-import React from "react";
+import React, { useState } from "react";
 import SimpleBarReact from "simplebar-react";
 import "simplebar/src/simplebar.css";
 
 export default (props) => {
-  const { ordersHistory, dispatch, filterHistory, pair } = props;
+  const { ordersHistory, dispatch, filterHistory, pair, showed } = props;
   let ordersHistoryList
-
+ 
   if (ordersHistory) {
     ordersHistoryList = ordersHistory.map((item) => {
       return (
@@ -27,11 +27,22 @@ export default (props) => {
 
   return (
     <div className="history__tabs__inner">
-      <a className="history__tabs__hide flex__ac" onClick={() => dispatch(filterHistory(pair, "orderHistoryItems"))}>
-        <i className="fa fa-eye-slash history__tabs__img"></i>
-        <div className="history__tabs__hide__text">
-          Hide Other Pairs
-        </div>
+        <a className="history__tabs__hide flex__ac" onClick={() => dispatch(filterHistory(pair, "orderHistoryItems"))}>
+        {showed ?
+          <>
+            <i className="fa fa-eye-slash history__tabs__img"></i>
+            <div className="history__tabs__hide__text">
+              Hide Other Pairs
+            </div>
+          </>
+          :
+          <>
+          <i className="fas fa-eye history__tabs__img"></i>
+            <div className="history__tabs__hide__text">
+              Show Other Pairs
+            </div>
+          </>
+        }
       </a>
       <SimpleBarReact style={{ maxHeight: "20vh" }}>
         <table className="ex__table history__table">
