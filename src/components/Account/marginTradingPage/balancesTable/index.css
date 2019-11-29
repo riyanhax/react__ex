@@ -9,6 +9,7 @@
     padding-top: 5px;
     padding-bottom: 20px;
     padding-right: 10px;
+    min-height: 190px;
 }
 
 .balances_table__actions_container{

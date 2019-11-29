@@ -11,10 +11,10 @@ import {chatReducer} from "./tradingPage/chatReducer";
 import { connectRouter } from 'connected-react-router';
 import { history } from 'src/history';
 import {TotalUsersReducer} from './homePage/totalUserReducer';
-import {mainWalletCurrencyReducer} from './accountPage/walletReducer';
-import {publicCurrenciesReducer} from './accountPage/publicCurrenciesReducer';
-import {depositWalletReducer} from './accountPage/depositWalletReducer';
-import {withdrawsHistoryReducer} from './accountPage/withdrawsHistoryReducer';
+import {mainWalletCurrencyReducer} from './accountPage/accountSideBarReducer';
+import {accountWithdrawalReducer} from './accountPage/accountWithdrawalReducer';
+import {marginTradingReducer} from './accountPage/accountMarginTradingReducer';
+import {accountSettingsReducer} from './accountPage/accountSettingReducer';
 
 const combineReducer = combineReducers({
     authReducer,
@@ -28,9 +28,9 @@ const combineReducer = combineReducers({
     chatReducer,
     TotalUsersReducer,
     mainWalletCurrencyReducer,
-    publicCurrenciesReducer,
-    depositWalletReducer,
-    withdrawsHistoryReducer,
+    accountWithdrawalReducer,
+    marginTradingReducer,
+    accountSettingsReducer,
     router: connectRouter(history)
 })
 

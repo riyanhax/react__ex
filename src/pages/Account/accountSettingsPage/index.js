@@ -1,9 +1,22 @@
-import React from "react";
+import React,{useEffect} from "react";
 import "./index.css";
 import AccountInfo from 'cmp/Account/accountSettingsPage/accountInfo/';
 import LogHistoryTable from 'cmp/Account/accountSettingsPage/lastLoginHistoryTable/';
+import { useDispatch,useSelector} from "react-redux";
+import action from 'act/';
 
 export default (props)=>{
+
+    let dispatch = useDispatch();
+    useEffect(()=>{
+        dispatch(action.accountSettings.getLoginHistory());
+    },[])
+    let history = useSelector(state => state.accountSettingsReducer.loginTable);
+    let table;
+    if(history){
+        console.log(history)
+        table=<LogHistoryTable history={history}/>
+    }
     return(
         <>
             <div className="account_settings__page_container">
@@ -32,7 +45,7 @@ export default (props)=>{
                     </div>
                 </div>
                 <div className="account_settings__history_container">
-                    <LogHistoryTable/>
+                    {table}
                 </div>
             </div>  
         </>

@@ -7,7 +7,10 @@ import * as wallet from './tradingPage/wallet';
 import * as chat from './tradingPage/chat';
 import * as info from './tradingPage/info';
 import * as home from './homePage/home';
-import * as account from './accountPage/account';
+import * as accountWithdrawal from './accountPage/accountWithdrawal';
+import * as asccountSideBar from './accountPage/accountSideBar';
+import * as accountMarginTrading from './accountPage/accountMarginTrading';
+import * as accountSettings from './accountPage/accountSettings';
 
 export default {
     trading,
@@ -19,6 +22,9 @@ export default {
     chat,
     info,
     home,
-    account,
+    accountWithdrawal,
+    asccountSideBar,
+    accountMarginTrading,
+    accountSettings,
 }
 

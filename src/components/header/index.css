@@ -88,3 +88,10 @@
     padding-left: 10px;
   }
 
+.header__link{
+  color: #788096;
+}
+
+.header__link:hover{
+  color: #17AC75;
+}

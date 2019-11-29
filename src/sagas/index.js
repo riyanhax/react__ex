@@ -9,9 +9,10 @@ import {tradingWalletSaga} from './tradingPage/walletSaga'
 import {chatSaga, chatSocketSaga, chatMssagesSaga} from './tradingPage/chatSaga'
 import {tradingInfoSaga} from './tradingPage/infoSaga'
 import {totalUsersSaga} from './homePage/totalUsersSaga'
-import {getAccountCurrencySaga} from './accountPage/accountSaga'
-import {getPublicCurrencies} from './accountPage/publicCurrenciesSaga'
-import {getWalletAddressSaga,getWithdrawsHistorySaga} from './accountPage/accountSaga';
+import {getAccountCurrencySaga} from './accountPage/accountSideBarSaga'
+import {getWalletAddressSaga,getWithdrawsHistorySaga,getPublicCurrencies} from './accountPage/accountWithdrawalSaga';
+import {getBalanceTableSaga} from './accountPage/accountMarginTradingSaga';
+import {getLoginHistorySaga} from './accountPage/accountSettingsSaga';
 
 export default function* rootSasga() {
     yield all([
@@ -38,6 +39,8 @@ export default function* rootSasga() {
         getPublicCurrencies(),
         getWalletAddressSaga(),
         getWithdrawsHistorySaga(),
+        getBalanceTableSaga(),
+        getLoginHistorySaga()
     ]);
   }
 

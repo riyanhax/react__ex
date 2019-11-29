@@ -1,7 +1,12 @@
-import React from 'react';
+import React,{useEffect} from 'react';
 import './index.css';
+import { useSelector,useDispatch } from "react-redux";
+import action from 'act/';
 
 export default (props) => {
+
+    
+    let accountInfo = useSelector(state => state.userReducer.data);
     return (
         <>
             <div className="account_info__container">
@@ -12,17 +17,17 @@ export default (props) => {
 
                         </div>
                         <div>
-                            <div>E-mail: <span className="white">johndoe93@gmail.com</span></div>
-                            <div>User ID: <span className="white">ae89438fhjh4</span></div>
+                            <div>E-mail: <span className="white">{accountInfo ? accountInfo.email :''}</span></div>
+                            <div>User ID: <span className="white">{accountInfo? accountInfo.uid:''}</span></div>
                             <div>User name: <span className="white">{"<"}set now{">"}</span>
                                 <sup>
                                     <i className="tooltip fa fa-question-circle"><div className="tooltiptext">Use your username instead of Email to login to your Azbit account.</div></i>
                                 </sup>
                             </div>
                             <div>Phone: <span className="white">{"<"}set now{">"}</span>
-                                    <sup>
-                                        <i className="tooltip fa fa-question-circle"><div className="tooltiptext">Use your phone instead of Email to login to your Azbit account.</div></i>
-                                    </sup>
+                                <sup>
+                                    <i className="tooltip fa fa-question-circle"><div className="tooltiptext">Use your phone instead of Email to login to your Azbit account.</div></i>
+                                </sup>
                             </div>
                         </div>
                     </div>
@@ -30,7 +35,7 @@ export default (props) => {
                         <div>
                             <div>Withdrawal limits: <span className="white">5 BTC / 24H  (<u>Get verified</u>)</span></div>
                             <div><span className="white">Use          tokens to pay fees (75% discount)</span></div>
-                            <div>My referral link 
+                            <div>My referral link
                                 <sup>
                                     <i className="tooltip fa fa-question-circle"><div className="tooltiptext">Referal programm not active now.</div></i>
                                 </sup>

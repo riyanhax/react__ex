@@ -1,7 +1,17 @@
 import React from 'react';
 import './index.css';
 
+
 export default (props) => {
+    let tableRow = props.history.map((item, index) => {
+        return (
+            <tr className="log_history_table__tr">
+                <td className="log_history_table__td">{item.created_at}</td>
+                <td className="log_history_table__td">{item.user_ip}</td>
+                <td className="log_history_table__td">Minsk Belarus</td>
+            </tr>
+        )
+    })
     return (
         <>
             <div className="container__logo">LAST LOGIN HISTORY </div>
@@ -13,21 +23,7 @@ export default (props) => {
                             <th className="log_history_table__th">ID Address</th>
                             <th className="log_history_table__th">Location</th>
                         </tr>
-                        <tr className="log_history_table__tr">
-                            <td className="log_history_table__td">2019-01-23 19:52:44</td>
-                            <td className="log_history_table__td">237.215.13.241</td>
-                            <td className="log_history_table__td">Minsk Belarus</td>
-                        </tr>
-                        <tr className="log_history_table__tr">
-                            <td className="log_history_table__td">2019-01-23 19:52:44</td>
-                            <td className="log_history_table__td">237.215.13.241</td>
-                            <td className="log_history_table__td">Minsk Belarus</td>
-                        </tr>
-                        <tr className="log_history_table__tr">
-                            <td className="log_history_table__td">2019-01-23 19:52:44</td>
-                            <td className="log_history_table__td">237.215.13.241</td>
-                            <td className="log_history_table__td">Minsk Belarus</td>
-                        </tr>
+                        {tableRow}
                     </tbody>
                 </table>
             </div>

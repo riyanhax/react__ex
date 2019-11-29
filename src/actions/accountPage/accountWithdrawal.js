@@ -1,7 +1,6 @@
 import {createActions} from 'redux-actions';
 
-export const {getAccountWalletCurrency,
-              setAccountWalletCurrency,
+export const {
               getPublicCurrencies,
               setPublicCurrencies,
               getWalletAddress,
@@ -9,8 +8,6 @@ export const {getAccountWalletCurrency,
               getWithdrawsHistory,
               setWithdrawsHistory
             } = createActions({
-    getAccountWalletCurrency: ()=>({}),
-    setAccountWalletCurrency: (walletCurrency)=>({walletCurrency}),
     getPublicCurrencies: ()=>({}),
     setPublicCurrencies: (currencies)=>({currencies}),
     getWalletAddress: (currency)=>({currency}),

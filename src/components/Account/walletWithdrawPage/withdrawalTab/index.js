@@ -8,9 +8,9 @@ export default (props) => {
     let dispatch = useDispatch();
 
     useEffect(()=>{
-        dispatch(actions.account.getPublicCurrencies());
+        dispatch(actions.accountWithdrawal.getPublicCurrencies());
     },[])
-    let publicCurrencies = useSelector(state => state.publicCurrenciesReducer.pubCurrencies);
+    let publicCurrencies = useSelector(state => state.accountWithdrawalReducer.pubCurrencies);
     let options;
     let customSelect;
     if(publicCurrencies){

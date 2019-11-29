@@ -3,12 +3,11 @@ import './index.css';
 import Pagination from 'cmp/Account/pagination/';
 
 export default (props) => {
-
     let balancesTableItems = props.balances.map((item, index) => {
         return (
             <tr key={index} className="balances_table__td_container">
-                <td className="balances_table__td white__text"><i className="fab fa-bitcoin"></i>{item.assets}</td>
-                <td className="balances_table__td white__text">{item.tricker}</td>
+                <td className="balances_table__td white__text"><i className="fab fa-bitcoin"></i>{item.asset}</td>
+                <td className="balances_table__td white__text">{item.currency}</td>
                 <td className="balances_table__td white__text">{item.balance}</td>
                 <td className="balances_table__td white__text">{item.locked}</td>
                 <td className="balances_table__td white__text">{item.total}</td>
@@ -35,9 +34,7 @@ export default (props) => {
                             <th className="balances_table__th">Total</th>
                             <th className="balances_table__th">Actions</th>
                         </tr>
-
                         {balancesTableItems}
-
                     </tbody>
                 </table>
             </div>

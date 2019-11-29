@@ -1,4 +1,3 @@
-
 import { createActions} from 'redux-actions';
 
 export const {loadOpenOrders, setOpenOrders, loadOrders, setOrderHistory, loadTradeHistory, setTradeHistory, removeOrder, filterHistory} = createActions({
@@ -13,3 +12,4 @@ export const {loadOpenOrders, setOpenOrders, loadOrders, setOrderHistory, loadTr
   });
 
   
+

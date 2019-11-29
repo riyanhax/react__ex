@@ -57,7 +57,6 @@ const customStyles = {
 };
 
 export default(props) => {
-
     let select =  <Select  styles ={customStyles} options={props.options}  defaultValue={props.defaultValue} onChange={props.handleChangeCurrency}/>;
 
     return(

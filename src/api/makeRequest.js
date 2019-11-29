@@ -13,7 +13,7 @@ export const makeRequest = async (url, init) => {
             store.dispatch(failUser()); //dispatch logout for each 401 Unauthorized
         }
         const json = await response.json();
-
+      
         return json
 
     } catch (error) {

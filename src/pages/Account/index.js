@@ -32,7 +32,7 @@ export default (props) => {
                             <Route path="/account/" exact>
                                 <NewsPage />
                             </Route>
-                            <Route path="/account/balance" exact>
+                            <Route path="/account/margin/trading" exact>
                                 <MarginTradingPage />
                             </Route>
 
@@ -42,7 +42,7 @@ export default (props) => {
                             <Route path="/account/settings/" exact>
                                 <AccountSettingsPage />
                             </Route>
-                            <Route path="/account/WalletWithdraw" exact>
+                            <Route path="/account/wallet/withdraw" exact>
                                 <WalletWithdrawPage />
                             </Route>
                         </Switch>

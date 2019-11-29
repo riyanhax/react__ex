@@ -11,8 +11,12 @@
   padding: 5px 0;
   position: absolute;
   z-index: 1;
-  top: 20px;
+  top: 17px;
   left: -40px;
+}
+
+.pop_up_menu__head:hover{
+    color: #17AC75;
 }
 
 .pop_up_menu__head:hover .pop_up_menu__container{

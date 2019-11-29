@@ -37,7 +37,6 @@ button {
   
   .page__container{
     background: #111622;
-    height: 1262px;
   }
   
   .button_green{
@@ -54,6 +53,8 @@ button {
     color: white;
     display:block;
   }
+
+
 
   
   .button_gray{
