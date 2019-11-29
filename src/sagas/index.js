@@ -1,13 +1,13 @@
 import "regenerator-runtime/runtime";
 import { all } from 'redux-saga/effects';
-import { openOrdersSaga, orderHistorySaga, tradeHistorySaga, removeOrderSaga } from './historySaga';
-import {fetchLoginSaga} from './authSaga';
-import {userSaga} from './userSaga';
-import {orderSaga, orderMarketSaga} from './orderSaga'
-import {tradingPairsSaga, orderBookSocketSaga, tradingOrderBookSaga, tradingDealsSaga, dealsSocketSaga} from './tradingSaga'
-import {tradingWalletSaga} from './walletSaga'
-import {chatSaga, chatSocketSaga, chatMssagesSaga} from './chatSaga'
-import {tradingInfoSaga} from './infoSaga'
+import { openOrdersSaga, orderHistorySaga, tradeHistorySaga, removeOrderSaga } from './tradingPage/historySaga';
+import {fetchLoginSaga} from './auth/authSaga';
+import {userSaga} from './auth/userSaga';
+import {orderSaga, orderMarketSaga} from './tradingPage/orderSaga'
+import {tradingPairsSaga, orderBookSocketSaga, tradingOrderBookSaga, tradingDealsSaga, dealsSocketSaga} from './tradingPage/tradingSaga'
+import {tradingWalletSaga} from './tradingPage/walletSaga'
+import {chatSaga, chatSocketSaga, chatMssagesSaga} from './tradingPage/chatSaga'
+import {tradingInfoSaga} from './tradingPage/infoSaga'
 import {totalUsersSaga} from './homePage/totalUsersSaga'
 import {getAccountCurrencySaga} from './accountPage/accountSaga'
 import {getPublicCurrencies} from './accountPage/publicCurrenciesSaga'

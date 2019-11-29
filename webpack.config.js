@@ -20,6 +20,7 @@ module.exports = {
       'sg': path.resolve(__dirname, 'src/sagas'),
       'serv': path.resolve(__dirname, 'src/services'),
       'libs': path.resolve(__dirname, 'src/libs'),
+      'src': path.resolve(__dirname, 'src'),
     }
   },
   module: {

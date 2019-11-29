@@ -14,7 +14,6 @@ import { BrowserRouter as Router, Route, Switch, NavLink } from 'react-router-do
 import { Transition } from 'react-transition-group'
 import { connect } from "react-redux"
 import actions from "act/"
-import { history } from '../../history';
 import Cable from "actioncable"
 
 
@@ -34,29 +33,6 @@ class Ex extends React.Component {
     this.props.loadWallet(base_unit, quote_unit);
     this.props.loadMessages();
     this.props.loadInfo(pair);
-
-    // fetch(`api/v2/peatio/market/orders/27/cancel`, {
-    //   method: 'POST',
-    //   credentials: 'include',
-    //   body: JSON.stringify(
-    //     // {
-    //     //   text: 'lol',
-    //     //   lang: "en",
-    //     // }
-    //   ),
-    //   headers: {
-    //     'Content-type': 'application/json'
-    //   },
-
-    // })
-    //   .then(response => response.json())
-    //   .then((data) => {
-
-    //    console.log(data)
-    //   })
-    //   .catch((e) => {
-    //     console.log(e)
-    //   });
 
 
 
@@ -82,13 +58,7 @@ class Ex extends React.Component {
   }
 
 
-  handleChangePairs = (e) => {
-    this.state.cable.subscriptions.consumer.disconnect();
-    let pair = e.value
-    history.push(
-      { pathname: `/trading/${pair}` }
-    )
-  }
+  
 
 
 
@@ -114,7 +84,7 @@ class Ex extends React.Component {
         <ExHeader
           pairs={pairs}
           pair={pair}
-          handleChangePairs={this.handleChangePairs}
+          cable={this.state.cable}
           wallet={wallet}
           info={info}
           lastPrice={lastPrice}
@@ -208,9 +178,6 @@ class Ex extends React.Component {
                           </div>
                         ) : ("")}
 
-                        {/* <div className="green__table__header__item2">
-                          $0.000029
-                          </div> */}
                           <i className="fas fa-signal"></i>
                       </div>
                     </div>
@@ -248,10 +215,7 @@ class Ex extends React.Component {
                     </TabList>
 
                     <TabPanel>
-                      {/* <label className="checkbox ex__form__check">
-                        <input type="checkbox" />
-                        <div className="checkbox__text">Pay Az Tоkens</div>
-                      </label> */}
+      
                       <div className="flex__jb">
                         <OrderForm
                           limitFormData={limitFormDataBuy}

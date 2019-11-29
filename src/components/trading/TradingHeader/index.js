@@ -1,13 +1,21 @@
 import React from "react";
 import { NavLink } from 'react-router-dom';
 import Select from 'react-select'
+import { history } from 'src/history';
 
 export default (props) => {
 
 
-    let { pairs, pair, handleChangePairs, wallet, info, lastPrice } = props
+    let { pairs, pair, wallet, info, lastPrice, cable } = props;
 
 
+    let handleChangePairs = (e) => {
+        cable.subscriptions.consumer.disconnect();
+        let pair = e.value
+        history.push(
+            { pathname: `/trading/${pair}` }
+        )
+    }
     const colourStyles = {
         control: (styles) => {
             return {
@@ -89,7 +97,7 @@ export default (props) => {
         volume = info.volume
         diff = info.diff
     }
-    if(lastPrice){
+    if (lastPrice) {
         lastPriceValue = lastPrice.price
         lastPriceClass = lastPrice.class
     }
@@ -154,7 +162,7 @@ export default (props) => {
 
                     <div className="header__col  cur__col" >
                         <div className="flex__ac__100">
-                            <img src="/assets/img/car__img.png" className="header__col__cur__img" />
+                        <i className="fas fa-coins header__col__cur__img"></i>
                             <div className="header__col_cur__text">
                                 {select}
                             </div>
@@ -178,10 +186,10 @@ export default (props) => {
                     <div className="header__col">
                         <div className="flex__ac__100">
                             <i className="fas fa-user-circle header__col__login__img mint__text"></i>
-                            <NavLink className="header__col__logout gray__text" to="/" exact >
+                            <NavLink className="header__col__logout gray__text" to="/account" exact >
                                 My Account&nbsp;
                                 </NavLink>
-                            <NavLink className="header__col__logout gray__text" to="/" exact >
+                            <NavLink className="header__col__logout gray__text" to="/login" exact >
                                 | Logout
                                 </NavLink>
                         </div>

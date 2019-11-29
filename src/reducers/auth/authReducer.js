@@ -1,5 +1,4 @@
 import { handleActions } from 'redux-actions';
-import { fetchLogout,  } from '../../actions/auth';
 
 
 const InitailState = {

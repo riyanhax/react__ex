@@ -2,20 +2,20 @@ import {combineReducers} from 'redux';
 import {authReducer} from "./auth/authReducer";
 import signUpReducer from "./auth/signUpReducer";
 import passRecReducer from "./auth/passRecReducer";
-import {tradingReducer} from "./tradingReducer";
-import {userReducer} from "./userReducer";
-import {historyReducer} from "./historyReducer";
-import {orderReducer} from "./orderReducer";
-import {walletReducer} from "./walletReducer";
-import {chatReducer} from "./chatReducer";
-import {infoReducer} from "./infoReducer";
+import {tradingReducer} from "./tradingPage/tradingReducer";
+import {userReducer} from "./auth/userReducer";
+import {historyReducer} from "./tradingPage/historyReducer";
+import {orderReducer} from "./tradingPage/orderReducer";
+import {walletReducer} from "./tradingPage/walletReducer";
+import {chatReducer} from "./tradingPage/chatReducer";
 import { connectRouter } from 'connected-react-router';
-import { history } from '../history';
+import { history } from 'src/history';
 import {TotalUsersReducer} from './homePage/totalUserReducer';
 import {mainWalletCurrencyReducer} from './accountPage/walletReducer';
 import {publicCurrenciesReducer} from './accountPage/publicCurrenciesReducer';
 import {depositWalletReducer} from './accountPage/depositWalletReducer';
 import {withdrawsHistoryReducer} from './accountPage/withdrawsHistoryReducer';
+
 const combineReducer = combineReducers({
     authReducer,
     signUpReducer,
@@ -31,7 +31,6 @@ const combineReducer = combineReducers({
     publicCurrenciesReducer,
     depositWalletReducer,
     withdrawsHistoryReducer,
-    
     router: connectRouter(history)
 })
 

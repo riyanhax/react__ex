@@ -1,15 +1,12 @@
 import React, { useEffect } from "react";
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import { loadOpenOrders, loadOrders, loadTradeHistory, removeOrder, filterHistory } from "act/history"
+import { loadOpenOrders, loadOrders, loadTradeHistory, removeOrder, filterHistory } from "act/tradingPage/history"
 import { useSelector, useDispatch } from "react-redux"
 import OpenOrders from "./OpenOrders"
 import OrderHistory from "./OrderHistory"
 import TradeHistory from "./TradeHistory"
-import { createSelector } from 'reselect'
 
-import { getVisibleHistory } from "rd/historySelector"
 export default (props) => {
-
 
   useEffect(() => {
     dispatch(loadOpenOrders());
@@ -18,7 +15,15 @@ export default (props) => {
   }, [])
 
   const dispatch = useDispatch()
+  const getVisibleHistory = (items, showed, pair) => {
+    if (showed) {
+      return items
+    }
+    else {
+      return items.filter(item => item.market == pair)
+    }
 
+  }
   let openOrders = useSelector(state => getVisibleHistory(state.historyReducer.openOrdersItems, state.historyReducer.filters.openOrdersItems.showed, props.pair))
   let ordersHistory = useSelector(state => getVisibleHistory(state.historyReducer.orderHistoryItems, state.historyReducer.filters.orderHistoryItems.showed, props.pair))
   let tradeHistory = useSelector(state => getVisibleHistory(state.historyReducer.tradeHistoryItems, state.historyReducer.filters.tradeHistoryItems.showed, props.pair))

@@ -1,6 +1,6 @@
 
 import { store } from '../store';
-import { failUser } from 'act/user';
+import { failUser } from 'act/auth/user';
 export const makeRequest = async (url, init) => {
 
     try {
