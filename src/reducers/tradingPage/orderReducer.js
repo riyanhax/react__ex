@@ -24,6 +24,7 @@ const InitailState = {
       icon:""
     }
   },
+
   limitFormDataBuy: {
     price: {
       vaild: false,

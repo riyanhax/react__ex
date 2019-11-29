@@ -30,11 +30,8 @@ class Ex extends React.Component {
     this.props.loadDeals(pair);
     this.props.setLabel(base_unit, quote_unit);
     this.props.handleSocketOrderBook(pair, base_unit, quote_unit, this.state.cable);
-    this.props.loadWallet(base_unit, quote_unit);
     this.props.loadMessages();
-    this.props.loadInfo(pair);
-
-
+  
 
   }
   state = {
@@ -67,10 +64,10 @@ class Ex extends React.Component {
 
     const { pairs, loadingDeals, loadingOrderBook, limitFormDataBuy,
       limitFormDataSell, onChangeSell, onChangeBuy, handleSocketOrderBook,
-      orderBook, deals, wallet, messages, makeMessage, info, lastPrice,
+      orderBook, deals, wallet, messages, makeMessage, lastPrice,
       marketFormDataBuy, marketFormDataSell, makeOrder, onChangeMarketBuy,
       onChangeMarketSell, makeOrderMarket, changeFormPrice, decimalSortValue,
-      handleChangeDecimal, status, base_unit, pair
+      handleChangeDecimal, status, base_unit, quote_unit, pair
     } = this.props;
 
     
@@ -85,9 +82,8 @@ class Ex extends React.Component {
           pairs={pairs}
           pair={pair}
           cable={this.state.cable}
-          wallet={wallet}
-          info={info}
-          lastPrice={lastPrice}
+          base_unit = {base_unit}
+          quote_unit = {quote_unit}
         />
         <div className="ex__page__inner">
           <a href="" className="side__hide__link" onClick={(e) => this.toggleChat(e)}>
@@ -321,14 +317,9 @@ let mapStateToProps = (state) => {
     limitFormDataSell: state.orderReducer.limitFormDataSell,
     marketFormDataBuy: state.orderReducer.marketFormDataBuy,
     marketFormDataSell: state.orderReducer.marketFormDataSell,
-    bids: state.tradingReducer.orderBook.bids,
-    asks: state.tradingReducer.orderBook.asks,
     orderBook: state.tradingReducer.orderBook,
     deals: state.tradingReducer.deals,
-    wallet: state.walletReducer.wallet,
     messages: state.chatReducer.messages,
-    info: state.tradingReducer.info,
-    lastPrice: state.tradingReducer.lastPrice,
     decimalSortValue: state.tradingReducer.decimalSortValue,
     status: state.orderReducer.status,
   }
@@ -347,10 +338,8 @@ let mapDispatchToProps = (dispatch) => {
     loadDeals: (pair) => dispatch(actions.trading.loadDeals(pair)),
     handleSocketOrderBook: (pair, base_unit, quote_unit, cable) => dispatch(actions.trading.handleSocketOrderBook(pair, base_unit, quote_unit, cable)),
     setLabel: (base_unit, quote_unit) => dispatch(actions.order.setLabel(base_unit, quote_unit)),
-    loadWallet: (base_unit, quote_unit) => dispatch(actions.wallet.loadWallet(base_unit, quote_unit)),
     makeMessage: (text, lang) => dispatch(actions.chat.makeMessage(text, lang)),
     loadMessages: () => dispatch(actions.chat.loadMessages()),
-    loadInfo: (pair) => dispatch(actions.info.loadInfo(pair)),
     changeFormPrice: (form, wallet, e) => dispatch(actions.order.changeFormPrice(form, wallet, e)),
     handleChangeDecimal: (e) => dispatch(actions.trading.handleChangeDecimal(e))
   }

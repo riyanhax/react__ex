@@ -1,13 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { NavLink } from 'react-router-dom';
 import Select from 'react-select'
 import { history } from 'src/history';
+import { useSelector, useDispatch } from "react-redux"
+import actions from "act/"
 
 export default (props) => {
 
+    let { pairs, pair, cable, base_unit, quote_unit } = props;
+    const dispatch = useDispatch()
+    useEffect(() => {
+        dispatch(actions.wallet.loadWallet(base_unit, quote_unit));
+        dispatch(actions.info.loadInfo(pair))
+    }, [])
 
-    let { pairs, pair, wallet, info, lastPrice, cable } = props;
-
+    let lastPrice = useSelector(state => (state.tradingReducer.lastPrice))
+    let info = useSelector(state => (state.tradingReducer.info))
+    let wallet = useSelector(state => (state.walletReducer.wallet))
 
     let handleChangePairs = (e) => {
         cable.subscriptions.consumer.disconnect();
@@ -162,7 +171,7 @@ export default (props) => {
 
                     <div className="header__col  cur__col" >
                         <div className="flex__ac__100">
-                        <i className="fas fa-coins header__col__cur__img"></i>
+                            <i className="fas fa-coins header__col__cur__img"></i>
                             <div className="header__col_cur__text">
                                 {select}
                             </div>

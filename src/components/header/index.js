@@ -30,7 +30,7 @@ export default (props) => {
                     <div>Logout</div>
                 </div>
                 <div className="header__lang_container">
-                    <i class="fa fa-globe-americas header__col__img" aria-hidden="true"></i>
+                    <i className="fa fa-globe-americas header__col__img" aria-hidden="true"></i>
                     <div className="header_lang">En</div>
                 </div>
             </header>
