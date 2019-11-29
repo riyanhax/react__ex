@@ -15,6 +15,10 @@
   left: -40px;
 }
 
+.pop_up_menu__head:hover{
+    color: #17AC75;
+}
+
 .pop_up_menu__head:hover .pop_up_menu__container{
     visibility: visible;
     border: 1px solid #1F2535;
