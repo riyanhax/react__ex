@@ -1,14 +1,10 @@
 import React from 'react';
 import './index.css';
-import comingSoonLogo from '../../img/comingSoonLogo.png';
 
 export default function ComingSoonPage(){
     return(
         <>
             <div className="coming_soon_page__container">
-                <div className="coming_soon_page__logo_container">
-                    <img src={comingSoonLogo} alt="logo"/>
-                </div>
                 <div className="coming_soon_page__main_text_container">
                     COMING SOON 
                 </div>

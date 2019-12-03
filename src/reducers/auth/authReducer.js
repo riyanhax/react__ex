@@ -27,7 +27,6 @@ export const authReducer = handleActions({
 
         fetchLogout: (state) => {
                 return {
-                 
                         ...state,
                 };
         }

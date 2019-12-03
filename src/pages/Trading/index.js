@@ -23,7 +23,6 @@ class Ex extends React.Component {
 
   componentDidMount() {
    
- 
     let { base_unit, quote_unit, pair } = this.props
 
     this.props.loadOrderBook(pair);
@@ -32,7 +31,6 @@ class Ex extends React.Component {
     this.props.handleSocketOrderBook(pair, base_unit, quote_unit, this.state.cable);
     this.props.loadMessages();
   
-
   }
   state = {
     chatShow: false,
@@ -54,12 +52,6 @@ class Ex extends React.Component {
 
   }
 
-
-  
-
-
-
-
   render() {
 
     const { pairs, loadingDeals, loadingOrderBook, limitFormDataBuy,
@@ -69,10 +61,6 @@ class Ex extends React.Component {
       onChangeMarketSell, makeOrderMarket, changeFormPrice, decimalSortValue,
       handleChangeDecimal, status, base_unit, quote_unit, pair
     } = this.props;
-
-    
- 
- 
 
     return (
 

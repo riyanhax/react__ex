@@ -4,6 +4,7 @@ import Select from 'react-select'
 import { history } from 'src/history';
 import { useSelector, useDispatch } from "react-redux"
 import actions from "act/"
+import HeaderItem from "./HeaderItem"
 
 export default (props) => {
 
@@ -120,15 +121,12 @@ export default (props) => {
                         </a>
                     </div>
                     <div className="header__col flex">
-                        <div className="header__col__inner">
-                            <div className="header__col__text gray__text">
-                                Last price
-                                 </div>
-                            <div className={`header__col__text ${lastPriceClass}`}>
-                                {lastPriceValue}
+                        <HeaderItem
+                            text="Last price"
+                            data={lastPriceValue}
+                            className={lastPriceClass}
+                        />
 
-                            </div>
-                        </div>
                         <div className="header__col__inner">
                             <div className="header__col__text gray__text">
                                 Change
@@ -143,30 +141,21 @@ export default (props) => {
                             }
 
                         </div>
-                        <div className="header__col__inner ">
-                            <div className="header__col__text gray__text">
-                                Low
-                                </div>
-                            <div className="header__col__text">
-                                {min_price}
-                            </div>
-                        </div>
-                        <div className="header__col__inner ">
-                            <div className="header__col__text gray__text">
-                                High
-                                </div>
-                            <div className="header__col__text">
-                                {max_price}
-                            </div>
-                        </div>
-                        <div className="header__col__inner">
-                            <div className="header__col__text gray__text">
-                                Volume
-                                </div>
-                            <div className="header__col__text">
-                                {volume}
-                            </div>
-                        </div>
+                        <HeaderItem
+                            text="Low"
+                            data={min_price}
+                            className= "gray__text"
+                        />
+                        <HeaderItem
+                            text="High"
+                            data={max_price}
+                            className= "gray__text"
+                        />
+                        <HeaderItem
+                            text="Volume"
+                            data={volume}
+                            className= "gray__text"
+                        />
                     </div>
 
                     <div className="header__col  cur__col" >

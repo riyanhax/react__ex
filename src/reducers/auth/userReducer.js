@@ -6,7 +6,7 @@ const InitailState = {
     isLoading:true
 }
 
-export  const userReducer = handleActions({
+export const userReducer = handleActions({
   
     checkUser: (state) => {
         return {
